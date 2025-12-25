@@ -56,7 +56,7 @@ class ProduitController extends Controller
                 $query->orderBy('created_at', 'desc');
         }
 
-        $produits = $query->paginate(12);
+        $produits = $query->paginate(12)->appends($request->except('page'));
         $categories = Categorie::all();
 
         return view('produits', compact('produits', 'categories'));

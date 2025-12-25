@@ -5,7 +5,7 @@
 @section('header')
 
     <div class="title_dash">
-        <h1>DASHBOARD CLIENT</h1>
+        <h1>DASHBOARD</h1>
     </div>
 
 @endsection

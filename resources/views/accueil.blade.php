@@ -9,7 +9,6 @@
     <section id="accueil">
 
         <x-header />
-
         <div class="bienvenue"> 
             <div>
                 <div class="accroche">
@@ -32,7 +31,7 @@
                     <button class="btn_rapide_change">Comment ça marche</button>
                 </div>
 
-                <div class="info">
+                <!-- <div class="info">
                     <div id="info_navigation">
                         <div class="btn_details_plus">
                             <nav class="btn_details">
@@ -48,12 +47,13 @@
                             <p id="info_message">Plus de 5OO produits publiés</p>
                         </div>
                     </div>  
-                </div>
+                </div> -->
             </div>
-        </div>                                                                      
+        </div>
+                                                                            
     </section>
-
-    <section>
+        
+    <section id="prq">
         <div class="fonction">
             <h1>Pourquoi Nous ?</h1>
             <p>
@@ -195,39 +195,146 @@
             </h2>
         </div><br><br>
         <div class="your-class">
-            <div >
-                <a href="" class="categorie">
-                    <img src="https://i.pinimg.com/1200x/86/43/82/86438241819b19833e296654dc07c17d.jpg" alt="" class="dim_image" > <br>
-                    <h4 class="voir">Electronique</h4>
-                </a>
-            </div>
-            <div >
-                <a href="" class="categorie">
-                    <img src="https://i.pinimg.com/1200x/86/43/82/86438241819b19833e296654dc07c17d.jpg" alt="" class="dim_image" > <br>
-                    <h4 class="voir">Electronique</h4>
-                </a>
-            </div>
-            <div >
-                <a href="" class="categorie">
-                    <img src="https://i.pinimg.com/1200x/86/43/82/86438241819b19833e296654dc07c17d.jpg" alt="" class="dim_image" > <br>
-                    <h4 class="voir">Electronique</h4>
-                </a >
-            </div>
-            <div >
-                <a href="" class="categorie">
-                    <img src="https://i.pinimg.com/1200x/86/43/82/86438241819b19833e296654dc07c17d.jpg" alt="" class="dim_image" > <br>
-                    <h4 class="voir">Electronique</h4>
-                </a>
-            </div>
-            <div >
-                <a href="" class="categorie">
-                    <img src="https://i.pinimg.com/1200x/86/43/82/86438241819b19833e296654dc07c17d.jpg" alt="" class="dim_image" > <br>
-                    <h4 class="voir">Electronique</h4>
-                </a>
-            </div>
+            
+                @foreach($categories as $categorie)
+                    <a href="" class="categorie">
+                        <img src=" {{ asset('storage/' . $categorie->image) }} " alt="" class="dim_image" > <br>
+                        <h4 class="voir">{{ $categorie->nom }}</h4>
+                    </a>
+                @endforeach
+            
+           
         </div>
     </section>
 
+    <section class="produits">
+        <div>
+            <h2>Les différentes Produits</h2>
+        </div>
+
+        <div class="btq_content" id="taille">
+            @forelse($produits as $produit)
+                <div class="section_produit_details">
+                    <a href="{{ route('produit.show', $produit->id) }}" style="text-decoration: none; color: inherit;">
+                        <div class="btq_section_image">
+                            @if($produit->image)
+                                <img src="{{ asset('storage/' . $produit->image) }}" alt="{{ $produit->nom }}" class="produit_image">
+                            @elseif($produit->urlimg)
+                                <img src="{{ $produit->urlimg->url }}" alt="{{ $produit->nom }}" class="produit_image">
+                            @else
+                                <img src="https://via.placeholder.com/300" alt="{{ $produit->nom }}" class="produit_image">
+                            @endif
+                            @auth
+                                <i class="fa-regular fa-heart favorite-icon" data-produit-id="{{ $produit->id }}" style="cursor: pointer;"></i>
+                            @else
+                                <i class="fa-regular fa-heart" style="cursor: pointer;" onclick="window.location.href='{{ route('login') }}'"></i>
+                            @endauth 
+                        </div>
+                        <div class="image_info">
+                            <div>
+                                <h4>{{ $produit->nom }}</h4>
+                            </div>
+                            <div>
+                                <p><small>Quantité min: {{ $produit->qte_min }} unités</small></p>
+                            </div>
+                            <div class="prix_produit">
+                                <div class="etoiles">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                                <div>
+                                    <h5 class="prix_fixe" >{{ number_format($produit->prix, 0, ',', ' ') }} FCFA</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="btn_section">
+                        @auth
+                            <button type="button" class="btn_discussion" onclick="window.location.href='{{ route('conversations.start', $produit->id) }}'">Discuter</button>
+                            <button type="button" class="btn_discussion" id="btn" onclick="window.location.href='{{ route('produit.show', $produit->id) }}'">Voir détails</button>
+                        @else
+                            <button type="button" class="btn_discussion" onclick="window.location.href='{{ route('login') }}'">Discuter</button>
+                            <button type="button" class="btn_discussion" id="btn" onclick="window.location.href='{{ route('login') }}'">Proposition</button>
+                        @endauth
+                    </div>
+                </div>
+            @empty
+                <div class="text-center w-100">
+                    <p>Aucun produit disponible pour le moment.</p>
+                </div>
+            @endforelse
+        </div><br><br>
+    </section>
+
     <x-footer/>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Charger l'état des favoris au chargement de la page
+        @auth
+        loadFavorites();
+        @endauth
+
+        // Gérer le clic sur les icônes de favoris
+        document.querySelectorAll('.favorite-icon').forEach(icon => {
+            icon.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const produitId = this.dataset.produitId;
+                toggleFavorite(produitId, this);
+            });
+        });
+    });
+
+    function loadFavorites() {
+        fetch('{{ route("favoris.ids") }}')
+            .then(response => response.json())
+            .then(data => {
+                const favoriteIds = data.favorite_ids;
+                
+                document.querySelectorAll('.favorite-icon').forEach(icon => {
+                    const produitId = parseInt(icon.dataset.produitId);
+                    if (favoriteIds.includes(produitId)) {
+                        icon.classList.remove('fa-regular');
+                        icon.classList.add('fa-solid', 'active');
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement des favoris:', error);
+            });
+    }
+
+    function toggleFavorite(produitId, iconElement) {
+        fetch('{{ route("favoris.toggle") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+                produit_id: produitId
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                if (data.action === 'added') {
+                    iconElement.classList.remove('fa-regular');
+                    iconElement.classList.add('fa-solid', 'active');
+                } else {
+                    iconElement.classList.remove('fa-solid', 'active');
+                    iconElement.classList.add('fa-regular');
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+        });
+    }
+    </script>
 
 @endsection

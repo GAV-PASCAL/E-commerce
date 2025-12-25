@@ -50,7 +50,7 @@
 
                 <div class="actions">
                     @auth
-                        <button class="btn_discussion" onclick="window.location.href='#'">Discuter avec le vendeur</button>
+                        <button class="btn_discussion" onclick="window.location.href='{{ route('conversations.start', $produit->id) }}'">Discuter avec le vendeur</button>
                         <button class="btn_discussion" onclick="window.location.href='#'">Faire une proposition de prix</button>
                     @else
                         <button class="btn btn-primary" onclick="window.location.href='{{ route('login') }}'">Connectez-vous pour discuter</button>
@@ -81,10 +81,22 @@
                                     <h4>{{ $related->nom }}</h4>
                                 </div>
                                 <div class="prix_produit">
-                                    <h5>{{ number_format($related->prix, 0, ',', ' ') }} FCFA</h5>
+                                    <h5 class="prix_fixe" >{{ number_format($related->prix, 0, ',', ' ') }} FCFA</h5>
+                                </div>
+                                <div>
+                                    <div class="etoiles">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                    </div>
                                 </div>
                             </div>
                         </a>
+                        <div class="btn_section">
+                            <button type="button" class="btn_discussion" onclick="window.location.href='{{ route('conversations.start', $produit->id) }}'">Discuter</button>
+                            <button type="button" class="btn_discussion" id="btn" onclick="window.location.href='{{ route('produit.show', $produit->id) }}'">Voir détails</button>
+                        </div>
                     </div>
                 @endforeach
             </div>

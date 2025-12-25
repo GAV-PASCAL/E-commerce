@@ -5,9 +5,12 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConversationController;
+use App\Http\Controllers\FavorisController;
 
 Route::get('/', function () {
-    return view('accueil');
+    $categories = \App\Models\Categorie::all();
+    $produits = \App\Models\Produits::with('categorie', 'urlimg')->latest()->take(8)->get();
+    return view('accueil', compact('categories', 'produits'));
 });
 
 Route::get('/savoir', function () {
@@ -43,6 +46,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/conversations/{id}', [ConversationController::class, 'show'])->name('conversations.show');
     Route::post('/conversations', [ConversationController::class, 'store'])->name('conversations.store');
     Route::post('/conversations/{id}/mark-as-read', [ConversationController::class, 'markAsRead'])->name('conversations.markAsRead');
+    
+    // Routes pour les favoris
+    Route::get('/favoris', [\App\Http\Controllers\FavorisController::class, 'index'])->name('favoris.index');
+    Route::post('/favoris/toggle', [\App\Http\Controllers\FavorisController::class, 'toggle'])->name('favoris.toggle');
+    Route::get('/favoris/ids', [\App\Http\Controllers\FavorisController::class, 'getFavoriteIds'])->name('favoris.ids');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

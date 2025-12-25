@@ -55,10 +55,10 @@
                                             <i class='bx bx-edit'></i>
                                         </a>
                                         
-                                        <form action="{{ route('dashbord.vendeur.produits.destroy', $produit->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit ?');">
+                                        <form action="{{ route('dashbord.vendeur.produits.destroy', $produit->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit dans votre liste?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" style="background:none; border:none; cursor:pointer; color:inherit;" title="Supprimer">
+                                            <button type="submit" style="background:none; border:none; cursor:pointer; color: ;" title="Supprimer">
                                                 <i class='bx bx-trash-alt'></i>
                                             </button>
                                         </form>

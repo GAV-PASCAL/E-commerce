@@ -35,13 +35,13 @@
                             <p>Trier par</p>
 
                             <nav id="sidebar_navigation">
-                                <button type="submit" name="sort" value="populaire" class="side_nav" id="btq_trie_option">Plus populaire</button>
+                                <button type="submit" name="sort" value="populaire" id="btq_trie_option">Plus populaire</button>
                     
-                                <button type="submit" name="sort" value="prix_asc" class="side_nav" id="btq_trie_option">Prix croissant</button>
+                                <button type="submit" name="sort" value="prix_asc" id="btq_trie_option">Prix croissant</button>
                         
-                                <button type="submit" name="sort" value="prix_desc" class="side_nav" id="btq_trie_option">Prix décroissant</button>
+                                <button type="submit" name="sort" value="prix_desc" id="btq_trie_option">Prix décroissant</button>
 
-                                <button  type="submit" name="sort" value="recent" class="side_nav" id="btq_trie_option">Plus récents</button>
+                                <button  type="submit" name="sort" value="recent" id="btq_trie_option">Plus récents</button>
                             </nav>
                         </div>
                         <div class="trie_categorie">
@@ -89,7 +89,11 @@
                             @else
                                 <img src="https://via.placeholder.com/300" alt="{{ $produit->nom }}" class="produit_image">
                             @endif
-                            <i class="fa-regular fa-heart"></i> 
+                            @auth
+                                <i class="fa-regular fa-heart favorite-icon" data-produit-id="{{ $produit->id }}" style="cursor: pointer;"></i>
+                            @else
+                                <i class="fa-regular fa-heart" style="cursor: pointer;" onclick="window.location.href='{{ route('login') }}'"></i>
+                            @endauth 
                         </div>
                         <div class="image_info">
                             <div>
@@ -121,10 +125,10 @@
                         @endauth
                     </div>
                 </div>
-            @empty
-                <div class="text-center w-100">
-                    <p>Aucun produit disponible pour le moment.</p>
-                </div>
+                @empty
+                    <div class="text-center w-100">
+                        <p>Aucun produit disponible pour le moment.</p>
+                    </div>
             @endforelse
         </div>
         </div>
@@ -135,5 +139,72 @@
     </section>
 
     <x-footer/>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Charger l'état des favoris au chargement de la page
+        @auth
+        loadFavorites();
+        @endauth
+
+        // Gérer le clic sur les icônes de favoris
+        document.querySelectorAll('.favorite-icon').forEach(icon => {
+            icon.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const produitId = this.dataset.produitId;
+                toggleFavorite(produitId, this);
+            });
+        });
+    });
+
+    function loadFavorites() {
+        fetch('{{ route("favoris.ids") }}')
+            .then(response => response.json())
+            .then(data => {
+                const favoriteIds = data.favorite_ids;
+                
+                document.querySelectorAll('.favorite-icon').forEach(icon => {
+                    const produitId = parseInt(icon.dataset.produitId);
+                    if (favoriteIds.includes(produitId)) {
+                        icon.classList.remove('fa-regular');
+                        icon.classList.add('fa-solid', 'active');
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement des favoris:', error);
+            });
+    }
+
+    function toggleFavorite(produitId, iconElement) {
+        fetch('{{ route("favoris.toggle") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+                produit_id: produitId
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                if (data.action === 'added') {
+                    iconElement.classList.remove('fa-regular');
+                    iconElement.classList.add('fa-solid', 'active');
+                } else {
+                    iconElement.classList.remove('fa-solid', 'active');
+                    iconElement.classList.add('fa-regular');
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+        });
+    }
+    </script>
 
 @endsection

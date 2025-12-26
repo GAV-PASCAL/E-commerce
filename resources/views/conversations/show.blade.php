@@ -32,7 +32,7 @@
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     overflow: hidden;
-    height: calc(100vh - 140px);
+    height: calc(115vh - 140px);
     display: flex;
     flex-direction: column;
 }
@@ -81,6 +81,9 @@
 .chat-wrapper {
     flex: 1;
     overflow: hidden;
+    border: 2px solid #B45309;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 /* Styles pour le composant chat-box */

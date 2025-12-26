@@ -60,7 +60,7 @@
         </div>
 
         @if($produitsRelated->count() > 0)
-        <div class="related-products">
+        <div class="related-products" style="margin: 20px">
             <h3>Produits similaires</h3>
             <div class="btq_content">
                 @foreach($produitsRelated as $related)
@@ -101,7 +101,7 @@
             </div>
         </div>
         @endif
-    </section>
+    </section><br><br>
 
     <x-footer/>
 @endsection

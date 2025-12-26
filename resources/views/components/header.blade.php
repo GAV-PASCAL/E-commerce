@@ -9,15 +9,11 @@
                             <div><li><a href="{{ url('/') }}" id="option_navigation">Accueil</a></li></div>
                             <div><li><a href="{{ url('/savoir') }}" id="option_navigation">Comment ça marche</a></li></div>
                             <div><li><a href="{{ url('/boutique') }}" id="option_navigation">Produits</a></li></div>
-                            <div><li><a href="#" id="option_navigation">message</a></li></div>
                         </ul>
                     </nav>
                 </div>
                 <div>
                     <nav class="navigation">
-                        <div>
-                            <div><li><a href="#" id="option_navigation">Historiques</a></li></div>
-                        </div>
 
                         @guest
                             <a href="{{ route('login') }}">

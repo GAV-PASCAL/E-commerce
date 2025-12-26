@@ -18,7 +18,10 @@
 
                     </nav>
 
-                    <a href="" id="btn_deconnexion">Déconnexion</a>
+                    <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                        @csrf
+                        <button type="submit" id="btn_deconnexion" >Se déconnecter</button>
+                    </form>
                 </div>
             </div>
         </header>

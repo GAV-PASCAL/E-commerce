@@ -29,6 +29,9 @@
                 max-width: 1600px;
                 margin: 0 auto;
                 padding: 30px 20px;
+                border: 2px solid #B45309;
+                border-radius: 20px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
                 min-height: calc(100vh - 100px);
             }
 

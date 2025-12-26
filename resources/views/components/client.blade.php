@@ -17,6 +17,8 @@
                         <a href=" {{ route('conversations.index') }} " id="option_navigation">Messagerie</a>
 
                     </nav>
+
+                    <a href="" id="btn_deconnexion">Déconnexion</a>
                 </div>
             </div>
         </header>

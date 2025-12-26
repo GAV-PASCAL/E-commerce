@@ -78,7 +78,7 @@
 
     .conversations-header h2 i {
         font-size: 1.8rem;
-        color: #3498db;
+        color: #92400E;
     }
 
     .total-conversations {

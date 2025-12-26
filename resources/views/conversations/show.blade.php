@@ -38,7 +38,7 @@
 }
 
 .conversation-header-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #92400E 0%, #B45309 100%);
     padding: 20px 30px;
     color: white;
 }
@@ -58,7 +58,7 @@
 }
 
 .back-btn:hover {
-    background: rgba(255,255,255,0.3);
+    background: rgba(202, 201, 201, 0.3);
     transform: translateX(-5px);
 }
 

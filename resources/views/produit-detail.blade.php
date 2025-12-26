@@ -51,7 +51,6 @@
                 <div class="actions">
                     @auth
                         <button class="btn_discussion" onclick="window.location.href='{{ route('conversations.start', $produit->id) }}'">Discuter avec le vendeur</button>
-                        <button class="btn_discussion" onclick="window.location.href='#'">Faire une proposition de prix</button>
                     @else
                         <button class="btn btn-primary" onclick="window.location.href='{{ route('login') }}'">Connectez-vous pour discuter</button>
                     @endauth

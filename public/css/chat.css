@@ -17,7 +17,7 @@
 .chat-header {
     padding: 20px;
     border-bottom: 2px solid #f0f0f0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #B45309 0%, #92400E 100%);
     color: white;
 }
 
@@ -78,7 +78,7 @@
 }
 
 .message-sent .message-content {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #B45309 0%, #92400E 100%);
     color: white;
     border-bottom-right-radius: 4px;
 }
@@ -154,12 +154,12 @@
 
 .chat-input:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #92400E;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .chat-send-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #B45309 0%, #92400E 100%);
     color: white;
     border: none;
     padding: 12px 20px;
@@ -174,7 +174,7 @@
 
 .chat-send-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 5px 15px #92410e8e;
 }
 
 .chat-send-btn i {

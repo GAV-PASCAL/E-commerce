@@ -16,16 +16,12 @@
         <x-client/>
 
         <div class="section_dash">
-            <x-dashnav/>
+            <x-dashnav/><br><br><br>
 
             <div class="back_formulaire">
-                <h4 class="info_form">Mes Informations Personnelles</h4>
+                <h4 class="info_form">Informations Personnelles</h4>
 
-                <div class="produit_search">
-                    <a href="#" id="a" class="produit_ajout_rapide">Modifier</a>
-                </div>
-
-                <table class="table_dash">
+                <table class="table_dash_info">
                     <tr>
                         <td><strong>Nom</strong></td>
                         <td>{{ $user->nom }}</td>
@@ -52,7 +48,5 @@
         </div>
 
     </div>
-
-    <x-footer/>
 
 @endsection

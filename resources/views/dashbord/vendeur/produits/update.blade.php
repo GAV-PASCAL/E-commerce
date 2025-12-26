@@ -4,9 +4,11 @@
 
 @section('header')
 
-    <div class="title_dash">
-        <h1>DASHBOARD</h1>
-    </div>
+    <section class="title_dash">
+        <div>
+            <h1>DASHBOARD</h1>
+        </div>
+    </section>
 
 @endsection
 
@@ -94,7 +96,5 @@
         </div>
 
     </div>
-
-    <x-footer/>
 
 @endsection

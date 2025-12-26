@@ -4,9 +4,11 @@
 
 @section('header')
 
-    <div class="title_dash">
-        <h1>DASHBOARD</h1>
-    </div>
+    <section class="title_dash">
+        <div>
+            <h1>DASHBOARD</h1>
+        </div>
+    </section>
 
 @endsection
 
@@ -16,7 +18,14 @@
         <x-dashheader/>
 
         <div class="section_dash">
-            <x-dashnav/>
+            <section id="head_search">
+                <x-dashnav/>
+
+                <div class="produit_search">
+                    <input type="search" placeholder="Rechercher une catégorie" class="produit_search_input">
+                    <a href="{{ route('dashbord.vendeur.categories.ajouter') }}" class="produit_ajout_rapide" id="btn_ajout">Ajouter</a>
+                </div>
+            </section>
 
             <div class="produits_liste">
                 @if(session('success'))
@@ -24,11 +33,6 @@
                         {{ session('success') }}
                     </div>
                 @endif
-
-                <div class="produit_search">
-                    <input type="search" placeholder="Rechercher une catégorie" class="produit_search_input">
-                    <a href="{{ route('dashbord.vendeur.categories.ajouter') }}" class="produit_ajout_rapide">Ajouter</a>
-                </div>
 
                 <div>
                     <table class="table_dash"> 
@@ -52,7 +56,5 @@
             </div>
         </div>
     </div>
-
-    <x-footer/>
 
 @endsection

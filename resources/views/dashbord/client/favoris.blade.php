@@ -17,7 +17,7 @@
         <x-client/>
 
         <div class="section_dash">
-            <x-dashnav/>
+            <x-dashnav/><br><br><br>
 
             <div class="back_formulaire">
                 <h4 class="info_form">Mes Produits Favoris</h4>
@@ -79,8 +79,6 @@
         </div>
 
     </div>
-
-    <x-footer/>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

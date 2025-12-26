@@ -4,9 +4,11 @@
 
 @section('header')
 
-    <div class="title_dash">
-        <h1>DASHBOARD</h1>
-    </div>
+    <section class="title_dash">
+        <div>
+            <h1>DASHBOARD</h1>
+        </div>
+    </section>
 
 @endsection
 
@@ -16,16 +18,12 @@
         <x-dashheader/>
 
         <div class="section_dash">
-            <x-dashnav/>
+            <x-dashnav/><br><br><br>
 
             <div class="back_formulaire">
                 <h4 class="info_form">Informations Personnelles</h4>
 
-                <div class="produit_search">
-                    <a href="#" id="a" class="produit_ajout_rapide">Modifier</a>
-                </div>
-
-                <table class="table_dash">
+                <table class="table_dash_info">
                     <tr>
                         <td><strong>Nom</strong></td>
                         <td>{{ $user->nom }}</td>
@@ -52,7 +50,4 @@
         </div>
 
     </div>
-
-    <x-footer/>
-
 @endsection

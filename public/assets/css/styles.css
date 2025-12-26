@@ -24,6 +24,8 @@
     width: 100%;
     border-radius: 0 0 20px 20px;
     box-shadow: 0 5px 9px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    z-index: 20;
 }
 
 .tete {
@@ -95,7 +97,7 @@
     color: white;
     font-size: 20px;
     width: 100%;
-    padding: 20px 0;
+    padding: 90px 0 20px 0;
     background-color: #B45309;
 }
 
@@ -176,6 +178,8 @@
     align-items: center;
     width: 100%;
     height: 600px;
+    align-items: center;
+    padding-top: 85px;
 }
 
 .fonction {
@@ -383,9 +387,9 @@
 /* Comment ça marche */
 
 .titre_page {
-    font-size: 35px;
+    font-size: 40px;
     font-weight: 700;
-    letter-spacing: 15px;
+    letter-spacing: 5px;
 }
 
 .exp {
@@ -404,7 +408,7 @@
     width: 500px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .exp_option {
@@ -449,11 +453,16 @@
     color: white;
     padding: 20px;
     margin-bottom: 10px;
+    width: 100%;
     height: 80px;
+    position: fixed;
+    z-index: 50;
 }
 
 .sidebar {
     margin-left: 20px;
+    position: fixed;
+    height: 90%;
 }
 
 .side_nav {
@@ -478,7 +487,8 @@
     background-color: var(--accent-hover);
     padding: 20px 10px;
     width: 250px;
-    position: absolute;
+    height: 70%;
+    position: relative;
     top: 160px;
     border-radius: 10px;
 }
@@ -496,7 +506,7 @@
     text-align: center;
     border-radius: 50%;
     position: absolute;
-    left: 7%;
+    right: 35%;
     top: 95px;
     z-index: 100;
 }
@@ -517,14 +527,15 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-top: 0px;
+    margin-top: 7%;
 }
 
 .close_dash {
     display: flex;
-    flex-direction: row;
-    justify-content: end;
+    right: 0;
     margin-right: 10%;
+    position: fixed;
+    z-index: 10;
 }
 
 .btn_close {
@@ -537,6 +548,14 @@
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 3px 6px #92400E;
+}
+
+#head_search{
+    background-color: white;
+    width: 90%;
+    padding: 10px;
+    position: fixed;
+    z-index: 25;
 }
 
 .bx-arrow-out-left-square-half {
@@ -610,15 +629,23 @@
 
 .produits_liste {
     width: 90%;
-    background-color: var(--accent-hover);
     padding: 1rem;
+    position: relative;
 }
 
 .produit_search {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-bottom: 2rem;
+    width: 72%;
+    margin-top: 7%;
+    z-index: 15;
+}
+
+.insertion {
+    background-color: white;
+    z-index: 20;
+    width: 85%;
 }
 
 .produit_search_input {
@@ -644,6 +671,15 @@
     width: 100%;
     border-collapse: collapse;
     background-color: white;
+    margin-top: 25%;
+    background-color: var(--accent-hover);
+}
+
+.table_dash_info {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    background-color: var(--accent-hover);
 }
 
 th,
@@ -986,4 +1022,36 @@ th {
 
 #taille {
     margin: 0 10px;
+}
+
+#btn_ajout {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 3px;
+}
+
+#btn_deconnexion {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 3px;
+    background-color: rgb(222, 2, 2);
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.8s;
+    position: absolute;
+    bottom: 15px;
+    width: 90%;
+}
+
+#btn_deconnexion:hover {
+    background-color: rgb(168, 1, 1);
+    color: white;
+    transform: scaleY(15px);
+}
+
+#style_phase{
+    position: fixed;
 }

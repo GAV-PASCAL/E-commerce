@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $acheteurRole = Role::firstOrCreate(['name' => 'acheteur']);
 
         User::firstOrCreate(
-            ['email' => 'admin@easyorder.test'],
+            ['email' => 'admin@gmail.com'],
             [
                 'nom' => 'Admin',
                 'prenom' => 'Principal',
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         );
 
         User::firstOrCreate(
-            ['email' => 'client@easyorder.test'],
+            ['email' => 'client@gmail.com'],
             [
                 'nom' => 'Client',
                 'prenom' => 'Demo',

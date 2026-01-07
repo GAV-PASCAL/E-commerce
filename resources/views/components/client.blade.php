@@ -12,7 +12,7 @@
 
                         <a href="{{ route('favoris.index') }}" id="option_navigation">Favoris</a>
 
-                        <a href="" id="option_navigation">Commandes</a> 
+                        <a href="{{ route('client.commandes') }}" id="option_navigation">Commandes</a> 
 
                         <a href=" {{ route('conversations.index') }} " id="option_navigation">Messagerie</a>
 

@@ -38,14 +38,12 @@
                     <tbody>
                         <tr>
                             <td><input type="checkbox"></td>
-                            <td>Smartphone Premium XR</td>
+                            <td>{{ $produit->nom }}</td>
                             <td><input id="input_number" type="number" value=""></td>
                             <td><input id="input_number" type="number" value=""></td>
                         </tr>
                     </tbody>
                 </table>
-
-                
 
             </div>
         </div>

@@ -25,4 +25,11 @@ class Produits extends Model
     {
         return $this->belongsTo(Urlimg::class, 'urlimg_id');
     }
+
+    public function commandes()
+    {
+        return $this->belongsToMany(Commande::class, 'commande_produit', 'produit_id', 'commande_id')
+            ->withPivot('quantite', 'prix_unitaire', 'prix_total')
+            ->withTimestamps();
+    }
 }

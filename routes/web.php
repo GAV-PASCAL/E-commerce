@@ -6,7 +6,6 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\FavorisController;
-use App\Http\Controllers\CommandeController;
 
 Route::get('/', function () {
     $categories = \App\Models\Categorie::all();
@@ -54,11 +53,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/favoris', [\App\Http\Controllers\FavorisController::class, 'index'])->name('favoris.index');
     Route::post('/favoris/toggle', [\App\Http\Controllers\FavorisController::class, 'toggle'])->name('favoris.toggle');
     Route::get('/favoris/ids', [\App\Http\Controllers\FavorisController::class, 'getFavoriteIds'])->name('favoris.ids');
-    
-    // Routes pour les commandes (client)
-    Route::get('/mes-commandes', [CommandeController::class, 'mesCommandes'])->name('client.commandes');
-    Route::get('/commande/{id}', [CommandeController::class, 'show'])->name('commande.show');
-    Route::get('/commande/{id}/pdf', [CommandeController::class, 'generatePDF'])->name('commande.pdf');
+
+    // Routes pour les commandes client
+    Route::get('/client/commandes', [\App\Http\Controllers\CommandeController::class, 'mesCommandes'])->name('client.commandes');
+    Route::get('/client/commandes/{id}', [\App\Http\Controllers\CommandeController::class, 'showClient'])->name('client.commandes.show');
+    Route::post('/client/commandes/{id}/valider', [\App\Http\Controllers\CommandeController::class, 'valider'])->name('client.commandes.valider');
+    Route::get('/commandes/{id}/pdf', [\App\Http\Controllers\CommandeController::class, 'generatePDF'])->name('commandes.pdf');
+
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -72,20 +73,23 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/produits/{id}/modifier', [ProduitController::class, 'edit'])->name('dashbord.vendeur.produits.edit');
     Route::put('/admin/produits/{id}', [ProduitController::class, 'update'])->name('dashbord.vendeur.produits.update');
     Route::delete('/admin/produits/{id}', [ProduitController::class, 'destroy'])->name('dashbord.vendeur.produits.destroy');
-
-    // Routes pour les commandes (vendeur)
-    Route::get('/commande/create', [CommandeController::class, 'create'])->name('dashbord.vendeur.commande.create');
-    Route::post('/commande/search-user', [CommandeController::class, 'searchUser'])->name('dashbord.vendeur.commande.search-user');
-    Route::post('/commande/store', [CommandeController::class, 'store'])->name('dashbord.vendeur.commande.store');
-    Route::get('/commande/liste', [CommandeController::class, 'index'])->name('dashbord.vendeur.commande.liste');
-    Route::delete('/commande/{id}', [CommandeController::class, 'destroy'])->name('dashbord.vendeur.commande.destroy');
-
     // Route pour la messagerie vendeur
     Route::get('/admin/messages', [ConversationController::class, 'index'])->name('dashbord.vendeur.messages.index');
 
     Route::get('/dashboard/vendeur', function () {
         return view('dashbord.vendeur.information', ['user' => auth()->user()]);
     })->name('dashbord.vendeur.information');
+
+    // Routes pour les commandes vendeur
+    Route::get('/admin/commandes/liste', [\App\Http\Controllers\CommandeController::class, 'index'])->name('commandes.index');
+    Route::get('/admin/commandes/create', [\App\Http\Controllers\CommandeController::class, 'create'])->name('commandes.create');
+    Route::post('/admin/commandes/selection', [\App\Http\Controllers\CommandeController::class, 'storeSelection'])->name('commandes.store-selection');
+    Route::get('/admin/commandes/client-form', [\App\Http\Controllers\CommandeController::class, 'showClientForm'])->name('commandes.client-form');
+    Route::post('/admin/commandes', [\App\Http\Controllers\CommandeController::class, 'store'])->name('commandes.store');
+    Route::get('/admin/commandes/{id}', [\App\Http\Controllers\CommandeController::class, 'show'])->name('commandes.show');
+    Route::get('/admin/commandes/{id}/edit', [\App\Http\Controllers\CommandeController::class, 'edit'])->name('commandes.edit');
+    Route::put('/admin/commandes/{id}', [\App\Http\Controllers\CommandeController::class, 'update'])->name('commandes.update');
+    Route::delete('/admin/commandes/{id}', [\App\Http\Controllers\CommandeController::class, 'destroy'])->name('commandes.destroy');
 });
 
 

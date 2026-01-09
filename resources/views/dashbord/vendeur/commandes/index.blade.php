@@ -4,9 +4,19 @@
 
 @section('header')
 
-    <div class="title_dash">
-        <h1>DASHBOARD</h1>
-    </div>
+    <section>
+        <div class="title_dash">
+            <div>
+                <h1>DASHBOARD</h1>
+            </div>
+            <div class="conversation-header-page">
+                <a href="{{ url('./') }}" class="back-btn">
+                    <i class='bx bx-arrow-back'></i>
+                    Retour
+                </a>
+            </div>
+        </div>
+    </section>
 
 @endsection
 
@@ -15,9 +25,8 @@
     <div id="page_structure">
         <x-dashheader/>
 
-        <div class="section_dash">
+        <div class="section_dash" id="patie">
             <section id="head_search">
-                <x-dashnav/>
 
                 <div class="produit_search">
                     <input type="search" placeholder="Rechercher un produit" class="produit_search_input">
@@ -54,7 +63,7 @@
                                 <th>Date</th>
                                 <th>Montant Total</th>
                                 <th>Statut</th>
-                                <th class="test">Actions</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
 
@@ -85,12 +94,12 @@
                                             <a href="{{ route('commandes.show', $commande->id) }}" 
                                                class="btn btn-info" 
                                                style="background: #17a2b8; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">
-                                                Voir
+                                               <i class="fa-solid fa-eye"></i>
                                             </a>
                                             <a href="{{ route('commandes.edit', $commande->id) }}" 
                                                class="btn btn-primary" 
                                                style="background: #007bff; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">
-                                                Modifier
+                                                <i class="fa-solid fa-pen-to-square"></i>
                                             </a>
                                             <form action="{{ route('commandes.destroy', $commande->id) }}" 
                                                   method="POST" 
@@ -100,8 +109,8 @@
                                                 @method('DELETE')
                                                 <button type="submit" 
                                                         class="btn btn-danger" 
-                                                        style="background: #dc3545; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer;">
-                                                    Supprimer
+                                                        >
+                                                    <i class="fa-solid fa-trash"></i> 
                                                 </button>
                                             </form>
                                         </div>

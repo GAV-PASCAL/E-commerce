@@ -33,20 +33,20 @@
 
         <div class="footer_lien">
             <h4>Liens Rapide</h4>
-            <a href="" id="a">Accueil</a>
-            <a href="" id="a">Comment ça marche</a>
-            <a href="" id="a">Produits</a>
-            <a href="" id="a">Message</a>
-            <a href="" id="a"></a>
+            <a href=" <?php echo e(url('/')); ?> " id="a">Accueil</a>
+            <a href=" <?php echo e(url('/savoir')); ?> " id="a">Comment ça marche</a>
+            <a href=" <?php echo e(url('/boutique')); ?> " id="a">Produits</a>
+            <a href=" <?php echo e(url('/conversations')); ?> " id="a">Message</a>
+            <a href=" <?php echo e(url('/favoris')); ?> " id="a">Favoris</a>
         </div>
 
         <div class="footer_lien">
             <h4>Condiction</h4>
-            <a href="" id="a">Centre d'aide</a>
-            <a href="" id="a">Condiction d'usage</a>
-            <a href="" id="a">Politique de confidentialité</a>
-            <a href="" id="a">Nous Contacter</a>
-            <a href="" id="a">FAQ</a>
+            <a href=" <?php echo e(url('/aide')); ?> " id="a">Centre d'aide</a>
+            <a href=" <?php echo e(url('/condiction')); ?> " id="a">Condiction d'usage</a>
+            <a href=" <?php echo e(url('/confidentialite')); ?> " id="a">Politique de confidentialité</a>
+            <a href=" <?php echo e(url('/contact')); ?> " id="a">Nous Contacter</a>
+            <a href=" <?php echo e(url('/faq')); ?> " id="a">FAQ</a>
         </div>
 
         <div class="footer_lien">

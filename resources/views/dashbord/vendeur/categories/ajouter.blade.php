@@ -4,9 +4,17 @@
 
 @section('header')
 
-    <section class="title_dash">
-        <div>
-            <h1>DASHBOARD</h1>
+    <section>
+        <div class="title_dash">
+            <div>
+                <h1>DASHBOARD</h1>
+            </div>
+            <div class="conversation-header-page">
+                <a href="{{ url('./') }}" class="back-btn">
+                    <i class='bx bx-arrow-back'></i>
+                    Retour
+                </a>
+            </div>
         </div>
     </section>
 
@@ -18,7 +26,6 @@
         <x-dashheader/>
 
         <div class="section_dash">
-            <x-dashnav/><br><br><br>
 
             <div class="back_formulaire">
                 <h4 class="info_form" id="info_form" >Forum de création de catégorie</h4>
@@ -43,7 +50,7 @@
                         </div>
                         <div class="form_info">
                             <label for="nom">Image illustrative</label>
-                            <input type="file" name="image" class="input_ajout">
+                            <input type="file" name="image" >
                         </div>
 
                         <div>

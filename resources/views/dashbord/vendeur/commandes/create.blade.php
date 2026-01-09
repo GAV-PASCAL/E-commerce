@@ -4,9 +4,19 @@
 
 @section('header')
 
-    <div class="title_dash">
-        <h1>DASHBOARD</h1>
-    </div>
+    <section>
+        <div class="title_dash">
+            <div>
+                <h1>DASHBOARD</h1>
+            </div>
+            <div class="conversation-header-page">
+                <a href="{{ url('./') }}" class="back-btn">
+                    <i class='bx bx-arrow-back'></i>
+                    Retour
+                </a>
+            </div>
+        </div>
+    </section>
 
 @endsection
 
@@ -15,9 +25,8 @@
     <div id="page_structure">
         <x-dashheader/>
 
-        <div class="section_dash">
+        <div class="section_dash" id="patie">
             <section id="head_search">
-                <x-dashnav/>
 
                 <div class="produit_search">
                     <div class="produit_search">

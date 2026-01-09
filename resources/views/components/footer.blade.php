@@ -33,20 +33,20 @@
 
         <div class="footer_lien">
             <h4>Liens Rapide</h4>
-            <a href="" id="a">Accueil</a>
-            <a href="" id="a">Comment ça marche</a>
-            <a href="" id="a">Produits</a>
-            <a href="" id="a">Message</a>
-            <a href="" id="a"></a>
+            <a href=" {{ url('/') }} " id="a">Accueil</a>
+            <a href=" {{ url('/savoir') }} " id="a">Comment ça marche</a>
+            <a href=" {{ url('/boutique') }} " id="a">Produits</a>
+            <a href=" {{ url('/conversations') }} " id="a">Message</a>
+            <a href=" {{ url('/favoris') }} " id="a">Favoris</a>
         </div>
 
         <div class="footer_lien">
             <h4>Condiction</h4>
-            <a href="" id="a">Centre d'aide</a>
-            <a href="" id="a">Condiction d'usage</a>
-            <a href="" id="a">Politique de confidentialité</a>
-            <a href="" id="a">Nous Contacter</a>
-            <a href="" id="a">FAQ</a>
+            <a href=" {{ url('/aide') }} " id="a">Centre d'aide</a>
+            <a href=" {{ url('/condiction') }} " id="a">Condiction d'usage</a>
+            <a href=" {{ url('/confidentialite') }} " id="a">Politique de confidentialité</a>
+            <a href=" {{ url('/contact') }} " id="a">Nous Contacter</a>
+            <a href=" {{ url('/faq') }} " id="a">FAQ</a>
         </div>
 
         <div class="footer_lien">

@@ -4,9 +4,19 @@
 
 @section('header')
 
-    <div class="title_dash">
-        <h1>DASHBOARD</h1>
-    </div>
+    <section>
+        <div class="title_dash">
+            <div>
+                <h1>DASHBOARD</h1>
+            </div>
+            <div class="conversation-header-page">
+                <a href="{{ url('./') }}" class="back-btn">
+                    <i class='bx bx-arrow-back'></i>
+                    Retour
+                </a>
+            </div>
+        </div>
+    </section>
 
 @endsection
 
@@ -15,12 +25,11 @@
     <div id="page_structure">
         <x-dashheader/>
 
-        <div class="section_dash">
-            <x-dashnav/>
+        <div class="section_dash" id="patie">
 
             <div class="back_formulaire">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <h4 class="info_form">Fiche de Commande {{ $commande->numero_fiche }}</h4>
+                    <h6 class="info_form">Fiche de Commande {{ $commande->numero_fiche }}</h6>
                     <div style="display: flex; gap: 10px;">
                         <a href="{{ route('commandes.pdf', $commande->id) }}" 
                            class="btn btn-success" 

@@ -4,9 +4,17 @@
 
 @section('header')
 
-    <section class="title_dash">
-        <div>
-            <h1>DASHBOARD</h1>
+    <section>
+        <div class="title_dash">
+            <div>
+                <h1>DASHBOARD</h1>
+            </div>
+            <div class="conversation-header-page">
+                <a href="{{ url('./') }}" class="back-btn">
+                    <i class='bx bx-arrow-back'></i>
+                    Retour
+                </a>
+            </div>
         </div>
     </section>
 
@@ -19,7 +27,6 @@
 
         <div class="section_dash">
             <section id="head_search">
-                <x-dashnav/>
 
                 <div class="produit_search">
                     <input type="search" placeholder="Rechercher une catégorie" class="produit_search_input">

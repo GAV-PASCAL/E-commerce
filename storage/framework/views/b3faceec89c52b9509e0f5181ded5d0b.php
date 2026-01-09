@@ -4,9 +4,19 @@
 
 <?php $__env->startSection('header'); ?>
 
-    <div class="title_dash">
-        <h1>DASHBOARD</h1>
-    </div>
+    <section>
+        <div class="title_dash">
+            <div>
+                <h1>DASHBOARD</h1>
+            </div>
+            <div class="conversation-header-page">
+                <a href="<?php echo e(route('conversations.index')); ?>" class="back-btn">
+                    <i class='bx bx-arrow-back'></i>
+                    Retour
+                </a>
+            </div>
+        </div>
+    </section>
 
 <?php $__env->stopSection(); ?>
 
@@ -35,29 +45,9 @@
 <?php endif; ?>
 
         <div class="section_dash">
-            <?php if (isset($component)) { $__componentOriginal020f66f7c7b8c356eb995e6f46315839 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal020f66f7c7b8c356eb995e6f46315839 = $attributes; } ?>
-<?php $component = App\View\Components\Dashnav::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('dashnav'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\App\View\Components\Dashnav::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal020f66f7c7b8c356eb995e6f46315839)): ?>
-<?php $attributes = $__attributesOriginal020f66f7c7b8c356eb995e6f46315839; ?>
-<?php unset($__attributesOriginal020f66f7c7b8c356eb995e6f46315839); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal020f66f7c7b8c356eb995e6f46315839)): ?>
-<?php $component = $__componentOriginal020f66f7c7b8c356eb995e6f46315839; ?>
-<?php unset($__componentOriginal020f66f7c7b8c356eb995e6f46315839); ?>
-<?php endif; ?>
 
-            <div class="back_formulaire">
-                <h4 class="info_form">Modifier la commande <?php echo e($commande->numero_fiche); ?></h4>
+            <div class="back_formulaire" id="parie">
+                <h6 class="info_form">Modifier la commande <?php echo e($commande->numero_fiche); ?></h6>
 
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($errors->any()): ?>
                     <div class="alert alert-danger">

@@ -2,9 +2,17 @@
 
 <?php $__env->startSection('header'); ?>
 
-    <section class="title_dash">
-        <div>
-            <h1>DASHBOARD</h1>
+    <section>
+        <div class="title_dash">
+            <div>
+                <h1>DASHBOARD</h1>
+            </div>
+            <div class="conversation-header-page">
+                <a href="<?php echo e(route('conversations.index')); ?>" class="back-btn">
+                    <i class='bx bx-arrow-back'></i>
+                    Retour
+                </a>
+            </div>
         </div>
     </section>
 
@@ -34,28 +42,8 @@
 <?php unset($__componentOriginal7198df49fa33acdb115e04e2e99942a4); ?>
 <?php endif; ?>
 
-        <div class="section_dash">
+        <div class="section_dash" id="patie">
             <section id="head_search">
-                <?php if (isset($component)) { $__componentOriginal020f66f7c7b8c356eb995e6f46315839 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal020f66f7c7b8c356eb995e6f46315839 = $attributes; } ?>
-<?php $component = App\View\Components\Dashnav::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('dashnav'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\App\View\Components\Dashnav::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal020f66f7c7b8c356eb995e6f46315839)): ?>
-<?php $attributes = $__attributesOriginal020f66f7c7b8c356eb995e6f46315839; ?>
-<?php unset($__attributesOriginal020f66f7c7b8c356eb995e6f46315839); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal020f66f7c7b8c356eb995e6f46315839)): ?>
-<?php $component = $__componentOriginal020f66f7c7b8c356eb995e6f46315839; ?>
-<?php unset($__componentOriginal020f66f7c7b8c356eb995e6f46315839); ?>
-<?php endif; ?>
 
                 <div class="produit_search">
                     <input type="search" placeholder="Rechercher un produit" class="produit_search_input">

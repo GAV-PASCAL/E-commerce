@@ -203,8 +203,8 @@
     margin-top: 20px;
 }
 
-.fa-earth-africa,
-.fa-circle-user {
+.fa-earth-africa, .fa-tags, .fa-shield-halved, .fa-comment-dots, .fa-percent, .fa-truck, .fa-circle-user,
+.fa-store, .fa-user-tie, .fa-cart-shopping, .fa-comments {
     font-size: 32px;
     padding-bottom: 5px;
     border-bottom: 2px solid #333;
@@ -455,8 +455,40 @@
     margin-bottom: 10px;
     width: 100%;
     height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
     position: fixed;
     z-index: 50;
+}
+
+.conversation-header-page {
+    background: linear-gradient(135deg, #92400E 0%, #B45309 100%);
+    padding: 20px 30px;
+    color: white;
+}
+
+.back-btn {
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgba(202, 201, 201, 0.3);
+    transform: translateX(-5px);
+}
+
+.back-btn i {
+    font-size: 1.2rem;
 }
 
 .sidebar {
@@ -490,7 +522,8 @@
     height: 70%;
     position: relative;
     top: 160px;
-    border-radius: 10px;
+    border-radius: 15px;
+    box-shadow: 5px 12px 5px #92400E;
 }
 
 #sidebar_navigation {
@@ -550,9 +583,17 @@
     box-shadow: 0 3px 6px #92400E;
 }
 
+#patie{
+    margin-top: 12.5%;
+}
+
+#parie{
+    margin-top: 7.5%;
+}
+
 #head_search{
     background-color: white;
-    width: 90%;
+    width: 88%;
     padding: 10px;
     position: fixed;
     z-index: 25;
@@ -568,6 +609,8 @@
     width: 90%;
     height: 100%;
     background-color: var(--accent-hover);
+    border-radius: 20px;
+    box-shadow: 5px 12px 5px #92400E;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -628,17 +671,20 @@
 /* Index produits */
 
 .produits_liste {
-    width: 90%;
+    width: 95%;
+    border-radius: 20px;
+    box-shadow: 5px 12px 5px #92400E;
     padding: 1rem;
     position: relative;
+    background-color: var(--accent-hover);
 }
 
 .produit_search {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 72%;
-    margin-top: 7%;
+    width: 80%;
+    /* margin-top: 7%; */
     z-index: 15;
 }
 
@@ -670,8 +716,8 @@
 .table_dash {
     width: 100%;
     border-collapse: collapse;
-    background-color: white;
-    margin-top: 25%;
+    border-radius: 20px;
+    margin-top: 12%;
     background-color: var(--accent-hover);
 }
 
@@ -1055,3 +1101,100 @@ th {
 #style_phase{
     position: fixed;
 }
+/* Typing Cursor Animation */
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: white;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Category Carousel Styles */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scroll 20s linear infinite;
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    width: 200px; /* Adjust based on your design */
+}
+
+.categorie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.categorie:hover {
+    transform: scale(1.05);
+}
+
+.dim_image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Dynamic Category Carousel */
+.category-carousel-container {
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px 0;
+    position: relative;
+}
+
+.category-carousel-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.category-card {
+    flex: 0 0 20%; /* Exactly 5 items visible */
+    max-width: 20%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.categorie-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.categorie-link:hover {
+    transform: scale(1.05);
+}
+

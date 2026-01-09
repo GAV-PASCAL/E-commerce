@@ -9,7 +9,7 @@ use App\Http\Controllers\FavorisController;
 
 Route::get('/', function () {
     $categories = \App\Models\Categorie::all();
-    $produits = \App\Models\Produits::with('categorie', 'urlimg')->latest()->take(8)->get();
+    $produits = \App\Models\Produits::with('categorie', 'urlimg')->latest()->take(10)->get();
     return view('accueil', compact('categories', 'produits'));
 });
 

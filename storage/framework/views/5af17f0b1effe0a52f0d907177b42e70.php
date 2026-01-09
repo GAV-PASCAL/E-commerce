@@ -16,7 +16,7 @@
 
                         <a href=" <?php echo e(route('dashbord.vendeur.produits.index')); ?> " class="nav_link <?php echo e(request()->is('dashbord/vendeur/produits/index') ? 'active' : ''); ?>" id="option_navigation">Liste des produits</a>
 
-                        <a href=" <?php echo e(route('dashbord.vendeur.messages.index')); ?> " class="nav_link <?php echo e(request()->is('dashbord/vendeur/messages/index') ? 'active' : ''); ?>" id="option_navigation"> Messagerie</a>
+                        <a href=" <?php echo e(route('dashbord.vendeur.messages.index')); ?> " class="nav_link <?php echo e(request()->is('/conversations*') ? 'active' : ''); ?>" id="option_navigation"> Messagerie</a>
 
                         <a href="<?php echo e(route('commandes.index')); ?>" class="nav_link <?php echo e(request()->is('admin/commandes*') ? 'active' : ''); ?>" id="option_navigation">Fiches de commande</a>
 

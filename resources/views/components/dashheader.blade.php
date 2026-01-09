@@ -16,7 +16,7 @@
 
                         <a href=" {{ route('dashbord.vendeur.produits.index') }} " class="nav_link {{ request()->is('dashbord/vendeur/produits/index') ? 'active' : '' }}" id="option_navigation">Liste des produits</a>
 
-                        <a href=" {{ route('dashbord.vendeur.messages.index') }} " class="nav_link {{ request()->is('dashbord/vendeur/messages/index') ? 'active' : '' }}" id="option_navigation"> Messagerie</a>
+                        <a href=" {{ route('dashbord.vendeur.messages.index') }} " class="nav_link {{ request()->is('/conversations*') ? 'active' : '' }}" id="option_navigation"> Messagerie</a>
 
                         <a href="{{ route('commandes.index') }}" class="nav_link {{ request()->is('admin/commandes*') ? 'active' : '' }}" id="option_navigation">Fiches de commande</a>
 

@@ -29,11 +29,11 @@
         <div class="bienvenue"> 
             <div>
                 <div class="accroche">
-                    <h1>
-                        Votre plateforme de vente en ligne mondiale
+                    <h1 style='font-size: 45px; font-weight: semi-bold; min-height: 100px;'>
+                        <span id="typing-text"></span><span class="cursor">|</span>
                     </h1>
 
-                    <p>
+                    <p style='font-size: 15px;'>
                         Commandez connectez les grossistes et les clients 
                         du monde entier sur une plateforme sécurisée. 
                         Commandez vos produits en toute tranquillité 
@@ -47,24 +47,6 @@
                     <button class="btn_rapide">Découvrez les produits</button>
                     <button class="btn_rapide_change">Comment ça marche</button>
                 </div>
-
-                <!-- <div class="info">
-                    <div id="info_navigation">
-                        <div class="btn_details_plus">
-                            <nav class="btn_details">
-                                <ul class="info_details">
-                                    <li id="info_details_section">Produits</li>
-                                    <li id="info_details_section">Clients</li>
-                                </ul>
-                                
-                            </nav>
-                        </div>
-
-                        <div>
-                            <p id="info_message">Plus de 5OO produits publiés</p>
-                        </div>
-                    </div>  
-                </div> -->
             </div>
         </div>
                                                                             
@@ -97,7 +79,7 @@
                 </div>
                 <div class="section_fonction">
                     <div class="fonction_details">
-                        <i class="fa-solid fa-earth-africa"></i>
+                        <i class="fa-solid fa-tags"></i>
 
                         <h3>Boutique Abordable</h3>
                     </div>
@@ -108,7 +90,7 @@
                 </div>
                 <div class="section_fonction">
                     <div class="fonction_details">
-                        <i class="fa-solid fa-earth-africa"></i>
+                       <i class="fa-solid fa-shield-halved"></i>
 
                         <h3>Transactions sécurisée</h3>
                     </div>
@@ -119,7 +101,7 @@
                 </div>
                 <div class="section_fonction">
                     <div class="fonction_details">
-                        <i class="fa-solid fa-earth-africa"></i>
+                       <i class="fa-solid fa-comment-dots"></i>
 
                         <h3>Chat intégrer</h3>
                     </div>
@@ -130,7 +112,7 @@
                 </div>
                 <div class="section_fonction">
                     <div class="fonction_details">
-                        <i class="fa-solid fa-earth-africa"></i>
+                        <i class="fa-solid fa-percent"></i>
 
                         <h3>Prix compétitifs</h3>
                     </div>
@@ -141,7 +123,7 @@
                 </div>
                 <div class="section_fonction">
                     <div class="fonction_details">
-                        <i class="fa-solid fa-earth-africa"></i>
+                        <i class="fa-solid fa-truck"></i>
 
                         <h3>Livraison Rapide</h3>
                     </div>
@@ -172,7 +154,7 @@
                 </p>
             </div>
             <div class="process_details">
-                <i class="fa-solid fa-circle-user"></i>
+                <i class="fa-solid fa-store"></i>
                 <h6 class="numb">02</h6>
                 <h3>Explorez les produits</h3>
                 <br>
@@ -181,7 +163,7 @@
                 </p>
             </div>
             <div class="process_details">
-                <i class="fa-solid fa-circle-user"></i>
+                <i class="fa-solid fa-comments"></i>
                 <h6 class="numb">03</h6>
                 <h3>Discutez avec les vendeurs</h3>
                 <br>
@@ -190,7 +172,7 @@
                 </p>
             </div>
             <div class="process_details">
-                <i class="fa-solid fa-circle-user"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
                 <h6 class="numb">04</h6>
                 <h3>Passez commande</h3>
                 <br>
@@ -211,16 +193,17 @@
                 Les Différentes catégories
             </h2>
         </div><br><br>
-        <div class="your-class">
-            
+        <div id="categoryCarouselContainer" class="category-carousel-container">
+            <div class="category-carousel-track" id="categoryTrack">
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categorie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <a href="" class="categorie">
-                        <img src=" <?php echo e(asset('storage/' . $categorie->image)); ?> " alt="" class="dim_image" > <br>
-                        <h4 class="voir"><?php echo e($categorie->nom); ?></h4>
-                    </a>
+                    <div class="category-card">
+                        <a href="" class="categorie-link">
+                            <img src=" <?php echo e(asset('storage/' . $categorie->image)); ?> " alt="" class="dim_image" > <br>
+                            <h4 class="voir"><?php echo e($categorie->nom); ?></h4>
+                        </a>
+                    </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-            
-           
+            </div>
         </div>
     </section>
 

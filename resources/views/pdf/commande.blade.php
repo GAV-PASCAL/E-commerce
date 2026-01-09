@@ -12,9 +12,9 @@
         }
         
         body {
-            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-family: 'Nunitos Sans', Arial, sans-serif;
             font-size: 12px;
-            color: #333;
+            color: #000000ff;
             line-height: 1.6;
             padding: 20px;
         }
@@ -22,19 +22,25 @@
         .header {
             text-align: center;
             margin-bottom: 30px;
-            border-bottom: 3px solid #007bff;
+            border-bottom: 3px solid #B45309;
             padding-bottom: 15px;
         }
         
         .header h1 {
-            color: #007bff;
+            color: #B45309;
             font-size: 24px;
             margin-bottom: 5px;
         }
         
         .header p {
-            color: #666;
+            color: #000000ff;
             font-size: 14px;
+        }
+
+        #cmd_fiche{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
         
         .info-section {
@@ -45,10 +51,10 @@
         }
         
         .info-section h2 {
-            color: #007bff;
+            color: #B45309;
             font-size: 16px;
             margin-bottom: 10px;
-            border-bottom: 2px solid #007bff;
+            border-bottom: 2px solid #92400E;
             padding-bottom: 5px;
         }
         
@@ -81,7 +87,7 @@
         }
         
         .products-table thead {
-            background: #007bff;
+            background: #92400E;
             color: white;
         }
         
@@ -146,7 +152,7 @@
             padding-top: 15px;
             border-top: 2px solid #ddd;
             text-align: center;
-            color: #666;
+            color: #000000ff;
             font-size: 10px;
         }
         
@@ -157,9 +163,14 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>FICHE DE COMMANDE</h1>
-        <p>{{ $commande->numero_fiche }}</p>
+    <div class="header" id='cmd_fiche'>
+        <div >
+            <h1>FICHE DE COMMANDE DE EASYORDER</h1>
+            <p>{{ $commande->numero_fiche }}</p>
+        </div>
+        <div>
+            
+        </div>
     </div>
 
     <div class="info-section">

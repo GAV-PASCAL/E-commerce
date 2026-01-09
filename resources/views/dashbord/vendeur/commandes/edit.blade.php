@@ -4,9 +4,19 @@
 
 @section('header')
 
-    <div class="title_dash">
-        <h1>DASHBOARD</h1>
-    </div>
+    <section>
+        <div class="title_dash">
+            <div>
+                <h1>DASHBOARD</h1>
+            </div>
+            <div class="conversation-header-page">
+                <a href="{{ url('./') }}" class="back-btn">
+                    <i class='bx bx-arrow-back'></i>
+                    Retour
+                </a>
+            </div>
+        </div>
+    </section>
 
 @endsection
 
@@ -16,10 +26,9 @@
         <x-dashheader/>
 
         <div class="section_dash">
-            <x-dashnav/>
 
-            <div class="back_formulaire">
-                <h4 class="info_form">Modifier la commande {{ $commande->numero_fiche }}</h4>
+            <div class="back_formulaire" id="parie">
+                <h6 class="info_form">Modifier la commande {{ $commande->numero_fiche }}</h6>
 
                 @if($errors->any())
                     <div class="alert alert-danger">

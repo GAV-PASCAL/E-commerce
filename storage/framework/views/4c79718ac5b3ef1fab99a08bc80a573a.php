@@ -8,7 +8,7 @@
                 <h1>DASHBOARD</h1>
             </div>
             <div class="conversation-header-page">
-                <a href="<?php echo e(route('conversations.index')); ?>" class="back-btn">
+                <a href="<?php echo e(url('./')); ?>" class="back-btn">
                     <i class='bx bx-arrow-back'></i>
                     Retour
                 </a>

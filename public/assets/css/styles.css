@@ -8,13 +8,16 @@
     /*café au lait foncé  */
     --primary-fonce: #92400E;
     --secondary-color: #fff3c3;
-    --accent-hover: #FFF4CA;
+    --accent-hover: #f5f5dc;
 }
 
 #accueil {
     background-image: url(../img/bg.png);
     width: 100%;
     height: 550px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #tete_navigation {
@@ -516,7 +519,7 @@
 }
 
 .side_navigation {
-    background-color: var(--accent-hover);
+    background-color: #f5f5dc;
     padding: 20px 10px;
     width: 250px;
     height: 70%;

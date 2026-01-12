@@ -16,7 +16,7 @@
                         <span id="typing-text"></span><span class="cursor">|</span>
                     </h1>
 
-                    <p style='font-size: 15px;'>
+                    <p style='font-size: 18px; font-weight: 500;'>
                         Commandez connectez les grossistes et les clients 
                         du monde entier sur une plateforme sécurisée. 
                         Commandez vos produits en toute tranquillité 

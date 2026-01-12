@@ -7,9 +7,9 @@
                     Décovrez des milliers de produits et clients qui font confiance à EasyOrder pour leurs transactions commerciales internationales
                 </p>
             </div>
-
+             
             <div>
-                <button class="button_connection">Crée un compte</button>
+                <button class="button_connection">Explorer les produits</button>
             </div>
         </div>
 

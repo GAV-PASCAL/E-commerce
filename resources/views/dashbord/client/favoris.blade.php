@@ -78,7 +78,7 @@
                 </div>
             @else
                 <div class="text-center" style="padding: 50px;">
-                    <i class="fa-regular fa-heart" style="font-size: 64px; color: #ccc; margin-bottom: 20px;"></i>
+                    <i class="fa-regular fa-heart" style="font-size: 32px; color: #ba5a05ff; margin-bottom: 20px;"></i>
                     <h3>Aucun produit favori</h3>
                     <p>Vous n'avez pas encore ajouté de produits à vos favoris.</p>
                     <a href="{{ route('produits.liste') }}" class="btn_discussion" style="margin-top: 20px; display: inline-block;">Découvrir les produits</a>

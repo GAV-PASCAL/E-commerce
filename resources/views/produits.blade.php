@@ -100,7 +100,7 @@
                                 <h4>{{ $produit->nom }}</h4>
                             </div>
                             <div>
-                                <p><small>Quantité min: {{ $produit->qte_min }} unités</small></p>
+                                <p><small>Quantité min: <b>{{ $produit->qte_min }}</b> unités</small></p>
                             </div>
                             <div class="prix_produit">
                                 <div class="etoiles">

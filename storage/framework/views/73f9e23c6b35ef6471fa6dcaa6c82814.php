@@ -34,10 +34,7 @@
                     </h1>
 
                     <p style='font-size: 18px; font-weight: 500;'>
-                        Commandez connectez les grossistes et les clients 
-                        du monde entier sur une plateforme sécurisée. 
-                        Commandez vos produits en toute tranquillité 
-                        et développez votre activité à l'échelle internationale.
+                        EasyOrder vous connecte directement et explorer les produits pour négocier, commander et conclure vos achats simplement et rapidement.
                     </p>
                 </div>
             </div>

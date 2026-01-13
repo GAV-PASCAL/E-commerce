@@ -118,7 +118,7 @@
                                 <h4><?php echo e($produit->nom); ?></h4>
                             </div>
                             <div>
-                                <p><small>Quantité min: <?php echo e($produit->qte_min); ?> unités</small></p>
+                                <p><small>Quantité min: <b><?php echo e($produit->qte_min); ?></b> unités</small></p>
                             </div>
                             <div class="prix_produit">
                                 <div class="etoiles">

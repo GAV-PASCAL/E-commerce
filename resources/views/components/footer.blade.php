@@ -9,7 +9,7 @@
             </div>
              
             <div>
-                <button class="button_connection">Explorer les produits</button>
+                <button class="button_connection" onClick="window.location.href = '/boutique'" >Explorer les produits</button>
             </div>
         </div>
 

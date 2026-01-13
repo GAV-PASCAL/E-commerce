@@ -44,27 +44,7 @@
 <?php unset($__componentOriginal2ccf36a322409b76566b65fcab70ed9d); ?>
 <?php endif; ?>
 
-        <div class="section_dash">
-            <?php if (isset($component)) { $__componentOriginal020f66f7c7b8c356eb995e6f46315839 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal020f66f7c7b8c356eb995e6f46315839 = $attributes; } ?>
-<?php $component = App\View\Components\Dashnav::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('dashnav'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\App\View\Components\Dashnav::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal020f66f7c7b8c356eb995e6f46315839)): ?>
-<?php $attributes = $__attributesOriginal020f66f7c7b8c356eb995e6f46315839; ?>
-<?php unset($__attributesOriginal020f66f7c7b8c356eb995e6f46315839); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal020f66f7c7b8c356eb995e6f46315839)): ?>
-<?php $component = $__componentOriginal020f66f7c7b8c356eb995e6f46315839; ?>
-<?php unset($__componentOriginal020f66f7c7b8c356eb995e6f46315839); ?>
-<?php endif; ?> <br><br><br>
+        <div class="section_dash" id="patie">
 
             <div class="back_formulaire">
                 

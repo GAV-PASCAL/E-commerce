@@ -25,8 +25,7 @@
 <div id="page_structure">
         <x-client/>
 
-        <div class="section_dash">
-            <x-dashnav/> <br><br><br>
+        <div class="section_dash" id="patie">
 
             <div class="back_formulaire">
                 

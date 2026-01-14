@@ -3,265 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiche de Commande {{ $commande->numero_fiche }}</title>
+    <title>Fiche de Commande #{{ $commande->numero_commande }}</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Nunitos Sans', Arial, sans-serif;
+            font-family: 'DejaVu Sans', Arial, sans-serif;
             font-size: 12px;
-            color: #000000ff;
             line-height: 1.6;
+            color: #333;
             padding: 20px;
         }
-        
+
         .header {
             text-align: center;
             margin-bottom: 30px;
+            padding-bottom: 20px;
             border-bottom: 3px solid #B45309;
-            padding-bottom: 15px;
         }
-        
+
         .header h1 {
             color: #B45309;
             font-size: 24px;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
-        
+
         .header p {
-            color: #000000ff;
+            color: #666;
             font-size: 14px;
         }
 
-        #cmd_fiche{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        
         .info-section {
             margin-bottom: 25px;
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
         }
-        
-        .info-section h2 {
+
+        .info-grid {
+            display: table;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .info-col {
+            display: table-cell;
+            width: 50%;
+            padding: 15px;
+            vertical-align: top;
+        }
+
+        .info-col.left {
+            background: #FEF3C7;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .info-col.right {
+            background: #F3F4F6;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-col h3 {
             color: #B45309;
-            font-size: 16px;
+            font-size: 14px;
             margin-bottom: 10px;
             border-bottom: 2px solid #92400E;
             padding-bottom: 5px;
         }
-        
-        .info-grid {
-            display: table;
-            width: 100%;
-            margin-top: 10px;
+
+        .info-col p {
+            margin: 5px 0;
+            font-size: 11px;
         }
-        
-        .info-row {
-            display: table-row;
+
+        .info-col strong {
+            color: #92400E;
         }
-        
-        .info-label {
-            display: table-cell;
-            font-weight: bold;
-            padding: 5px 10px 5px 0;
-            width: 40%;
-        }
-        
-        .info-value {
-            display: table-cell;
-            padding: 5px 0;
-        }
-        
+
         .products-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-bottom: 20px;
         }
-        
+
         .products-table thead {
-            background: #92400E;
+            background: #B45309;
             color: white;
         }
-        
-        .products-table th,
-        .products-table td {
-            padding: 10px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
-        
+
         .products-table th {
+            padding: 12px;
+            text-align: left;
+            font-size: 12px;
             font-weight: bold;
         }
-        
+
+        .products-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
         .products-table tbody tr:nth-child(even) {
-            background: #f8f9fa;
+            background: #F9FAFB;
         }
-        
+
         .products-table tfoot {
-            background: #e9ecef;
+            background: #FEF3C7;
             font-weight: bold;
         }
-        
+
         .products-table tfoot td {
-            padding: 12px 10px;
+            padding: 15px 12px;
+            font-size: 14px;
+            border-top: 2px solid #B45309;
+        }
+
+        .payment-info {
+            background: #FEF3C7;
+            border: 2px solid #B45309;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .payment-info h3 {
+            color: #92400E;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .payment-info .highlight {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
             font-size: 14px;
         }
-        
-        .text-right {
-            text-align: right;
+
+        .payment-info .highlight strong {
+            color: #B45309;
         }
-        
-        .text-center {
-            text-align: center;
-        }
-        
+
         .status-badge {
             display: inline-block;
             padding: 5px 15px;
-            border-radius: 3px;
+            border-radius: 5px;
             font-weight: bold;
             font-size: 11px;
         }
-        
-        .status-en-attente {
-            background: #ffc107;
-            color: #000;
+
+        .status-en_attente {
+            background: #FEF3C7;
+            color: #92400E;
         }
-        
-        .status-validee {
-            background: #28a745;
-            color: #fff;
+
+        .status-confirmee {
+            background: #D1FAE5;
+            color: #065F46;
         }
-        
+
+        .status-en_preparation {
+            background: #BFDBFE;
+            color: #1E40AF;
+        }
+
+        .status-expediee {
+            background: #E0E7FF;
+            color: #3730A3;
+        }
+
+        .status-livree {
+            background: #DCFCE7;
+            color: #15803D;
+        }
+
         .status-annulee {
-            background: #dc3545;
-            color: #fff;
+            background: #FEE2E2;
+            color: #991B1B;
         }
-        
+
         .footer {
             margin-top: 40px;
-            padding-top: 15px;
-            border-top: 2px solid #ddd;
+            padding-top: 20px;
+            border-top: 2px solid #E5E7EB;
             text-align: center;
-            color: #000000ff;
+            color: #666;
             font-size: 10px;
         }
-        
-        .total-amount {
-            font-size: 16px;
-            color: #28a745;
+
+        .text-right {
+            text-align: right;
+        }
+
+        code {
+            background: #F3F4F6;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
         }
     </style>
 </head>
 <body>
-    <div class="header" id='cmd_fiche'>
-        <div >
-            <h1>FICHE DE COMMANDE DE EASYORDER</h1>
-            <p>{{ $commande->numero_fiche }}</p>
-        </div>
-        <div>
-            
-        </div>
+    <!-- En-tête -->
+    <div class="header">
+        <h1>FICHE DE COMMANDE</h1>
+        <p>N° {{ $commande->numero_commande }}</p>
+        <p>Date: {{ $commande->date_commande->format('d/m/Y à H:i') }}</p>
     </div>
 
-    <div class="info-section">
-        <h2>Informations de la commande</h2>
-        <div class="info-grid">
-            <div class="info-row">
-                <div class="info-label">Numéro de fiche :</div>
-                <div class="info-value">{{ $commande->numero_fiche }}</div>
-            </div>
-            <div class="info-row">
-                <div class="info-label">Date de commande :</div>
-                <div class="info-value">{{ $commande->date_commande->format('d/m/Y') }}</div>
-            </div>
-            <div class="info-row">
-                <div class="info-label">Date d'émission :</div>
-                <div class="info-value">{{ $commande->created_at->format('d/m/Y à H:i') }}</div>
-            </div>
-            <div class="info-row">
-                <div class="info-label">Statut :</div>
-                <div class="info-value">
+    <!-- Informations -->
+    <div class="info-grid">
+        <div class="info-col left">
+            <h3>INFORMATIONS COMMANDE</h3>
+            <p><strong>Numéro:</strong> {{ $commande->numero_commande }}</p>
+            <p><strong>Date:</strong> {{ $commande->date_commande->format('d/m/Y') }}</p>
+            <p><strong>Référence paiement:</strong> <code>{{ $commande->reference_paiement }}</code></p>
+            <p>
+                <strong>Statut:</strong> 
+                <span class="status-badge status-{{ $commande->statut }}">
                     @if($commande->statut === 'en_attente')
-                        <span class="status-badge status-en-attente">EN ATTENTE</span>
-                    @elseif($commande->statut === 'validee')
-                        <span class="status-badge status-validee">VALIDÉE</span>
-                    @else
-                        <span class="status-badge status-annulee">ANNULÉE</span>
+                        EN ATTENTE
+                    @elseif($commande->statut === 'confirmee')
+                        CONFIRMÉE
+                    @elseif($commande->statut === 'en_preparation')
+                        EN PRÉPARATION
+                    @elseif($commande->statut === 'expediee')
+                        EXPÉDIÉE
+                    @elseif($commande->statut === 'livree')
+                        LIVRÉE
+                    @elseif($commande->statut === 'annulee')
+                        ANNULÉE
                     @endif
-                </div>
-            </div>
+                </span>
+            </p>
+        </div>
+        <div class="info-col right">
+            <h3>INFORMATIONS CLIENT</h3>
+            <p><strong>Nom:</strong> {{ $commande->user->nom }}</p>
+            <p><strong>Prénom:</strong> {{ $commande->user->prenom }}</p>
+            <p><strong>Email:</strong> {{ $commande->user->email }}</p>
         </div>
     </div>
 
-    <div class="info-section">
-        <h2>Informations du client</h2>
-        <div class="info-grid">
-            <div class="info-row">
-                <div class="info-label">Nom complet :</div>
-                <div class="info-value">{{ $commande->user->nom }} {{ $commande->user->prenom }}</div>
-            </div>
-            <div class="info-row">
-                <div class="info-label">Email :</div>
-                <div class="info-value">{{ $commande->user->email }}</div>
-            </div>
-        </div>
-    </div>
+    <!-- Produits -->
+    <h3 style="color: #B45309; margin-bottom: 10px; font-size: 16px;">PRODUITS COMMANDÉS</h3>
+    <table class="products-table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix Unitaire</th>
+                <th>Quantité</th>
+                <th class="text-right">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($commande->produits as $produit)
+            <tr>
+                <td>{{ $produit->nom }}</td>
+                <td>{{ number_format($produit->pivot->prix_unitaire, 0, ',', ' ') }} FCFA</td>
+                <td>{{ $produit->pivot->quantite }}</td>
+                <td class="text-right"><strong>{{ number_format($produit->pivot->prix_total, 0, ',', ' ') }} FCFA</strong></td>
+            </tr>
+            @endforeach
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">MONTANT TOTAL:</td>
+                <td class="text-right" style="font-size: 16px; color: #92400E;">{{ number_format($commande->montant_total, 0, ',', ' ') }} FCFA</td>
+            </tr>
+        </tfoot>
+    </table>
 
-    <div class="info-section">
-        <h2>Produits commandés</h2>
-        <table class="products-table">
-            <thead>
-                <tr>
-                    <th style="width: 40%;">Produit</th>
-                    <th style="width: 20%;" class="text-right">Prix Unitaire</th>
-                    <th style="width: 15%;" class="text-center">Quantité</th>
-                    <th style="width: 25%;" class="text-right">Prix Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($commande->produits as $produit)
-                    <tr>
-                        <td>{{ $produit->nom }}</td>
-                        <td class="text-right">{{ number_format($produit->pivot->prix_unitaire, 0, ',', ' ') }} FCFA</td>
-                        <td class="text-center">{{ $produit->pivot->quantite }}</td>
-                        <td class="text-right">{{ number_format($produit->pivot->prix_total, 0, ',', ' ') }} FCFA</td>
-                    </tr>
-                @endforeach
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3" class="text-right">MONTANT TOTAL :</td>
-                    <td class="text-right total-amount">{{ number_format($commande->montant_total, 0, ',', ' ') }} FCFA</td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-
-    @if($commande->statut === 'validee')
-        <div class="info-section">
-            <h2>Validation</h2>
-            <div class="info-grid">
-                <div class="info-row">
-                    <div class="info-label">Validée le :</div>
-                    <div class="info-value">{{ $commande->updated_at->format('d/m/Y à H:i') }}</div>
-                </div>
-            </div>
+    <!-- Informations de paiement -->
+    @if($commande->statut === 'en_attente')
+    <div class="payment-info">
+        <h3>INFORMATIONS DE PAIEMENT</h3>
+        <div class="highlight">
+            <p><strong>ID de commande:</strong> {{ $commande->numero_commande }}</p>
         </div>
+        <div class="highlight">
+            <p><strong>Référence unique:</strong> {{ $commande->reference_paiement }}</p>
+        </div>
+        <div class="highlight">
+            <p><strong>Montant à payer:</strong> {{ number_format($commande->montant_total, 0, ',', ' ') }} FCFA</p>
+        </div>
+        <p style="margin-top: 15px; font-style: italic; color: #92400E; font-size: 11px;">
+            Veuillez utiliser ces informations lors du paiement pour que votre commande soit automatiquement validée.
+        </p>
+    </div>
     @endif
 
+    <!-- Pied de page -->
     <div class="footer">
         <p>Document généré le {{ now()->format('d/m/Y à H:i') }}</p>
-        <p>Ce document est une fiche de commande officielle.</p>
+        <p>EasyOrder - Plateforme de vente en ligne</p>
     </div>
 </body>
 </html>

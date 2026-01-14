@@ -59,7 +59,7 @@
                         </div>
                     </div>
 
-                   <div class="section_form_two">
+                   <div class="section_form_two" style="margin-top: 30px;">
                         <div class="form_info">
                             <label for="prix">Prix du produit (FCFA)</label>
                             <input type="number" name="prix" value="{{ old('prix') }}" class="input_ajout" min="0" step="0.01" required>

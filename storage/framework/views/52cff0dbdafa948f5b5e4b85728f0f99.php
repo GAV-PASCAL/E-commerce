@@ -47,8 +47,9 @@
 
                 <div class="produit_search">
                     <input type="search" placeholder="Rechercher un produit" class="produit_search_input">
-                        <a href="<?php echo e(route('commandes.create')); ?>" class="produit_ajout_rapide" id="btn_ajout">
-                            + Nouvelle
+                        <a href="<?php echo e(route('commandes.create')); ?>" class="btn-fiche" id="btn_ajout">
+                            <i class="fa fa-plus"></i>
+                            fiche de commande
                         </a>
                 </div>
             </section>
@@ -115,11 +116,13 @@
                                                style="background: #17a2b8; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">
                                                <i class="fa-solid fa-eye"></i>
                                             </a>
-                                            <a href="<?php echo e(route('commandes.edit', $commande->id)); ?>" 
-                                               class="btn btn-primary" 
-                                               style="background: #007bff; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </a>
+                                            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($commande->statut === 'en_attente'): ?>
+                                                <a href="<?php echo e(route('commandes.edit', $commande->id)); ?>" 
+                                                class="btn btn-primary" 
+                                                style="background: #007bff; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </a>
+                                            <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                                             <form action="<?php echo e(route('commandes.destroy', $commande->id)); ?>" 
                                                   method="POST" 
                                                   style="display: inline;"

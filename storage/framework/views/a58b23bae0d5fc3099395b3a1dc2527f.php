@@ -18,7 +18,7 @@
                         </div>
                     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                     
-                    <p class="message-text"><?php echo e($message['message']); ?></p>
+                    <p class="message-text"><?php echo e($message['message']); ?></p><br>
                     <span class="message-time"><?php echo e(\Carbon\Carbon::parse($message['created_at'])->format('H:i')); ?></span>
                 </div>
             </div>

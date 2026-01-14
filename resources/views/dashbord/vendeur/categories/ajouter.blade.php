@@ -25,7 +25,7 @@
     <div id="page_structure">
         <x-dashheader/>
 
-        <div class="section_dash">
+        <div class="section_dash" id="patie">
 
             <div class="back_formulaire">
                 <h4 class="info_form" id="info_form" >Forum de création de catégorie</h4>

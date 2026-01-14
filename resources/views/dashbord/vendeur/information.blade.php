@@ -25,8 +25,11 @@
     <div id="page_structure">
         <x-dashheader/>
 
-        <div class="section_dash" id="patie">
-
+        <div class="section_dash" id="pate">
+                <button class="btn-edit">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    Modifier
+                </button>
             <div class="back_formulaire">
                 <h4 class="info_form">Informations Personnelles</h4>
 

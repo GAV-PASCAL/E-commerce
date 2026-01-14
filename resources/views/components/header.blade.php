@@ -23,9 +23,9 @@
 
                         @auth
                             @if(auth()->user()->role && auth()->user()->role->name === 'admin')
-                                <a href="{{ route('dashbord.vendeur.information') }}" id="option_navigation">Dashboard vendeur</a>
+                                <a href="{{ route('dashbord.vendeur.information') }}" class="btn_rapide_change" id="option_navigation">Dashboard vendeur</a>
                             @else
-                                <a href="{{ route('dashbord.client.information') }}" id="option_navigation">Dashboard client</a>
+                                <a href="{{ route('dashbord.client.information') }}" class="btn_rapide_change" id="option_navigation">Dashboard client</a>
                             @endif
 
                             <form method="POST" action="{{ route('logout') }}" style="display:inline;">

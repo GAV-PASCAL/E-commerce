@@ -13,10 +13,10 @@
             <div>
                 <div class="accroche">
                     <h1 style='font-size: 45px; font-weight: semi-bold; min-height: 100px;'>
-                        <span id="typing-text"></span><span class="cursor">|</span>
+                        <span id="typing-text"></span><span class="cursor"></span>
                     </h1>
 
-                    <p style='font-size: 18px; font-weight: 500;'>
+                    <p style='font-size: 18px; font-weight: 500; color: #000000ff;'>
                         EasyOrder vous connecte directement et explorer les produits pour négocier, commander et conclure vos achats simplement et rapidement.
                     </p>
                 </div>

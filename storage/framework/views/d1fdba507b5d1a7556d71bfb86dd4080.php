@@ -201,7 +201,7 @@ unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendB
 
 .message-received .message-content {
     background: white;
-    color: #2c3e50;
+    color: #2b2b2bff;
     border-bottom-left-radius: 4px;
 }
 
@@ -211,7 +211,7 @@ unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendB
     align-items: center;
     margin-bottom: 8px;
     padding-bottom: 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid #B45309;
 }
 
 .message-received .message-header {
@@ -339,7 +339,7 @@ unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendB
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: #95a5a6;
+    color: #424242ff;
     padding: 40px;
     text-align: center;
 }
@@ -353,7 +353,7 @@ unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendB
 .no-conversation-selected h3 {
     margin: 0 0 10px 0;
     font-size: 1.5rem;
-    color: #7f8c8d;
+    color: #3f4040ff;
 }
 
 .no-conversation-selected p {

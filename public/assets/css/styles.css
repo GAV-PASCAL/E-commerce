@@ -1,6 +1,12 @@
-* {
+*{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
 }
 
 :root {
@@ -59,6 +65,12 @@
 #option_navigation:active-view-transition {
     background-color: var(--primary-color);
     border-radius: 10px;
+}
+
+#option_navigation.active {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    color: white;
 }
 
 #a {
@@ -127,6 +139,7 @@
     border: none;
     border-radius: 10px;
     color: white;
+    border: 1px solid white;
 }
 
 .btn_rapide_change {
@@ -135,6 +148,7 @@
     border: none;
     border-radius: 10px;
     color: var(--primary-color);
+    border: 1.5px solid var(--primary-color);
 }
 
 #info_navigation {
@@ -590,6 +604,53 @@
     margin-top: 12.5%;
 }
 
+#pate{
+    margin-top: 9%;
+}
+
+.btn-edit{
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 6px #92400E;
+    width: 150px;
+    position: relative;
+    left: 75%;
+}
+.btn-fiche{
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 6px #92400E;
+    width: 250px;
+    position: relative;
+    left: 70%;
+}
+.btn-add{
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 20px 10px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 6px #92400E;
+    width: 150px;
+    position: relative;
+    left: 86%;
+}
+
 #parie{
     margin-top: 7.5%;
 }
@@ -793,7 +854,7 @@ th {
 .btq_search {
     width: 100%;
     height: 40px;
-    border-radius: 15px;
+    border-radius: 10px;
     box-shadow: 0 5px 9px rgba(0, 0, 0, 0.1);
     outline: none;
     font-size: 18px;

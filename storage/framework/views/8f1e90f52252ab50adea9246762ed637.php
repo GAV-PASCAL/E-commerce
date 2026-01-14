@@ -42,8 +42,11 @@
 <?php unset($__componentOriginal7198df49fa33acdb115e04e2e99942a4); ?>
 <?php endif; ?>
 
-        <div class="section_dash" id="patie">
-
+        <div class="section_dash" id="pate">
+                <button class="btn-edit">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    Modifier
+                </button>
             <div class="back_formulaire">
                 <h4 class="info_form">Informations Personnelles</h4>
 

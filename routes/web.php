@@ -66,6 +66,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/categories/liste', [CategorieController::class, 'index'])->name('dashbord.vendeur.categories.index');
     Route::get('/admin/categories/ajouter', [CategorieController::class, 'create'])->name('dashbord.vendeur.categories.ajouter');
     Route::post('/admin/categories', [CategorieController::class, 'store'])->name('dashbord.vendeur.categories.store');
+    Route::delete('/admin/categories/{categorie}', [CategorieController::class, 'destroy'])->name('dashbord.vendeur.categories.destroy');
 
     Route::get('/admin/produits/liste', [ProduitController::class, 'index'])->name('dashbord.vendeur.produits.index');
     Route::get('/admin/produits/ajouter', [ProduitController::class, 'create'])->name('dashbord.vendeur.produits.ajouter');

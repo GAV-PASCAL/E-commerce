@@ -1,6 +1,6 @@
 <div class="vendor-conversations-container">
     <div class="conversations-header">
-        <h2><i class='bx bx-message-dots'></i> Messages Clients</h2>
+        <h2><i class='bx bx-message-dots'></i> Messages</h2>
         <span class="total-conversations"><?php echo e(count($conversations)); ?> conversation(s)</span>
     </div>
 
@@ -57,14 +57,14 @@
         background: #fff;
         border-radius: 12px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        height: 100%;
+        height: 98%;
         display: flex;
         flex-direction: column;
     }
 
     .conversations-header {
-        padding: 20px;
-        border-bottom: 2px solid #f0f0f0;
+        padding: 10px;
+        border-bottom: 2px solid #B45309;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -73,7 +73,7 @@
     .conversations-header h2 {
         margin: 0;
         font-size: 1.5rem;
-        color: #2c3e50;
+        color: #;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -85,11 +85,11 @@
     }
 
     .total-conversations {
-        background: #ecf0f1;
+        background: #B45309;
         padding: 5px 15px;
         border-radius: 20px;
         font-size: 0.9rem;
-        color: #7f8c8d;
+        color: #fff;
     }
 
     .conversations-list {
@@ -110,13 +110,13 @@
     }
 
     .conversation-item:hover {
-        background: #f8f9fa;
-        transform: translateX(5px);
+        background: #f5f5dc;
+        transform: translateX(3px);
     }
 
     .conversation-item.active {
         background: #e3f2fd;
-        border-color: #3498db;
+        border-color: #B45309;
     }
 
     .conversation-item.unread {
@@ -129,7 +129,7 @@
 
     .conversation-avatar i {
         font-size: 3rem;
-        color: #95a5a6;
+        color: #3f3f3fff;
     }
 
     .conversation-info {
@@ -147,13 +147,13 @@
     .client-name {
         margin: 0;
         font-size: 1.1rem;
-        color: #2c3e50;
+        color: #000000ff;
         font-weight: 600;
     }
 
     .conversation-time {
-        font-size: 0.8rem;
-        color: #95a5a6;
+        font-size: 0.9yrem;
+        color: #000000ff;
         white-space: nowrap;
     }
 
@@ -167,7 +167,7 @@
     .last-message {
         margin: 0;
         font-size: 0.9rem;
-        color: #7f8c8d;
+        color: #6e6e6eff;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -175,7 +175,7 @@
 
     .last-message.no-message {
         font-style: italic;
-        color: #bdc3c7;
+        color: #303030ff;
     }
 
     .unread-badge {
@@ -194,7 +194,7 @@
         align-items: center;
         justify-content: center;
         padding: 60px 20px;
-        color: #95a5a6;
+        color: #191919ff;
     }
 
     .no-conversations i {
@@ -224,7 +224,7 @@
     }
 
     .conversations-list::-webkit-scrollbar-thumb:hover {
-        background: #95a5a6;
+        background: #ffffffff;
     }
     </style>
 </div>

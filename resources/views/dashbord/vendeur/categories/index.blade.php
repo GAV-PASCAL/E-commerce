@@ -30,7 +30,10 @@
 
                 <div class="produit_search">
                     <input type="search" placeholder="Rechercher une catégorie" class="produit_search_input">
-                    <a href="{{ route('dashbord.vendeur.categories.ajouter') }}" class="produit_ajout_rapide" id="btn_ajout">Ajouter</a>
+                    <a href="{{ route('dashbord.vendeur.categories.ajouter') }}" class="btn-add" id="btn_ajout">
+                        <i class="fa fa-plus"></i>
+                        Ajouter
+                    </a>
                 </div>
             </section>
 
@@ -47,6 +50,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Nom de catégorie</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,6 +58,15 @@
                                 <tr>
                                     <td>{{ $categorie->id }}</td>
                                     <td>{{ $categorie->nom }}</td>
+                                    <td>
+                                        <form action="{{ route('dashbord.vendeur.categories.destroy', $categorie->id) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="delete-btn" style="background: none; border: none; color: red; cursor: pointer;">
+                                                <i class='bx bx-trash'></i>
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

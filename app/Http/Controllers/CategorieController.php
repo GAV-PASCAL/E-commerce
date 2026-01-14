@@ -38,4 +38,14 @@ class CategorieController extends Controller
 
         return redirect()->route('dashbord.vendeur.categories.index')->with('success', 'Catégorie créée avec succès.');
     }
+
+    public function destroy(Categorie $categorie)
+    {
+        if ($categorie->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($categorie->image)) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($categorie->image);
+        }
+
+        $categorie->delete();
+        return redirect()->route('dashbord.vendeur.categories.index')->with('success', 'Catégorie supprimée avec succès.');
+    }
 }

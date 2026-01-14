@@ -18,7 +18,7 @@
                         </div>
                     @endif
                     
-                    <p class="message-text">{{ $message['message'] }}</p>
+                    <p class="message-text">{{ $message['message'] }}</p><br>
                     <span class="message-time">{{ \Carbon\Carbon::parse($message['created_at'])->format('H:i') }}</span>
                 </div>
             </div>

@@ -23,9 +23,9 @@
 
                         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->check()): ?>
                             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->user()->role && auth()->user()->role->name === 'admin'): ?>
-                                <a href="<?php echo e(route('dashbord.vendeur.information')); ?>" id="option_navigation">Dashboard vendeur</a>
+                                <a href="<?php echo e(route('dashbord.vendeur.information')); ?>" class="btn_rapide_change" id="option_navigation">Dashboard vendeur</a>
                             <?php else: ?>
-                                <a href="<?php echo e(route('dashbord.client.information')); ?>" id="option_navigation">Dashboard client</a>
+                                <a href="<?php echo e(route('dashbord.client.information')); ?>" class="btn_rapide_change" id="option_navigation">Dashboard client</a>
                             <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
                             <form method="POST" action="<?php echo e(route('logout')); ?>" style="display:inline;">

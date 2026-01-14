@@ -105,7 +105,7 @@
                                             <a href="<?php echo e(route('client.commandes.show', $commande->id)); ?>" 
                                                class="btn btn-info" 
                                                style="background: #17a2b8; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">
-                                                Voir la fiche
+                                                <i class="fa-solid fa-eye"></i>
                                             </a>
                                             
                                             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($commande->statut === 'en_attente'): ?>
@@ -115,9 +115,8 @@
                                                       onsubmit="return confirm('Êtes-vous sûr de vouloir valider cette commande ?');">
                                                     <?php echo csrf_field(); ?>
                                                     <button type="submit" 
-                                                            class="btn btn-success" 
-                                                            style="background: #28a745; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer;">
-                                                        ✓ Accepter la commande
+                                                            style="background: #28a745; color: #fff; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer;">
+                                                        <i class="fa fa-check" style="color: #fff;"></i>
                                                     </button>
                                                 </form>
                                             <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>

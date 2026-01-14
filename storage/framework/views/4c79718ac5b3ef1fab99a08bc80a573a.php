@@ -47,7 +47,10 @@
 
                 <div class="produit_search">
                     <input type="search" placeholder="Rechercher un produit" class="produit_search_input">
-                    <a href="<?php echo e(route('dashbord.vendeur.produits.ajouter')); ?>" class="produit_ajout_rapide" id="btn_ajout">Ajouter</a>
+                    <a href="<?php echo e(route('dashbord.vendeur.produits.ajouter')); ?>" class="btn-add" id="btn_ajout">
+                        <i class="fa fa-plus"></i>
+                        Ajouter
+                    </a>
                 </div>
             </section>
 

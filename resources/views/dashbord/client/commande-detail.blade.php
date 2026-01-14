@@ -33,12 +33,12 @@
                     <div style="display: flex; gap: 10px;">
                         <a href="{{ route('commandes.pdf', $commande->id) }}" 
                            class="btn btn-success" 
-                           style="background: #28a745; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+                           style="background: #B45309; color: white; padding: 10px 20px; border-radius: 5px; border: 2px solid #ffffff; text-decoration: none;">
                             📄 Télécharger PDF
                         </a>
                         <a href="{{ route('client.commandes') }}" 
                            class="btn btn-secondary" 
-                           style="background: #6c757d; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+                           style="background: #ffffffff; color: #B45309; font-weight: bold; padding: 10px 20px; border-radius: 5px; border: 2px solid #B45309 ; text-decoration: none;">
                             Retour
                         </a>
                     </div>
@@ -98,7 +98,7 @@
                 </div>
 
                 <!-- Liste des produits -->
-                <h5 style="margin-bottom: 15px; color: #333;">Produits commandés</h5>
+                <h5 style="color: #333;">Produits commandés</h5>
                 <table class="table_dash">
                     <thead>
                         <tr>
@@ -128,11 +128,11 @@
 
                 <!-- Bouton de validation -->
                 @if($commande->statut === 'en_attente')
-                    <div style="margin-top: 30px; padding: 20px; background: #fff3cd; border-radius: 10px; border: 2px solid #ffc107;">
-                        <h5 style="color: #856404; margin-bottom: 15px;">⚠️ Action requise</h5>
+                    <div style="margin-top: 10px; padding: 10px; ">
+                        <!-- <h5 style="color: #856404; margin-bottom: 15px;">⚠️ Action requise</h5>
                         <p style="color: #856404; margin-bottom: 15px;">
                             Cette commande est en attente de votre validation. Veuillez vérifier les détails ci-dessus et accepter la commande si tout est correct.
-                        </p>
+                        </p> -->
                         <form action="{{ route('client.commandes.valider', $commande->id) }}" 
                               method="POST" 
                               onsubmit="return confirm('Êtes-vous sûr de vouloir valider cette commande ? Cette action est irréversible.');">
@@ -140,14 +140,14 @@
                             <button type="submit" 
                                     class="input_register" 
                                     style="background: #28a745; padding: 15px 30px; font-size: 1.1em;">
-                                ✓ Accepter cette commande
+                                Accepter cette commande
                             </button>
                         </form>
                     </div>
                 @elseif($commande->statut === 'validee')
-                    <div style="margin-top: 30px; padding: 20px; background: #d4edda; border-radius: 10px; border: 2px solid #28a745;">
-                        <h5 style="color: #155724; margin-bottom: 10px;">✓ Commande validée</h5>
-                        <p style="color: #155724; margin-bottom: 0;">
+                    <div style="margin-top: 30px; padding: 20px; background: #f5f5dc; border-radius: 10px; border: 2px solid #B45309;">
+                        <h5 style="color: #B45309; margin-bottom: 10px;">Commande validée</h5>
+                        <p style="color: #B45309; margin-bottom: 0;">
                             Vous avez validé cette commande le {{ $commande->updated_at->format('d/m/Y à H:i') }}.
                         </p>
                     </div>

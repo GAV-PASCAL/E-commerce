@@ -9,7 +9,7 @@
                 @livewire('vendor-chat-box', ['conversationId' => $selectedConversationId], key('chat-'.$selectedConversationId))
             @else
                 <div class="no-selection">
-                    <i class='bx bx-message-square-detail'></i>
+                    <i class='bx bx-message-square-detail' style="color: #B45309;"></i>
                     <h3>Sélectionnez une conversation</h3>
                     <p>Choisissez une conversation dans la liste pour commencer à discuter</p>
                 </div>
@@ -56,14 +56,14 @@
     }
 
     .no-selection h3 {
-        font-size: 1.8rem;
-        color: #2c3e50;
+        font-size: 2rem;
+        color: #000000ff;
         margin: 0 0 10px 0;
     }
 
     .no-selection p {
         font-size: 1.1rem;
-        color: #7f8c8d;
+        color: #4c4b4bff;
         margin: 0;
     }
 

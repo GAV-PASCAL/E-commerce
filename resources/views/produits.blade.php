@@ -110,7 +110,7 @@
                                     <i class="fa-regular fa-star"></i>
                                 </div>
                                 <div>
-                                    <h5 class="prix_fixe" >{{ number_format($produit->prix, 0, ',', ' ') }} FCFA</h5>
+                                    <h6 class="prix_fixe" >{{ number_format($produit->prix, 0, ',', ' ') }} FCFA</h6>
                                 </div>
                             </div>
                         </div>
@@ -203,6 +203,40 @@
         })
         .catch(error => {
             console.error('Erreur:', error);
+        });
+    }
+
+    // Recherche client-side instantanée
+    const searchInput = document.querySelector('.btq_search');
+    const productItems = document.querySelectorAll('.section_produit_details');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+
+            // Si moins de 2 caractères, on réaffiche tout (ou on laisse l'état initial)
+            if (searchTerm.length < 2 && searchTerm.length > 0) {
+                 // Optionnel : on pourrait ne rien faire ou tout réafficher
+                 // Ici on choisit de tout réafficher si l'utilisateur efface
+                 productItems.forEach(item => item.style.display = '');
+                 return;
+            }
+            
+            // Si vide, on réaffiche tout
+            if (searchTerm.length === 0) {
+                 productItems.forEach(item => item.style.display = '');
+                 return;
+            }
+
+            // Filtrage
+            productItems.forEach(item => {
+                const title = item.querySelector('h4').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         });
     }
     </script>

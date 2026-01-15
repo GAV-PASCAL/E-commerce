@@ -469,7 +469,6 @@ body {
     background-color: var(--primary-color);
     color: white;
     padding: 15px;
-    margin-bottom: 10px;
     width: 100%;
     height: 70px;
     display: flex;
@@ -478,6 +477,7 @@ body {
     text-align: center;
     position: fixed;
     z-index: 50;
+    border-bottom: 2px solid #fff;
 }
 
 .conversation-header-page {
@@ -511,7 +511,7 @@ body {
 .sidebar {
     margin-left: 20px;
     position: fixed;
-    height: 90%;
+    height: 100vh;
 }
 
 .side_nav {
@@ -559,6 +559,7 @@ body {
     right: 35%;
     top: 95px;
     z-index: 100;
+    border: 2px solid #fff;
 }
 
 .profile_img {
@@ -578,6 +579,7 @@ body {
     flex-direction: column;
     gap: 15px;
     margin-top: 7%;
+    margin-left: 2%;
 }
 
 .close_dash {
@@ -620,7 +622,7 @@ body {
     box-shadow: 0 3px 6px #92400E;
     width: 150px;
     position: relative;
-    left: 75%;
+    left: 84%;
 }
 .btn-fiche{
     background-color: var(--primary-color);
@@ -634,7 +636,7 @@ body {
     box-shadow: 0 3px 6px #92400E;
     width: 250px;
     position: relative;
-    left: 70%;
+    left: 73%;
 }
 .btn-add{
     background-color: var(--primary-color);
@@ -648,7 +650,7 @@ body {
     box-shadow: 0 3px 6px #92400E;
     width: 150px;
     position: relative;
-    left: 86%;
+    left: 83%;
 }
 
 #parie{
@@ -657,7 +659,7 @@ body {
 
 #head_search{
     background-color: white;
-    width: 88%;
+    width: 95%;
     padding: 10px;
     position: fixed;
     z-index: 25;
@@ -670,12 +672,25 @@ body {
 /* page de coeur */
 
 .back_formulaire {
-    width: 90%;
+    width: 100%;
     height: 100%;
     background-color: var(--accent-hover);
     border-radius: 20px;
     box-shadow: 5px 12px 5px #92400E;
-    padding: 20px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+#back_formulaire {
+    width: 100%;
+    background-color: var(--accent-hover);
+    border-radius: 20px;
+    box-shadow: 2px 2px 3px #92400E;
+    padding: 15px 15px 15px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -686,7 +701,7 @@ body {
 .info_form {
     background-color: var(--primary-color);
     color: white;
-    width: 50%;
+    width: 35%;
     padding: 7px 10px;
     box-shadow: 3px 5px 1px #FFF;
 }
@@ -695,12 +710,14 @@ body {
     flex-basis: 50%;
     display: flex;
     flex-direction: column;
+    margin-top: 0;
 }
 
 .section_form_two {
     flex-basis: 50%;
     display: flex;
     flex-direction: column;
+    margin-top: 15%;
 }
 
 .form_info {
@@ -735,10 +752,10 @@ body {
 /* Index produits */
 
 .produits_liste {
-    width: 95%;
+    width: 100%;
     border-radius: 20px;
-    box-shadow: 5px 12px 5px #92400E;
-    padding: 1rem;
+    box-shadow: 2px 2px 3px #92400E;
+    padding: 0rem 0rem 1rem 0rem;
     position: relative;
     background-color: var(--accent-hover);
 }
@@ -1024,8 +1041,9 @@ th {
 .prix_fixe {
     background-color: black;
     color: white;
-    padding: 3px 5px;
+    padding: 2px 3px;
     text-align: center;
+    font-size: 18px;
 }
 
 .etoiles {

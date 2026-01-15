@@ -7,7 +7,7 @@
     <section>
         <div class="title_dash">
             <div>
-                <h1>DASHBOARD</h1>
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
                 <a href="{{ url('./') }}" class="back-btn">
@@ -23,22 +23,26 @@
 @section('content')
 
     <div id="page_structure">
-        <x-dashheader/>
+        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
+            <div style="height: 100vh;">
+                <x-dashheader/>
+            </div>
+        </div>
 
-        <div class="section_dash" id="patie">
+        <div class="section_dash">
 
-            <div class="back_formulaire">
+            <div id="back_formulaire">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                     <h6 class="info_form">Fiche de Commande {{ $commande->numero_fiche }}</h6>
                     <div style="display: flex; gap: 10px;">
                         <a href="{{ route('commandes.pdf', $commande->id) }}" 
                            class="btn btn-success" 
-                           style="background: #28a745; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+                           style="background: #B45309; color: white; padding: 10px 20px; border-radius: 5px; border: 2px solid #ffffff; text-decoration: none;">
                             📄 Télécharger PDF
                         </a>
                         <a href="{{ route('commandes.index') }}" 
                            class="btn btn-secondary" 
-                           style="background: #6c757d; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+                           style="background: #ffffffff; color: #B45309; font-weight: bold; padding: 10px 20px; border-radius: 5px; border: 2px solid #B45309 ; text-decoration: none;">
                             Retour
                         </a>
                     </div>

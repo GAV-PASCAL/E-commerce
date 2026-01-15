@@ -7,7 +7,7 @@
     <section>
         <div class="title_dash">
             <div>
-                <h1>DASHBOARD</h1>
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
                 <a href="{{ url('./') }}" class="back-btn">
@@ -23,21 +23,25 @@
 @section('content')
 
     <div id="page_structure">
-        <x-dashheader/>
+        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
+            <div style="height: 100vh;">
+                <x-dashheader/>
+            </div>
+        </div>
 
         <div class="section_dash" id="patie">
             <section id="head_search">
 
                 <div class="produit_search">
                     <input type="search" placeholder="Rechercher un produit" class="produit_search_input">
-                        <a href="{{ route('commandes.create') }}" class="btn-fiche" id="btn_ajout">
-                            <i class="fa fa-plus"></i>
-                            fiche de commande
-                        </a>
+                    <a href="{{ route('commandes.create') }}" class="btn-fiche" id="btn_ajout">
+                        <i class="fa fa-plus"></i>
+                        fiche de commande
+                    </a>
                 </div>
             </section>
 
-            <div class="back_formulaire">
+            <div class="produits_liste">
 
                 @if(session('success'))
                     <div class="alert alert-success">
@@ -129,4 +133,31 @@
 
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.produit_search_input');
+            const tableBody = document.querySelector('.table_dash tbody');
+
+            if (searchInput && tableBody) {
+                searchInput.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const rows = tableBody.querySelectorAll('tr');
+
+                    if (searchTerm.length < 2) {
+                        rows.forEach(row => row.style.display = '');
+                        return;
+                    }
+
+                    rows.forEach(row => {
+                        const text = row.textContent.toLowerCase();
+                        if (text.includes(searchTerm)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 @endsection

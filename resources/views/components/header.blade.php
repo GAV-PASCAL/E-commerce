@@ -1,7 +1,7 @@
 <div id="tete_navigation">
     <header class="tete">
         <div >
-            <img src=" {{ asset('assets/img/logo.png') }} " alt="" width="100px" height="50px">
+            <img src=" {{ asset('assets/img/logo.png') }} " alt="Logo du site" width="100px" height="50px">
         </div>
                 <div>
                     <nav>

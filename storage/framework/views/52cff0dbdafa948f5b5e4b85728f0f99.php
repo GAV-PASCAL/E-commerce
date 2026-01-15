@@ -5,7 +5,7 @@
     <section>
         <div class="title_dash">
             <div>
-                <h1>DASHBOARD</h1>
+                <img src="<?php echo e(asset('assets/img/logo.png')); ?>" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
                 <a href="<?php echo e(url('./')); ?>" class="back-btn">
@@ -21,7 +21,9 @@
 <?php $__env->startSection('content'); ?>
 
     <div id="page_structure">
-        <?php if (isset($component)) { $__componentOriginal7198df49fa33acdb115e04e2e99942a4 = $component; } ?>
+        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
+            <div style="height: 100vh;">
+                <?php if (isset($component)) { $__componentOriginal7198df49fa33acdb115e04e2e99942a4 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal7198df49fa33acdb115e04e2e99942a4 = $attributes; } ?>
 <?php $component = App\View\Components\Dashheader::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dashheader'); ?>
@@ -41,20 +43,22 @@
 <?php $component = $__componentOriginal7198df49fa33acdb115e04e2e99942a4; ?>
 <?php unset($__componentOriginal7198df49fa33acdb115e04e2e99942a4); ?>
 <?php endif; ?>
+            </div>
+        </div>
 
         <div class="section_dash" id="patie">
             <section id="head_search">
 
                 <div class="produit_search">
                     <input type="search" placeholder="Rechercher un produit" class="produit_search_input">
-                        <a href="<?php echo e(route('commandes.create')); ?>" class="btn-fiche" id="btn_ajout">
-                            <i class="fa fa-plus"></i>
-                            fiche de commande
-                        </a>
+                    <a href="<?php echo e(route('commandes.create')); ?>" class="btn-fiche" id="btn_ajout">
+                        <i class="fa fa-plus"></i>
+                        fiche de commande
+                    </a>
                 </div>
             </section>
 
-            <div class="back_formulaire">
+            <div class="produits_liste">
 
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('success')): ?>
                     <div class="alert alert-success">
@@ -148,6 +152,33 @@
 
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.produit_search_input');
+            const tableBody = document.querySelector('.table_dash tbody');
+
+            if (searchInput && tableBody) {
+                searchInput.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const rows = tableBody.querySelectorAll('tr');
+
+                    if (searchTerm.length < 2) {
+                        rows.forEach(row => row.style.display = '');
+                        return;
+                    }
+
+                    rows.forEach(row => {
+                        const text = row.textContent.toLowerCase();
+                        if (text.includes(searchTerm)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\pasca\Documents\fast\poto\resources\views/dashbord/vendeur/commandes/index.blade.php ENDPATH**/ ?>

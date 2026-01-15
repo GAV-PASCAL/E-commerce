@@ -7,7 +7,7 @@
     <section>
         <div class="title_dash">
             <div>
-                <h1>DASHBOARD</h1>
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
                 <a href="{{ url('./') }}" class="back-btn">
@@ -23,12 +23,16 @@
 @section('content')
 
     <div id="page_structure">
-        <x-dashheader/>
+        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
+            <div style="height: 100vh;">
+                <x-dashheader/>
+            </div>
+        </div>
 
-        <div class="section_dash" id="patie">
+        <div class="section_dash">
 
-            <div class="back_formulaire">
-                <h4 class="info_form">Formulaire de création de produits</h4>
+            <div id="back_formulaire">
+                <h4 class="info_form">Créations de Produits</h4>
 
                 @if($errors->any())
                     <div class="alert alert-danger">
@@ -44,12 +48,12 @@
                     @csrf
                     <div class="section_form_one">
                         <div class="form_info">
-                            <label for="nom">Nom du produit</label>
+                            <label for="nom">Nom <span style="color: red; font-weight: bold;">*</span></label>
                             <input type="text" name="nom" value="{{ old('nom') }}" placeholder="Nom du produit" class="input_ajout" required>
                         </div>
 
                         <div class="form_info">
-                            <label for="description">Description du produit</label>
+                            <label for="description">Description <span style="color: red; font-weight: bold;">*</span></label>
                             <textarea name="description" id="description" class="input_ajout" style="height: 80px;" required>{{ old('description') }}</textarea>
                         </div>
 
@@ -61,17 +65,17 @@
 
                    <div class="section_form_two" style="margin-top: 30px;">
                         <div class="form_info">
-                            <label for="prix">Prix du produit (FCFA)</label>
+                            <label for="prix">Prix (FCFA) <span style="color: red; font-weight: bold;">*</span></label>
                             <input type="number" name="prix" value="{{ old('prix') }}" class="input_ajout" min="0" step="0.01" required>
                         </div>
 
                         <div class="form_info">
-                            <label for="qte_min">Quantité minimale</label>
+                            <label for="qte_min">Quantité minimale <span style="color: red; font-weight: bold;">*</span></label>
                             <input type="number" name="qte_min" value="{{ old('qte_min') }}" class="input_ajout" min="1" required>
                         </div> 
                         
                         <div class="form_info">
-                            <label for="categorie_id">Catégorie</label>
+                            <label for="categorie_id">Catégorie <span style="color: red; font-weight: bold;">*</span></label>
                             <select name="categorie_id" id="categorie_id" class="input_ajout" required>
                                 <option value="">Sélectionner une catégorie</option>
                                 @foreach ($categories as $categorie)

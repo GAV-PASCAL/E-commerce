@@ -7,7 +7,7 @@
     <section>
         <div class="title_dash">
             <div>
-                <h1>DASHBOARD</h1>
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
                 <a href="{{ url('./') }}" class="back-btn">
@@ -23,11 +23,16 @@
 @section('content')
 
     <div id="page_structure">
-        <x-client/>
+        
+        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
+            <div style="height: 100vh;">
+                <x-client/>
+            </div>
+        </div> 
 
-        <div class="section_dash" id="patie">
+        <div class="section_dash">
 
-            <div class="back_formulaire">
+            <div id="back_formulaire">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                     <h6 class="info_form">Fiche de Commande {{ $commande->numero_fiche }}</h6>
                     <div style="display: flex; gap: 10px;">

@@ -8,7 +8,7 @@
     <section>
         <div class="title_dash">
             <div>
-                <h1>DASHBOARD</h1>
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
                 <a href="{{ url('./') }}" class="back-btn">
@@ -24,11 +24,15 @@
 @section('content')
 
     <div id="page_structure">
-        <x-client/>
+        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
+            <div style="height: 100vh;">
+                <x-client/>
+            </div>
+        </div> 
 
-        <div class="section_dash" id="patie">
+        <div class="section_dash">
 
-            <div class="back_formulaire">
+            <div id="back_formulaire">
                 <h4 class="info_form">Mes Produits Favoris</h4>
             
             @if($favoris->count() > 0)
@@ -81,7 +85,7 @@
                     <i class="fa-regular fa-heart" style="font-size: 32px; color: #ba5a05ff; margin-bottom: 20px;"></i>
                     <h3>Aucun produit favori</h3>
                     <p>Vous n'avez pas encore ajouté de produits à vos favoris.</p>
-                    <a href="{{ route('produits.liste') }}" class="btn_discussion" style="margin-top: 20px; display: inline-block;">Découvrir les produits</a>
+                    <a href="{{ route('produits.liste') }}" class="btn_discussion" style="margin-top: 20px; display: inline-block; text-decoration: none; color: inherit; color: white; font-size: 16px; padding: 10px 20px;">Découvrir les produits</a>
                 </div>
             @endif
             </div>            

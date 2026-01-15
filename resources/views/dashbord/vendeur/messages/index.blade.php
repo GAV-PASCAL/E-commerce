@@ -4,18 +4,28 @@
 
 @section('header')
 
-    <section class="title_dash">
-        <div>
-            <h1>DASHBOARD</h1>
+    <div class="title_dash">
+            <div>
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="100px" height="50px">
+            </div>
+            <div class="conversation-header-page">
+                <a href="{{ url('./') }}" class="back-btn">
+                    <i class='bx bx-arrow-back'></i>
+                    Retour
+                </a>
+            </div>
         </div>
-    </section>
 
 @endsection
 
 @section('content')
 
     <div id="page_structure">
-        <x-dashheader/>
+        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
+            <div style="height: 100vh;">
+                <x-dashheader/>
+            </div>
+        </div>
 
         <div class="section_dash">
 

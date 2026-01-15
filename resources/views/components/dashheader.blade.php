@@ -1,9 +1,9 @@
-<header style="flex-basis: 25%;">
+<header>
             <div class="sidebar">
                 <div class="profile">
                     <!-- <img src="../logo.png" alt="" class="profile_img"> -->
                     <h2 class="profile_indice">
-                        V
+                        AP
                     </h2>
                 </div>
                 <div class="side_navigation">

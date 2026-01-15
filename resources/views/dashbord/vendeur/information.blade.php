@@ -7,7 +7,7 @@
     <section>
         <div class="title_dash">
             <div>
-                <h1>DASHBOARD</h1>
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
                 <a href="{{ url('./') }}" class="back-btn">
@@ -23,14 +23,18 @@
 @section('content')
 
     <div id="page_structure">
-        <x-dashheader/>
+        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
+            <div style="height: 100vh;">
+                <x-dashheader/>
+            </div>
+        </div>
 
-        <div class="section_dash" id="pate">
-                <button class="btn-edit">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    Modifier
-                </button>
-            <div class="back_formulaire">
+        <div class="section_dash">
+            <button class="btn-edit">
+                <i class="fa-solid fa-pen-to-square"></i>
+                Modifier
+            </button>
+            <div id="back_formulaire">
                 <h4 class="info_form">Informations Personnelles</h4>
 
                 <table class="table_dash_info">
@@ -54,8 +58,7 @@
                         <td><strong>Membre depuis</strong></td>
                         <td>{{ $user->created_at->format('d/m/Y') }}</td>
                     </tr>
-                </table>
-                
+                </table>    
             </div>            
         </div>
 

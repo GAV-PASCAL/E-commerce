@@ -7,7 +7,7 @@
     <section>
         <div class="title_dash">
             <div>
-                <h1>DASHBOARD</h1>
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
                 <a href="{{ url('./') }}" class="back-btn">
@@ -23,7 +23,11 @@
 @section('content')
 
     <div id="page_structure">
-        <x-dashheader/>
+        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
+            <div style="height: 100vh;">
+                <x-dashheader/>
+            </div>
+        </div>              
 
         <div class="section_dash">
             <section id="head_search">
@@ -62,8 +66,10 @@
                                         <form action="{{ route('dashbord.vendeur.categories.destroy', $categorie->id) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="delete-btn" style="background: none; border: none; color: red; cursor: pointer;">
-                                                <i class='bx bx-trash'></i>
+                                            <button type="submit" 
+                                                        class="btn btn-danger" 
+                                                        >
+                                                    <i class="fa-solid fa-trash"></i> 
                                             </button>
                                         </form>
                                     </td>
@@ -77,4 +83,31 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.produit_search_input');
+            const tableBody = document.querySelector('.table_dash tbody');
+
+            if (searchInput && tableBody) {
+                searchInput.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const rows = tableBody.querySelectorAll('tr');
+
+                    if (searchTerm.length < 2) {
+                        rows.forEach(row => row.style.display = '');
+                        return;
+                    }
+
+                    rows.forEach(row => {
+                        const text = row.textContent.toLowerCase();
+                        if (text.includes(searchTerm)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 @endsection

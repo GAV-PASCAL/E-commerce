@@ -5,7 +5,7 @@
     <section>
         <div class="title_dash">
             <div>
-                <h1>DASHBOARD</h1>
+                <img src="<?php echo e(asset('assets/img/logo.png')); ?>" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
                 <a href="<?php echo e(url('./')); ?>" class="back-btn">
@@ -21,7 +21,9 @@
 <?php $__env->startSection('content'); ?>
 
     <div id="page_structure">
-        <?php if (isset($component)) { $__componentOriginal7198df49fa33acdb115e04e2e99942a4 = $component; } ?>
+        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
+            <div style="height: 100vh;">
+                <?php if (isset($component)) { $__componentOriginal7198df49fa33acdb115e04e2e99942a4 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal7198df49fa33acdb115e04e2e99942a4 = $attributes; } ?>
 <?php $component = App\View\Components\Dashheader::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dashheader'); ?>
@@ -41,13 +43,15 @@
 <?php $component = $__componentOriginal7198df49fa33acdb115e04e2e99942a4; ?>
 <?php unset($__componentOriginal7198df49fa33acdb115e04e2e99942a4); ?>
 <?php endif; ?>
+            </div>
+        </div>
 
-        <div class="section_dash" id="pate">
-                <button class="btn-edit">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    Modifier
-                </button>
-            <div class="back_formulaire">
+        <div class="section_dash">
+            <button class="btn-edit">
+                <i class="fa-solid fa-pen-to-square"></i>
+                Modifier
+            </button>
+            <div id="back_formulaire">
                 <h4 class="info_form">Informations Personnelles</h4>
 
                 <table class="table_dash_info">
@@ -71,8 +75,7 @@
                         <td><strong>Membre depuis</strong></td>
                         <td><?php echo e($user->created_at->format('d/m/Y')); ?></td>
                     </tr>
-                </table>
-                
+                </table>    
             </div>            
         </div>
 

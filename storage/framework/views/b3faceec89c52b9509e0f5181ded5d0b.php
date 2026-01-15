@@ -7,7 +7,7 @@
     <section>
         <div class="title_dash">
             <div>
-                <h1>DASHBOARD</h1>
+                <img src="<?php echo e(asset('assets/img/logo.png')); ?>" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
                 <a href="<?php echo e(url('./')); ?>" class="back-btn">
@@ -23,7 +23,9 @@
 <?php $__env->startSection('content'); ?>
 
     <div id="page_structure">
-        <?php if (isset($component)) { $__componentOriginal7198df49fa33acdb115e04e2e99942a4 = $component; } ?>
+        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
+            <div style="height: 100vh;">
+                <?php if (isset($component)) { $__componentOriginal7198df49fa33acdb115e04e2e99942a4 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal7198df49fa33acdb115e04e2e99942a4 = $attributes; } ?>
 <?php $component = App\View\Components\Dashheader::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dashheader'); ?>
@@ -43,10 +45,12 @@
 <?php $component = $__componentOriginal7198df49fa33acdb115e04e2e99942a4; ?>
 <?php unset($__componentOriginal7198df49fa33acdb115e04e2e99942a4); ?>
 <?php endif; ?>
+            </div>
+        </div>
 
         <div class="section_dash">
 
-            <div class="back_formulaire" id="parie">
+            <div id="back_formulaire">
                 <h6 class="info_form">Modifier la commande <?php echo e($commande->numero_fiche); ?></h6>
 
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($errors->any()): ?>
@@ -143,8 +147,10 @@
                     </table>
 
                     <div style="display: flex; gap: 10px; margin-top: 20px;">
-                        <a href="<?php echo e(route('commandes.index')); ?>" class="btn btn-secondary">
-                            Annuler
+                        <a href="<?php echo e(route('commandes.index')); ?>" 
+                           class="btn btn-secondary" 
+                           style="background: #ffffffff; color: #B45309; font-weight: bold; padding: 10px 20px; border-radius: 5px; border: 2px solid #B45309 ; text-decoration: none;">
+                            Retour
                         </a>
                         <button type="submit" class="input_register" id="submitBtn">
                             Mettre à jour la commande

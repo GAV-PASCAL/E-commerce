@@ -8,7 +8,7 @@
     <section>
         <div class="title_dash">
             <div>
-                <h1>DASHBOARD</h1>
+                <img src="<?php echo e(asset('assets/img/logo.png')); ?>" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
                 <a href="<?php echo e(url('./')); ?>" class="back-btn">
@@ -24,7 +24,9 @@
 <?php $__env->startSection('content'); ?>
 
     <div id="page_structure">
-        <?php if (isset($component)) { $__componentOriginal2ccf36a322409b76566b65fcab70ed9d = $component; } ?>
+        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
+            <div style="height: 100vh;">
+                <?php if (isset($component)) { $__componentOriginal2ccf36a322409b76566b65fcab70ed9d = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal2ccf36a322409b76566b65fcab70ed9d = $attributes; } ?>
 <?php $component = App\View\Components\Client::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('client'); ?>
@@ -44,10 +46,12 @@
 <?php $component = $__componentOriginal2ccf36a322409b76566b65fcab70ed9d; ?>
 <?php unset($__componentOriginal2ccf36a322409b76566b65fcab70ed9d); ?>
 <?php endif; ?>
+            </div>
+        </div> 
 
-        <div class="section_dash" id="patie">
+        <div class="section_dash">
 
-            <div class="back_formulaire">
+            <div id="back_formulaire">
                 <h4 class="info_form">Mes Produits Favoris</h4>
             
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($favoris->count() > 0): ?>
@@ -100,7 +104,7 @@
                     <i class="fa-regular fa-heart" style="font-size: 32px; color: #ba5a05ff; margin-bottom: 20px;"></i>
                     <h3>Aucun produit favori</h3>
                     <p>Vous n'avez pas encore ajouté de produits à vos favoris.</p>
-                    <a href="<?php echo e(route('produits.liste')); ?>" class="btn_discussion" style="margin-top: 20px; display: inline-block;">Découvrir les produits</a>
+                    <a href="<?php echo e(route('produits.liste')); ?>" class="btn_discussion" style="margin-top: 20px; display: inline-block; text-decoration: none; color: inherit; color: white; font-size: 16px; padding: 10px 20px;">Découvrir les produits</a>
                 </div>
             <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
             </div>            

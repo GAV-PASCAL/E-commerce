@@ -33,7 +33,7 @@
                         <span id="typing-text"></span><span class="cursor"></span>
                     </h1>
 
-                    <p style='font-size: 18px; font-weight: 500; color: #000000ff;'>
+                    <p style='font-size: 18px; font-weight: 500; color: #fff;'>
                         EasyOrder vous connecte directement et explorer les produits pour négocier, commander et conclure vos achats simplement et rapidement.
                     </p>
                 </div>

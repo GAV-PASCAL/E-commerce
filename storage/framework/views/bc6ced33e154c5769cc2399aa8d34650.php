@@ -3,7 +3,8 @@
         <div class="profile">
                     <!-- <img src="../logo.png" alt="" class="profile_img"> -->
             <h2 class="profile_indice">
-                C
+                <?php echo e(strtoupper(mb_substr(Auth::user()->nom, 0, 1))); ?><?php echo e(strtoupper(mb_substr(Auth::user()->prenom, 0, 1))); ?>
+
             </h2>
                 </div>
                 <div class="side_navigation">

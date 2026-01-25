@@ -8,13 +8,13 @@
                 </div>
                 <div class="side_navigation">
                     <nav id="sidebar_navigation">
-                        <a href=" {{ route('dashbord.client.information') }} " id="option_navigation">Informations Personnelles</a>
+                        <a href=" {{ route('dashbord.client.information') }} " class="nav_link {{ request()->routeIs('dashbord.client.information') ? 'active' : '' }}" id="option_navigation">Informations Personnelles</a>
 
-                        <a href="{{ route('favoris.index') }}" id="option_navigation">Favoris</a>
+                        <a href="{{ route('favoris.index') }}" class="nav_link {{ request()->routeIs('favoris.index') ? 'active' : '' }}" id="option_navigation">Favoris</a>
 
-                        <a href="{{ route('client.commandes') }}" id="option_navigation">Commandes</a> 
+                        <a href="{{ route('client.commandes') }}" class="nav_link {{ request()->routeIs('client.commandes') ? 'active' : '' }}" id="option_navigation">Commandes</a> 
 
-                        <a href=" {{ route('conversations.index') }} " id="option_navigation">Messagerie</a>
+                        <a href=" {{ route('conversations.index') }} " class="nav_link {{ request()->routeIs('conversations.index') ? 'active' : '' }}" id="option_navigation">Messagerie</a>
 
                     </nav>
 

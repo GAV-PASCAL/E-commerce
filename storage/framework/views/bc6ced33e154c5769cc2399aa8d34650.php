@@ -9,13 +9,13 @@
                 </div>
                 <div class="side_navigation">
                     <nav id="sidebar_navigation">
-                        <a href=" <?php echo e(route('dashbord.client.information')); ?> " id="option_navigation">Informations Personnelles</a>
+                        <a href=" <?php echo e(route('dashbord.client.information')); ?> " class="nav_link <?php echo e(request()->routeIs('dashbord.client.information') ? 'active' : ''); ?>" id="option_navigation">Informations Personnelles</a>
 
-                        <a href="<?php echo e(route('favoris.index')); ?>" id="option_navigation">Favoris</a>
+                        <a href="<?php echo e(route('favoris.index')); ?>" class="nav_link <?php echo e(request()->routeIs('favoris.index') ? 'active' : ''); ?>" id="option_navigation">Favoris</a>
 
-                        <a href="<?php echo e(route('client.commandes')); ?>" id="option_navigation">Commandes</a> 
+                        <a href="<?php echo e(route('client.commandes')); ?>" class="nav_link <?php echo e(request()->routeIs('client.commandes') ? 'active' : ''); ?>" id="option_navigation">Commandes</a> 
 
-                        <a href=" <?php echo e(route('conversations.index')); ?> " id="option_navigation">Messagerie</a>
+                        <a href=" <?php echo e(route('conversations.index')); ?> " class="nav_link <?php echo e(request()->routeIs('conversations.index') ? 'active' : ''); ?>" id="option_navigation">Messagerie</a>
 
                     </nav>
 

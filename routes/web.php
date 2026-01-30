@@ -17,7 +17,7 @@ Route::get('/savoir', function () {
     return view('marche');
 });
 
-Route::get('/boutique', [ProduitController::class, 'liste'])->name('produits.liste');
+Route::get('/produits', [ProduitController::class, 'liste'])->name('produits.liste');
 Route::get('/produit/{id}', [ProduitController::class, 'show'])->name('produit.show');
 
 

@@ -11,7 +11,7 @@
                 <img src="<?php echo e(asset('assets/img/logo.png')); ?>" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
-                <a href="<?php echo e(url('./')); ?>" class="back-btn">
+                <a href="<?php echo e(url('./produits')); ?>" class="back-btn">
                     <i class='bx bx-arrow-back'></i>
                     Retour
                 </a>

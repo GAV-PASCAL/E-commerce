@@ -1,11 +1,4 @@
 <div class="chat-container">
-    <div class="chat-header">
-        <h3>Conversation</h3>
-        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($conversation): ?>
-            <p><?php echo e($conversation->user->prenom); ?> <?php echo e($conversation->user->nom); ?></p>
-        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-    </div>
-
     <div class="chat-messages" id="chatMessages">
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $messages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $message): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="message <?php echo e($message['sender_id'] == auth()->id() ? 'message-sent' : 'message-received'); ?>">

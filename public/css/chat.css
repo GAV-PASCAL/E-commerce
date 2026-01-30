@@ -242,3 +242,25 @@
         padding: 15px;
     }
 }
+
+@media (max-width: 400px) {
+    .message-content {
+        max-width: 90%;
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .chat-input {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .chat-send-btn {
+        padding: 10px 15px;
+    }
+
+    .message-produit {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+}

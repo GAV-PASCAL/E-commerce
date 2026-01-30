@@ -50,9 +50,9 @@
         <div class="dashboard_content">
 
             <div id="back_formulaire">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div class="commande-header-flex" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                     <h6 class="info_form">Fiche de Commande <?php echo e($commande->numero_fiche); ?></h6>
-                    <div style="display: flex; gap: 10px;">
+                    <div class="commande-buttons-group" style="display: flex; gap: 10px; flex-direction: row;">
                         <a href="<?php echo e(route('commandes.pdf', $commande->id)); ?>" 
                            class="btn btn-success" 
                            style="background: #B45309; color: white; padding: 10px 20px; border-radius: 5px; border: 2px solid #ffffff; text-decoration: none;">
@@ -83,7 +83,7 @@
                 <!-- Informations générales -->
                 <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
                     <h5 style="margin-bottom: 15px; color: #333;">Informations de la commande</h5>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                    <div class="info-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
                         <div>
                             <strong>Numéro de fiche :</strong> <?php echo e($commande->numero_fiche); ?>
 

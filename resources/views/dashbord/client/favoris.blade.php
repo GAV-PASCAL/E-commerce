@@ -11,7 +11,7 @@
                 <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
-                <a href="{{ url('./') }}" class="back-btn">
+                <a href="{{ url('./produits') }}" class="back-btn">
                     <i class='bx bx-arrow-back'></i>
                     Retour
                 </a>

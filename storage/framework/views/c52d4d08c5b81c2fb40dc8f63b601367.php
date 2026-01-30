@@ -25,81 +25,142 @@
 <?php endif; ?>
 
             <div class="exp_dim" id="info">
-                <h3 class="titre_page"><?php echo e($produit->nom); ?></h3>
-                <p><?php echo e($produit->categorie->nom ?? 'Produit'); ?></p>
+                <h3 class="titre_page">Détails du Produit</h3>
+                <div class="breadcrumb">
+                    <a href="<?php echo e(url('/')); ?>">Accueil</a> 
+                    <i class="fa-solid fa-chevron-right"></i> 
+                    <a href="<?php echo e(route('produits.liste')); ?>">Boutique</a>
+                    <i class="fa-solid fa-chevron-right"></i> 
+                    <span><?php echo e($produit->nom); ?></span>
+                </div>
             </div>
         </div>
     </section>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-    <section>
-        <div class="produit-detail-container">
-            <div class="produit-images">
-                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($produit->image): ?>
-                    <img src="<?php echo e(asset('storage/' . $produit->image)); ?>" alt="<?php echo e($produit->nom); ?>" class="main-image" width="300px" height="300px">
-                <?php elseif($produit->urlimg): ?>
-                    <img src="<?php echo e($produit->urlimg->url); ?>" alt="<?php echo e($produit->nom); ?>" class="main-image">
-                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+    <section class="product-detail-view">
+        <div class="container">
+            <div class="product-main-grid">
+                <!-- Image Side -->
+                <div class="product-gallery">
+                    <div class="main-image-wrapper tilt-element" onclick="openLightbox()">
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($produit->image): ?>
+                            <img src="<?php echo e(asset('storage/' . $produit->image)); ?>" alt="<?php echo e($produit->nom); ?>" class="product-featured-image" id="target-img">
+                        <?php elseif($produit->urlimg): ?>
+                            <img src="<?php echo e($produit->urlimg->url); ?>" alt="<?php echo e($produit->nom); ?>" class="product-featured-image" id="target-img">
+                        <?php else: ?>
+                            <img src="https://via.placeholder.com/600" alt="<?php echo e($produit->nom); ?>" class="product-featured-image" id="target-img">
+                        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                        
+                        <div class="click-to-zoom">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            <span>Cliquez pour agrandir</span>
+                        </div>
 
-                <i class="fa-regular fa-heart"></i>
-                
-                <!-- <div class="thumbnails">
-                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($produit->image): ?>
-                        <img src="<?php echo e(asset('storage/' . $produit->image)); ?>" alt="<?php echo e($produit->nom); ?>" class="thumb active">
-                    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-                </div> -->
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->check()): ?>
+                            <button class="fav-action-btn favorite-icon" data-produit-id="<?php echo e($produit->id); ?>" onclick="event.stopPropagation();">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        <?php else: ?>
+                            <button class="fav-action-btn" onclick="event.stopPropagation(); window.location.href='<?php echo e(route('login')); ?>'">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                    </div>
+                </div>
+
+                <!-- Info Side -->
+                <div class="product-essential-info">
+                    <div class="product-badge"><?php echo e($produit->categorie->nom ?? 'Produit'); ?></div>
+                    <h1 class="product-title"><?php echo e($produit->nom); ?></h1>
+                    
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <span class="reviews-count">(4.8/5 - 24 avis)</span>
+                    </div>
+
+                    <div class="price-box">
+                        <span class="current-price"><?php echo e(number_format($produit->prix, 0, ',', ' ')); ?> FCFA</span>
+                        <div class="stock-info">
+                            <i class="fa-solid fa-circle-check"></i> En stock
+                        </div>
+                    </div>
+
+                    <div class="order-constraints">
+                        <div class="constraint-item">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                            <span>Quantité minimale : <strong><?php echo e($produit->qte_min); ?> unités</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->check()): ?>
+                            <button class="main-cta-btn" onclick="window.location.href='<?php echo e(route('conversations.start', $produit->id)); ?>'">
+                                <i class="fa-solid fa-comments"></i> Discuter avec le vendeur
+                            </button>
+                        <?php else: ?>
+                            <button class="main-cta-btn secondary" onclick="window.location.href='<?php echo e(route('login')); ?>'">
+                                <i class="fa-solid fa-right-to-bracket"></i> Connectez-vous pour discuter
+                            </button>
+                        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                    </div>
+
+                    <div class="trust-signals">
+                        <div class="signal">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Paiement Sécurisé</span>
+                        </div>
+                        <div class="signal">
+                            <i class="fa-solid fa-truck-fast"></i>
+                            <span>Livraison Express</span>
+                        </div>
+                        <div class="signal">
+                            <i class="fa-solid fa-award"></i>
+                            <span>Qualité Vérifiée</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="produit-info">
-                <h2> Nom : <?php echo e($produit->nom); ?></h2>
-                <h4 class="categorie">Catégorie: <?php echo e($produit->categorie->nom ?? 'N/A'); ?></h4>
-                
-                <div class="prix-section">
-                    <h2><?php echo e(number_format($produit->prix, 0, ',', ' ')); ?> FCFA</h2>
-                    <h5>Quantité minimale: <?php echo e($produit->qte_min); ?> unités</h5>
+            <!-- Description Block -->
+            <div class="product-details-extra">
+                <div class="details-tabs">
+                    <button class="tab-btn active">Description</button>
                 </div>
-
-                <div class="description">
-                    <h3>Description</h3>
-                    <h5><?php echo e($produit->description); ?></h5>
-                </div>
-
-                <div class="actions">
-                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->check()): ?>
-                        <button class="btn_discussion" onclick="window.location.href='<?php echo e(route('conversations.start', $produit->id)); ?>'">Discuter avec le vendeur</button>
-                    <?php else: ?>
-                        <button class="btn btn-primary" onclick="window.location.href='<?php echo e(route('login')); ?>'">Connectez-vous pour discuter</button>
-                    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-
+                <div class="tab-content">
+                    <p><?php echo e($produit->description); ?></p>
                 </div>
             </div>
-        </div>
 
-        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($produitsRelated->count() > 0): ?>
-        <div class="related-products" style="margin: 20px">
-            <h3>Produits similaires</h3>
-            <div class="btq_content">
-                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $produitsRelated; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $related): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="section_produit_details">
-                        <a href="<?php echo e(route('produit.show', $related->id)); ?>" style="text-decoration: none; color: inherit;">
-                            <div class="btq_section_image">
-                                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($related->image): ?>
-                                    <img src="<?php echo e(asset('storage/' . $related->image)); ?>" alt="<?php echo e($related->nom); ?>" class="produit_image">
-                                <?php elseif($related->urlimg): ?>
-                                    <img src="<?php echo e($related->urlimg->url); ?>" alt="<?php echo e($related->nom); ?>" class="produit_image">
-                                <?php else: ?>
-                                    <img src="https://via.placeholder.com/300" alt="<?php echo e($related->nom); ?>" class="produit_image">
-                                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-                            </div>
-                            <div class="image_info">
-                                <div>
+            <!-- Related Products -->
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($produitsRelated->count() > 0): ?>
+            <div class="related-section">
+                <h2 class="section-title">Produits similaires</h2>
+                <div class="btq_content">
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $produitsRelated; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $related): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="section_produit_details">
+                            <a href="<?php echo e(route('produit.show', $related->id)); ?>" style="text-decoration: none; color: inherit;">
+                                <div class="btq_section_image">
+                                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($related->image): ?>
+                                        <img src="<?php echo e(asset('storage/' . $related->image)); ?>" alt="<?php echo e($related->nom); ?>" class="produit_image">
+                                    <?php elseif($related->urlimg): ?>
+                                        <img src="<?php echo e($related->urlimg->url); ?>" alt="<?php echo e($related->nom); ?>" class="produit_image">
+                                    <?php else: ?>
+                                        <img src="https://via.placeholder.com/300" alt="<?php echo e($related->nom); ?>" class="produit_image">
+                                    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                                </div>
+                                <div class="image_info">
                                     <h4><?php echo e($related->nom); ?></h4>
-                                </div>
-                                <div class="prix_produit">
-                                    <h5 class="prix_fixe" ><?php echo e(number_format($related->prix, 0, ',', ' ')); ?> FCFA</h5>
-                                </div>
-                                <div>
+                                    <div class="prix_produit">
+                                        <h5 class="prix_fixe"><?php echo e(number_format($related->prix, 0, ',', ' ')); ?> FCFA</h5>
+                                    </div>
                                     <div class="etoiles">
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-solid fa-star"></i>
@@ -107,18 +168,126 @@
                                         <i class="fa-regular fa-star"></i>
                                     </div>
                                 </div>
+                            </a>
+                            <div class="btn_section">
+                                <button type="button" class="btn_discussion" onclick="window.location.href='<?php echo e(route('conversations.start', $related->id)); ?>'">Discuter</button>
+                                <button type="button" class="btn_discussion" id="btn" onclick="window.location.href='<?php echo e(route('produit.show', $related->id)); ?>'">Détails</button>
                             </div>
-                        </a>
-                        <div class="btn_section">
-                            <button type="button" class="btn_discussion" onclick="window.location.href='<?php echo e(route('conversations.start', $produit->id)); ?>'">Discuter</button>
-                            <button type="button" class="btn_discussion" id="btn" onclick="window.location.href='<?php echo e(route('produit.show', $produit->id)); ?>'">Voir détails</button>
                         </div>
-                    </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                </div>
             </div>
+            <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
         </div>
-        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-    </section><br><br>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="productLightbox" class="lightbox-modal" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <div class="lightbox-content-wrapper" onclick="event.stopPropagation()">
+            <img class="lightbox-content" id="imgLightbox">
+            <div id="caption"></div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if(auth()->guard()->check()): ?>
+        loadFavorites();
+        <?php endif; ?>
+
+        document.querySelectorAll('.favorite-icon').forEach(icon => {
+            icon.addEventListener('click', function(e) {
+                e.preventDefault();
+                const produitId = this.dataset.produitId;
+                toggleFavorite(produitId, this);
+            });
+        });
+
+        // Effect 3D Tilt
+        const tiltEffect = document.querySelector('.tilt-element');
+        if(tiltEffect) {
+            tiltEffect.addEventListener('mousemove', (e) => {
+                const { width, height, left, top } = tiltEffect.getBoundingClientRect();
+                const x = e.clientX - left;
+                const y = e.clientY - top;
+                const xc = width / 2;
+                const yc = height / 2;
+                const dx = x - xc;
+                const dy = y - yc;
+                
+                tiltEffect.style.transform = `perspective(1000px) rotateY(${dx / 15}deg) rotateX(${-dy / 15}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            tiltEffect.addEventListener('mouseleave', () => {
+                tiltEffect.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`;
+            });
+        }
+    });
+
+    function openLightbox() {
+        const modal = document.getElementById("productLightbox");
+        const img = document.getElementById("target-img");
+        const modalImg = document.getElementById("imgLightbox");
+        const captionText = document.getElementById("caption");
+        
+        modal.style.display = "flex";
+        setTimeout(() => modal.classList.add('active'), 10);
+        modalImg.src = img.src;
+        captionText.innerHTML = "<?php echo e($produit->nom); ?>";
+        document.body.style.overflow = 'hidden'; // Prevent scroll
+    }
+
+    function closeLightbox() {
+        const modal = document.getElementById("productLightbox");
+        modal.classList.remove('active');
+        setTimeout(() => modal.style.display = "none", 300);
+        document.body.style.overflow = 'auto';
+    }
+
+    function loadFavorites() {
+        fetch('<?php echo e(route("favoris.ids")); ?>')
+            .then(response => response.json())
+            .then(data => {
+                const favoriteIds = data.favorite_ids;
+                document.querySelectorAll('.favorite-icon').forEach(icon => {
+                    const produitId = parseInt(icon.dataset.produitId);
+                    if (favoriteIds.includes(produitId)) {
+                        const i = icon.querySelector('i');
+                        i.classList.remove('fa-regular');
+                        i.classList.add('fa-solid', 'active');
+                        icon.classList.add('is-active');
+                    }
+                });
+            });
+    }
+
+    function toggleFavorite(produitId, iconElement) {
+        fetch('<?php echo e(route("favoris.toggle")); ?>', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+            },
+            body: JSON.stringify({ produit_id: produitId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const i = iconElement.querySelector('i');
+                if (data.action === 'added') {
+                    i.classList.remove('fa-regular');
+                    i.classList.add('fa-solid', 'active');
+                    iconElement.classList.add('is-active');
+                } else {
+                    i.classList.remove('fa-solid', 'active');
+                    i.classList.add('fa-regular');
+                    iconElement.classList.remove('is-active');
+                }
+            }
+        });
+    }
+    </script>
 
     <?php if (isset($component)) { $__componentOriginal99051027c5120c83a2f9a5ae7c4c3cfa = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal99051027c5120c83a2f9a5ae7c4c3cfa = $attributes; } ?>

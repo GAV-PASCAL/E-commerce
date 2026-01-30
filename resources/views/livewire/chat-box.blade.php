@@ -1,11 +1,4 @@
 <div class="chat-container">
-    <div class="chat-header">
-        <h3>Conversation</h3>
-        @if($conversation)
-            <p>{{ $conversation->user->prenom }} {{ $conversation->user->nom }}</p>
-        @endif
-    </div>
-
     <div class="chat-messages" id="chatMessages">
         @foreach($messages as $message)
             <div class="message {{ $message['sender_id'] == auth()->id() ? 'message-sent' : 'message-received' }}">

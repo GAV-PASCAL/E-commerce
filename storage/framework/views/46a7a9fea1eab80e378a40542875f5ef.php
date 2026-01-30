@@ -1,23 +1,25 @@
 <div id="tete_navigation">
     <header class="tete">
-        <div>
-            <img src=" <?php echo e(asset('assets/img/logo.png')); ?> " alt="Logo du site" width="100px" height="50px">
+        <div class="logo_container">
+            <a href="<?php echo e(url('/')); ?>">
+                <img src="<?php echo e(asset('assets/img/logo.png')); ?>" alt="Logo" width="100px">
+            </a>
         </div>
         
         <!-- Desktop Navigation -->
         <div class="desktop_menu">
             <nav>
                 <ul class="navigation">
-                    <div><li><a href="<?php echo e(url('/')); ?>" id="option_navigation">Accueil</a></li></div>
-                    <div><li><a href="<?php echo e(url('/savoir')); ?>" id="option_navigation">Comment ça marche</a></li></div>
-                    <div><li><a href="<?php echo e(url('/boutique')); ?>" id="option_navigation">Produits</a></li></div>
+                    <li><a href="<?php echo e(url('/')); ?>" id="option_navigation" class="<?php echo e(Request::is('/') ? 'active' : ''); ?>">Accueil</a></li>
+                    <li><a href="<?php echo e(url('/savoir')); ?>" id="option_navigation" class="<?php echo e(Request::is('savoir') ? 'active' : ''); ?>">Comment ça marche</a></li>
+                    <li><a href="<?php echo e(url('/produits')); ?>" id="option_navigation" class="<?php echo e(Request::is('produits') ? 'active' : ''); ?>">Produits</a></li>
                 </ul>
             </nav>
         </div>
 
         <!-- Desktop Auth Buttons -->
         <div class="desktop_menu">
-            <nav class="navigation">
+            <div class="auth_buttons">
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->guest()): ?>
                     <a href="<?php echo e(route('login')); ?>">
                         <button class="button_connection">Se connecter</button>
@@ -26,17 +28,17 @@
 
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->check()): ?>
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->user()->role && auth()->user()->role->name === 'admin'): ?>
-                        <a href="<?php echo e(route('dashbord.vendeur.information')); ?>" class="btn_rapide_change" id="option_navigation">Dashboard vendeur</a>
+                        <a href="<?php echo e(route('dashbord.vendeur.information')); ?>" class="dash_link">Dashboard vendeur</a>
                     <?php else: ?>
-                        <a href="<?php echo e(route('dashbord.client.information')); ?>" class="btn_rapide_change" id="option_navigation">Dashboard client</a>
+                        <a href="<?php echo e(route('dashbord.client.information')); ?>" class="dash_link">Dashboard client</a>
                     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
                     <form method="POST" action="<?php echo e(route('logout')); ?>" style="display:inline;">
                         <?php echo csrf_field(); ?>
-                        <button type="submit" class="button_connection">Se déconnecter</button>
+                        <button type="submit" class="button_connection" >Déconnexion</button>
                     </form>
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-            </nav>
+            </div>
         </div>
 
         <!-- Mobile Menu Toggle -->
@@ -70,7 +72,7 @@
             <li>
                 <form method="POST" action="<?php echo e(route('logout')); ?>" style="display:inline;">
                         <?php echo csrf_field(); ?>
-                        <button type="submit" class="mobile_btn_logout">Se déconnecter</button>
+                        <button type="submit" class="dash_logout_btn">Se déconnecter</button>
                 </form>
             </li>
         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>

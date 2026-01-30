@@ -12,11 +12,11 @@
         <div class="bienvenue"> 
             <div>
                 <div class="accroche">
-                    <h1 style='font-size: 45px; font-weight: semi-bold; min-height: 100px;'>
+                    <h1 class="hero-title">
                         <span id="typing-text"></span><span class="cursor"></span>
                     </h1>
 
-                    <p style='font-size: 18px; font-weight: 500; color: #fff;'>
+                    <p class="hero-subtitle">
                         EasyOrder vous connecte directement et explorer les produits pour négocier, commander et conclure vos achats simplement et rapidement.
                     </p>
                 </div>
@@ -32,10 +32,10 @@
                                                                             
     </section>
         
-    <section id="prq">
+    <section id="prq" class="reveal">
         <div class="fonction">
-            <h1>Pourquoi Nous ?</h1>
-            <p>
+            <h1 class="reveal reveal-delay-1">Pourquoi Nous ?</h1>
+            <p style="text-align: center;" class="reveal reveal-delay-2">
                 Une plateforme complète qui réunit
                 tous les acteurs du commerce en ligne pour 
                 des transactions sécurisées et efficaces
@@ -44,7 +44,8 @@
 
         <div class="fonction_grid_globale">
             <div id="fonction_grid">
-                <div class="section_fonction">
+                @php $delay = 1; @endphp
+                <div class="section_fonction reveal reveal-delay-{{ $delay++ }}">
                     <div class="fonction_details">
                         <i class="fa-solid fa-earth-africa"></i>
 
@@ -57,7 +58,8 @@
                         frontières.
                     </p>
                 </div>
-                <div class="section_fonction">
+                <!-- ... repeat for others or just add reveal classes manually ... -->
+                <div class="section_fonction reveal reveal-delay-{{ $delay++ }}">
                     <div class="fonction_details">
                         <i class="fa-solid fa-tags"></i>
 
@@ -68,7 +70,7 @@
                         Tous nos grossistes sont vérifiés pour garantir la qualité et la fiabilité de vos achats.
                     </p>
                 </div>
-                <div class="section_fonction">
+                <div class="section_fonction reveal reveal-delay-{{ $delay++ }}">
                     <div class="fonction_details">
                        <i class="fa-solid fa-shield-halved"></i>
 
@@ -79,7 +81,7 @@
                         Système de paiement sécurisé et suivi complet de vos commandes pour une tranquillité totale.
                     </p>
                 </div>
-                <div class="section_fonction">
+                <div class="section_fonction reveal reveal-delay-{{ $delay++ }}">
                     <div class="fonction_details">
                        <i class="fa-solid fa-comment-dots"></i>
 
@@ -90,7 +92,7 @@
                         Discutez directement avec les vendeurs pour finaliser vos commandes et négocier les détails.
                     </p>
                 </div>
-                <div class="section_fonction">
+                <div class="section_fonction reveal reveal-delay-{{ $delay++ }}">
                     <div class="fonction_details">
                         <i class="fa-solid fa-percent"></i>
 
@@ -101,7 +103,7 @@
                         Bénéficiez de tarifs grossistes avantageux et de promotions exclusives régulières.
                     </p>
                 </div>
-                <div class="section_fonction">
+                <div class="section_fonction reveal reveal-delay-{{ $delay++ }}">
                     <div class="fonction_details">
                         <i class="fa-solid fa-truck"></i>
 
@@ -116,14 +118,15 @@
         </div>
     </section>
 
-    <section class="process_section">
+    <section class="process_section reveal">
         <div class="fonction">
-            <h1>Comment ça marche</h1>
+            <h1 class="reveal reveal-delay-1">Comment ça marche</h1>
 
-            <P>Un processus simple et efficace pour commander vos produits en toute tranquilité</P>
+            <P class="reveal reveal-delay-2">Un processus simple et efficace pour commander vos produits en toute tranquilité</P>
         </div>
         <div class="process">
-            <div class="process_details">
+            @php $p_delay = 1; @endphp
+            <div class="process_details reveal reveal-delay-{{ $p_delay++ }}">
                 <i class="fa-solid fa-circle-user"></i>
                 <h6 class="numb">01</h6>
                 <h3>Créer votre compte</h3>
@@ -133,7 +136,7 @@
                     mondiaux.
                 </p>
             </div>
-            <div class="process_details">
+            <div class="process_details reveal reveal-delay-{{ $p_delay++ }}">
                 <i class="fa-solid fa-store"></i>
                 <h6 class="numb">02</h6>
                 <h3>Explorez les produits</h3>
@@ -142,16 +145,16 @@
                     Parcourez notre large sélection de produits par catégorie, prix ou boutique selon vos besoins.
                 </p>
             </div>
-            <div class="process_details">
+            <div class="process_details reveal reveal-delay-{{ $p_delay++ }}">
                 <i class="fa-solid fa-comments"></i>
                 <h6 class="numb">03</h6>
-                <h3>Discutez avec les vendeurs</h3>
+                <h3>Discussion avec vendeur</h3>
                 <br>
                 <p>
                     Communiquez directement avec les grossistes pour négocier les détails de votre commande.
                 </p>
             </div>
-            <div class="process_details">
+            <div class="process_details reveal reveal-delay-{{ $p_delay++ }}">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <h6 class="numb">04</h6>
                 <h3>Passez commande</h3>
@@ -162,14 +165,14 @@
             </div>
         </div>
 
-        <button class="btn_process">
+        <button class="btn_process reveal reveal-delay-1">
             En Savoir Plus
         </button>
     </section>
 
-    <section class="categorie_section">
+    <section class="categorie_section reveal">
         <div>
-            <h2 class="voir">
+            <h2 class="voir reveal reveal-delay-1">
                 Les Différentes catégories
             </h2>
         </div><br><br>
@@ -187,9 +190,9 @@
         </div>
     </section>
 
-    <section class="produits">
+    <section class="produits reveal">
         <div>
-            <h2>Les différentes Produits</h2>
+            <h2 class="reveal reveal-delay-1">Les différentes Produits</h2>
         </div>
 
         <div class="btq_content" id="taille">
@@ -315,6 +318,23 @@
             console.error('Erreur:', error);
         });
     }
+
+    // Scroll Reveal Logic
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+
+    window.addEventListener("scroll", reveal);
+    // Trigger once on load
+    reveal();
     </script>
 
 @endsection

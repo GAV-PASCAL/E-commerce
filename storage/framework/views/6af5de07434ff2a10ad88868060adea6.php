@@ -20,10 +20,9 @@
 
 <?php $__env->startSection('content'); ?>
 
-    <div id="page_structure">
-        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
-            <div style="height: 100vh;">
-                <?php if (isset($component)) { $__componentOriginal2ccf36a322409b76566b65fcab70ed9d = $component; } ?>
+    <div class="dashboard_container">
+        <div class="dashboard_sidebar_wrapper">
+            <?php if (isset($component)) { $__componentOriginal2ccf36a322409b76566b65fcab70ed9d = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal2ccf36a322409b76566b65fcab70ed9d = $attributes; } ?>
 <?php $component = App\View\Components\Client::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('client'); ?>
@@ -43,14 +42,13 @@
 <?php $component = $__componentOriginal2ccf36a322409b76566b65fcab70ed9d; ?>
 <?php unset($__componentOriginal2ccf36a322409b76566b65fcab70ed9d); ?>
 <?php endif; ?>
-            </div>
         </div> 
 
-        <div class="section_dash">
-            <button class="btn-edit">
+        <div class="dashboard_content">
+            <!-- <button class="btn-edit">
                 <i class="fa-solid fa-pen-to-square"></i>
                 Modifier
-            </button>
+            </button> -->
             <div id="back_formulaire">
                 <h4 class="info_form">Informations Personnelles</h4>
 
@@ -79,7 +77,6 @@
                 
             </div>            
         </div>
-
     </div>
 
 <?php $__env->stopSection(); ?>

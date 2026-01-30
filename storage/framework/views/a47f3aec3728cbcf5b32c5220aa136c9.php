@@ -22,11 +22,10 @@
 
 <?php $__env->startSection('content'); ?>
 
-    <div id="page_structure">
+    <div class="dashboard_container">
         
-        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
-            <div style="height: 100vh;">
-                <?php if (isset($component)) { $__componentOriginal2ccf36a322409b76566b65fcab70ed9d = $component; } ?>
+        <div class="dashboard_sidebar_wrapper">
+            <?php if (isset($component)) { $__componentOriginal2ccf36a322409b76566b65fcab70ed9d = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal2ccf36a322409b76566b65fcab70ed9d = $attributes; } ?>
 <?php $component = App\View\Components\Client::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('client'); ?>
@@ -46,10 +45,9 @@
 <?php $component = $__componentOriginal2ccf36a322409b76566b65fcab70ed9d; ?>
 <?php unset($__componentOriginal2ccf36a322409b76566b65fcab70ed9d); ?>
 <?php endif; ?>
-            </div>
         </div> 
 
-        <div class="section_dash">
+        <div class="dashboard_content">
 
             <div id="back_formulaire">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">

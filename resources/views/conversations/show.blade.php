@@ -79,7 +79,7 @@
 }
 
 .chat-wrapper {
-    flex: 1;
+    flex: 2;
     overflow: hidden;
     border: 2px solid #B45309;
     border-radius: 0 0 20px 20px;

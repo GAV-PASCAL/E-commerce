@@ -14,7 +14,8 @@
                     
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($message['produit']): ?>
                         <div class="message-produit">
-                            <strong>Produit:</strong> <?php echo e($message['produit']['nom']); ?> - <?php echo e(number_format($message['produit']['prix'], 0, ',', ' ')); ?> FCFA
+                            <strong>Produit:</strong> <?php echo e($message['produit']['nom']); ?> - <?php echo e(number_format($message['produit']['prix'], 0, ',', ' ')); ?> FCFA - <?php echo e($message['produit']['qte_min']); ?>
+
                         </div>
                     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                     

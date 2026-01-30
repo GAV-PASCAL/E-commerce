@@ -22,18 +22,16 @@
 
 @section('content')
 
-    <div id="page_structure">
-        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
-            <div style="height: 100vh;">
-                <x-client/>
-            </div>
+    <div class="dashboard_container">
+        <div class="dashboard_sidebar_wrapper">
+            <x-client/>
         </div> 
 
-        <div class="section_dash">
-            <button class="btn-edit">
+        <div class="dashboard_content">
+            <!-- <button class="btn-edit">
                 <i class="fa-solid fa-pen-to-square"></i>
                 Modifier
-            </button>
+            </button> -->
             <div id="back_formulaire">
                 <h4 class="info_form">Informations Personnelles</h4>
 
@@ -62,7 +60,6 @@
                 
             </div>            
         </div>
-
     </div>
 
 @endsection

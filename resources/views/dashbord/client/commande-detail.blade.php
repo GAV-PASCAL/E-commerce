@@ -22,15 +22,13 @@
 
 @section('content')
 
-    <div id="page_structure">
+    <div class="dashboard_container">
         
-        <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
-            <div style="height: 100vh;">
-                <x-client/>
-            </div>
+        <div class="dashboard_sidebar_wrapper">
+            <x-client/>
         </div> 
 
-        <div class="section_dash">
+        <div class="dashboard_content">
 
             <div id="back_formulaire">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">

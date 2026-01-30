@@ -14,7 +14,7 @@
                     
                     @if($message['produit'])
                         <div class="message-produit">
-                            <strong>Produit:</strong> {{ $message['produit']['nom'] }} - {{ number_format($message['produit']['prix'], 0, ',', ' ') }} FCFA
+                            <strong>Produit:</strong> {{ $message['produit']['nom'] }} - {{ number_format($message['produit']['prix'], 0, ',', ' ') }} FCFA - {{ $message['produit']['qte_min'] }}
                         </div>
                     @endif
                     

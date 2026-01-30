@@ -715,7 +715,7 @@ body {
 .info_form {
     background-color: var(--primary-color);
     color: white;
-    width: 35%;
+    width: 50%;
     padding: 7px 10px;
     box-shadow: 3px 5px 1px #FFF;
 }
@@ -771,6 +771,10 @@ body {
     box-shadow: 2px 2px 3px #92400E;
     padding: 0rem 0rem 1rem 0rem;
     position: relative;
+    background-color: var(--accent-hover);
+}
+
+.produits {
     background-color: var(--accent-hover);
 }
 
@@ -1939,54 +1943,360 @@ th {
         padding: 0 10px;
     }
 
-    /* Adjust product card contents for small grid */
-    .section_produit_details {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
-
-    .produit_image {
-        height: 120px;
-        /* Smaller images */
-        border-radius: 10px 10px 0 0;
-    }
-
-    .image_info {
-        padding: 8px;
-    }
-
-    .image_info h4 {
-        font-size: 14px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .prix_produit {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .prix_fixe {
-        font-size: 14px;
-    }
-
-    .btn_section {
-        flex-direction: column;
-        gap: 5px;
-        padding: 5px;
-    }
-
-    .btn_discussion {
-        font-size: 12px;
-        padding: 5px;
-    }
-
-    /* Hide specific sidebar elements if needed or adjust */
     /* .trie_section nav { display: flex; flex-direction: column; gap: 5px; } */
     #btq_trie_option {
         width: 100%;
         margin: 5px 0;
+    }
+}
+
+/* =========================================
+   Client Dashboard Styles (Responsive)
+   ========================================= */
+
+/* Ensure Header is Fix and Top aligned (Global or here) */
+.title_dash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    /* Other styles already defined in .title_dash block but ensuring z-index */
+}
+
+.dashboard_container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    margin-top: 80px;
+    /* Offset fixed header */
+}
+
+.dashboard_sidebar_wrapper {
+    /* Desktop Fixed Sidebar */
+    position: fixed;
+    top: 80px;
+    /* Match margin-top of container or header height + gap */
+    left: 0;
+    width: 22%;
+    height: calc(100vh - 80px);
+    background-color: #B45309;
+    border-right: 1px solid #B45309;
+    overflow-y: auto;
+    z-index: 40;
+}
+
+.client_sidebar_container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    color: white;
+    min-height: 100%;
+    /* Ensure full height usage */
+}
+
+.profile_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.profile_avatar {
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-fonce);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+    margin-bottom: 10px;
+}
+
+.profile_initials {
+    font-size: 30px;
+    color: white;
+    margin: 0;
+}
+
+.profile_name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.client_navigation {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+}
+
+.client_nav_wrapper {
+    width: 100%;
+}
+
+.scroll_indicator {
+    display: none;
+    /* Hide on desktop */
+}
+
+.mobile_fav_icon_sidebar {
+    display: none;
+}
+
+.dash_nav_btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    border: 1px solid transparent;
+}
+
+.dash_nav_btn:hover,
+.dash_nav_btn.active {
+    background-color: white;
+    color: var(--primary-color);
+    transform: translateX(5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dash_nav_btn i {
+    width: 20px;
+}
+
+.client_logout {
+    margin-top: auto;
+    /* Push to bottom */
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    /* Add padding at bottom for scroll */
+}
+
+.dash_logout_btn {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #92400E;
+    /* Darker shade */
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.dash_logout_btn:hover {
+    background-color: #7c340b;
+    border-color: white;
+}
+
+.dashboard_content {
+    /* Push content to right because sidebar is fixed */
+    margin-left: 22%;
+    width: 78%;
+    padding: 30px;
+}
+
+/* Mobile Dashboard Responsiveness */
+@media screen and (max-width: 880px) {
+    .dashboard_container {
+        flex-direction: column;
+        margin-top: 70px;
+        /* Match header height */
+    }
+
+    .dashboard_sidebar_wrapper {
+        /* Mobile: Sidebar becomes top nav, not fixed to avoid taking too much screen */
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #92400E;
+        overflow-y: visible;
+        z-index: 40;
+    }
+
+    .client_sidebar_container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 15px;
+        justify-content: space-between;
+        min-height: auto;
+        padding-bottom: 0;
+        /* Adjust padding */
+    }
+
+    .profile_section {
+        flex-direction: row;
+        gap: 15px;
+        margin-bottom: 0;
+        margin-right: auto;
+        align-items: center;
+        /* Ensure alignment */
+    }
+
+    .mobile_fav_icon_sidebar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        background-color: white;
+        color: var(--primary-color);
+        border-radius: 50%;
+        margin-left: 10px;
+        text-decoration: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+    }
+
+    .profile_avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .profile_initials {
+        font-size: 20px;
+    }
+
+    .profile_name {
+        font-size: 16px;
+    }
+
+    /* Navigation horizontal scroll on mobile */
+    .client_navigation {
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+        padding: 15px 0;
+        gap: 10px;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .client_navigation::-webkit-scrollbar {
+        display: none;
+    }
+
+    .client_nav_wrapper {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        /* Ensure arrow stays within bounds */
+    }
+
+    .scroll_indicator {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: linear-gradient(to left, #B45309 60%, transparent);
+        height: 100%;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        pointer-events: auto;
+        /* Make it clickable */
+        opacity: 0.9;
+        animation: pulseArrow 1.5s infinite;
+        cursor: pointer;
+        /* Show it's clickable */
+    }
+
+    @keyframes pulseArrow {
+        0% {
+            transform: translateY(-50%) translateX(0);
+            opacity: 0.8;
+        }
+
+        50% {
+            transform: translateY(-50%) translateX(3px);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(-50%) translateX(0);
+            opacity: 0.8;
+        }
+    }
+
+
+
+    .dash_nav_btn {
+        flex: 0 0 auto;
+        padding: 8px 15px;
+        font-size: 14px;
+        border-radius: 20px;
+        /* Pill shape */
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .dash_nav_btn:hover,
+    .dash_nav_btn.active {
+        transform: none;
+        background-color: white;
+        color: var(--primary-color);
+    }
+
+    .client_logout {
+        padding-top: 0;
+        padding-bottom: 0;
+        width: auto;
+        margin-left: 10px;
+        margin-top: 0;
+    }
+
+    .dash_logout_btn {
+        padding: 8px 15px;
+        font-size: 14px;
+        width: auto;
+        white-space: nowrap;
+    }
+
+    .dashboard_content {
+        /* Reset content margin on mobile */
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .fa-heart {
+        position: relative;
+        top: 0;
+        font-size: 18px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .fa-heart:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .fa-heart.active {
+        background-color: #D2B48C;
+        /* Café-clair */
+        color: #92400E;
+        animation: heartBeat 0.3s ease;
     }
 }

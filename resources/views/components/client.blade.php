@@ -1,27 +1,55 @@
-<header style="flex-basis: 25%;">
-    <div class="sidebar">
-        <div class="profile">
-                    <!-- <img src="../logo.png" alt="" class="profile_img"> -->
-            <h2 class="profile_indice">
+<div class="client_sidebar_container">
+    <div class="profile_section">
+        <div class="profile_avatar">
+            <h2 class="profile_initials">
                 {{ strtoupper(mb_substr(Auth::user()->nom, 0, 1)) }}{{ strtoupper(mb_substr(Auth::user()->prenom, 0, 1)) }}
             </h2>
-                </div>
-                <div class="side_navigation">
-                    <nav id="sidebar_navigation">
-                        <a href=" {{ route('dashbord.client.information') }} " class="nav_link {{ request()->routeIs('dashbord.client.information') ? 'active' : '' }}" id="option_navigation">Informations Personnelles</a>
+        </div>
+        <p class="profile_name">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</p>
+    </div>
 
-                        <a href="{{ route('favoris.index') }}" class="nav_link {{ request()->routeIs('favoris.index') ? 'active' : '' }}" id="option_navigation">Favoris</a>
+    <div class="client_nav_wrapper">
+        <div class="client_navigation" id="clientNavigation">
+            <a href="{{ route('dashbord.client.information') }}" class="dash_nav_btn {{ request()->routeIs('dashbord.client.information') ? 'active' : '' }}">
+                <i class="fa-solid fa-user"></i> Informations Personnelles
+            </a>
 
-                        <a href="{{ route('client.commandes') }}" class="nav_link {{ request()->routeIs('client.commandes') ? 'active' : '' }}" id="option_navigation">Commandes</a> 
+            <a href="{{ route('favoris.index') }}" class="dash_nav_btn {{ request()->routeIs('favoris.index') ? 'active' : '' }}">
+                <i class="fa-solid fa-heart"></i> Favoris
+            </a>
 
-                        <a href=" {{ route('conversations.index') }} " class="nav_link {{ request()->routeIs('conversations.index') ? 'active' : '' }}" id="option_navigation">Messagerie</a>
+            <a href="{{ route('client.commandes') }}" class="dash_nav_btn {{ request()->routeIs('client.commandes') ? 'active' : '' }}">
+                <i class="fa-solid fa-box"></i> Commandes
+            </a> 
 
-                    </nav>
+            <a href="{{ route('conversations.index') }}" class="dash_nav_btn {{ request()->routeIs('conversations.index') ? 'active' : '' }}">
+                <i class="fa-solid fa-envelope"></i> Messagerie
+            </a>
+        </div>
+        <div class="scroll_indicator" onclick="scrollNavigation()">
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+    </div>
 
-                    <form method="POST" action="{{ route('logout') }}" style="display:inline;">
-                        @csrf
-                        <button type="submit" id="btn_deconnexion" >Se déconnecter</button>
-                    </form>
-                </div>
-            </div>
-        </header>
+    <div class="client_logout">
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="dash_logout_btn">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Se déconnecter
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+function scrollNavigation() {
+    const nav = document.getElementById('clientNavigation');
+    if (nav) {
+        // Scroll by 200px to the right
+        nav.scrollBy({
+            left: 200,
+            behavior: 'smooth'
+        });
+    }
+}
+</script>

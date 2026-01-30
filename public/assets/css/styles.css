@@ -34,6 +34,8 @@ body {
     border-radius: 0 0 20px 20px;
     box-shadow: 0 5px 9px rgba(0, 0, 0, 0.1);
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 20;
 }
 
@@ -1394,5 +1396,389 @@ th {
         height: 36px;
         padding: 0 10px;
         font-size: 0.9rem;
+    }
+}
+
+/* =========================================
+   Responsive Header & Mobile Menu Styles
+   ========================================= */
+
+/* Desktop defaults */
+.menu_toggle {
+    display: none;
+    /* Hidden on desktop */
+}
+
+/* Mobile Breakpoint */
+@media screen and (max-width : 880px) {
+
+    /* Hide desktop navigation elements */
+    .desktop_menu {
+        display: none !important;
+    }
+
+    /* Show burger menu */
+    .menu_toggle {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+        color: black;
+        transition: 0.3s ease;
+    }
+
+    .menu_toggle:hover {
+        color: var(--primary-color);
+    }
+
+    /* Adjust header layout */
+    .tete {
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        margin: 0;
+    }
+}
+
+/* Mobile Menu Overlay */
+.mobile_menu_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    /* Clean white background */
+    z-index: 9999;
+    transform: translateX(100%);
+    /* Start off-screen right */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Smooth eased animation */
+    display: flex;
+    flex-direction: column;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.mobile_menu_overlay.active {
+    transform: translateX(0);
+    /* Slide in */
+}
+
+.mobile_menu_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: white;
+}
+
+.close_menu_btn {
+    font-size: 2.2rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.close_menu_btn:hover {
+    transform: rotate(90deg);
+}
+
+.mobile_menu_links {
+    list-style: none;
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.mobile_menu_links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.4rem;
+    font-weight: 600;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.mobile_menu_links a:not(.mobile_btn_login):not(.mobile_btn_logout):hover {
+    color: var(--primary-color);
+    padding-left: 10px;
+    /* Slight shift effect */
+    border-bottom: 1px solid var(--accent-hover);
+}
+
+/* Mobile Auth Buttons */
+.mobile_btn_login {
+    background-color: var(--primary-color);
+    color: white !important;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(180, 83, 9, 0.2);
+    transition: transform 0.2s;
+}
+
+.mobile_btn_login:active {
+    transform: scale(0.98);
+}
+
+.mobile_btn_logout {
+    background-color: #ef4444;
+    /* Red for logout */
+    color: white !important;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* =========================================
+   Homepage Responsive Styles
+   ========================================= */
+
+@media screen and (max-width: 880px) {
+
+    /* Hero Section */
+    #accueil {
+        height: auto;
+        min-height: 500px;
+        padding-bottom: 50px;
+        background-position: center;
+    }
+
+    .bienvenue {
+        padding-top: 100px;
+        /* Offset for fixed header */
+        height: auto;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .accroche {
+        margin: 0 5%;
+        margin-top: 30px;
+    }
+
+    .accroche h1 {
+        font-size: 32px !important;
+        /* Smaller title on mobile */
+        min-height: auto !important;
+    }
+
+    .info_accueil {
+        margin-top: 30px;
+    }
+
+    .accueil_rapide {
+        flex-direction: column;
+        gap: 15px;
+        width: 80%;
+    }
+
+    .btn_rapide,
+    .btn_rapide_change {
+        width: 100%;
+        display: block;
+    }
+
+    /* Features Section (Pourquoi Nous) */
+    .fonction_grid_globale {
+        padding: 0 10px;
+    }
+
+    #fonction_grid {
+        grid-template-columns: 1fr;
+        /* 1 column on mobile */
+        row-gap: 30px;
+    }
+
+    .section_fonction {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        height: auto;
+        padding: 20px 10px;
+    }
+
+    /* How it works (Comment ça marche) */
+    .process {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .process_details {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* Categories */
+    .categorie_section {
+        padding: 20px 5px;
+    }
+
+    .category-card {
+        flex: 0 0 33.33% !important;
+        /* 3 Items visible on mobile */
+        max-width: 33.33% !important;
+    }
+
+    .dim_image {
+        width: 100px;
+        height: 100px;
+        border-width: 1px;
+    }
+
+    .voir {
+        font-size: 18px;
+        /* Smaller text for category names */
+    }
+
+    /* Products Grid */
+    .btq_content {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        /* Smaller cards on mobile */
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .section_produit_details {
+        width: 100%;
+        /* Take available space */
+        height: auto;
+        padding-bottom: 15px;
+    }
+
+    .produit_image {
+        height: 140px;
+    }
+
+    .btn_section {
+        flex-direction: column;
+        gap: 5px;
+        padding: 0 5px;
+    }
+
+    .btn_discussion {
+        width: 100%;
+    }
+
+    /* Avant-pied */
+    .av {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .av_img {
+        width: 100%;
+        height: auto;
+    }
+
+    .av_guide {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    /* Footer */
+    /* Footer Responsive Compact Row */
+    .footer {
+        flex-direction: row;
+        /* Force row like desktop */
+        flex-wrap: nowrap;
+        /* Prevent wrapping */
+        justify-content: space-between;
+        text-align: left;
+        align-items: flex-start;
+        padding: 10px 5px;
+        /* Minimal padding */
+        gap: 5px;
+        /* Minimal gap */
+    }
+
+    .footer_logo,
+    .footer_lien {
+        width: auto;
+        margin: 0;
+        flex: 1;
+        /* Equal distribution */
+        min-width: 0;
+        /* Allow shrinking */
+    }
+
+    .footer_logo {
+        display: none;
+        /* Often too big for row on mobile, but user wants identical. Let's try to keep it but hidden description */
+        /* If user insists on identical, hiding is risky. Let's show it extremely small. */
+        display: flex;
+        flex-direction: column;
+        flex: 0.8;
+        /* Give logo slightly less space */
+    }
+
+    .footer_logo img {
+        width: 50px;
+        height: auto;
+        margin-bottom: 5px;
+    }
+
+    .footer_logo p {
+        font-size: 8px;
+    }
+
+    .footer_lien h4 {
+        margin-bottom: 5px;
+        font-size: 10px;
+        /* Tiny headers */
+        font-weight: 700;
+    }
+
+    .footer_lien a,
+    .footer_lien p {
+        display: block;
+        margin-bottom: 2px;
+        font-size: 9px;
+        /* Tiny links */
+        line-height: 1.2;
+    }
+
+    /* Newsletter adjustments */
+    .footer_lien:last-child {
+        width: auto;
+        margin-top: 0;
+        flex: 1.2;
+        /* Give newsletter more space */
+    }
+
+    .letters_mail {
+        width: 100%;
+        font-size: 8px;
+        padding: 2px;
+        height: 20px;
+        margin-bottom: 2px;
+    }
+
+    .footer_lien .button_connection {
+        font-size: 8px;
+        padding: 2px 5px;
+        height: auto;
+        width: 100%;
+    }
+
+    /* General Text Adjustments */
+    .titre_page {
+        font-size: 28px;
+        letter-spacing: 2px;
     }
 }

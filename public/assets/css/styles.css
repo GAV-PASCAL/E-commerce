@@ -187,7 +187,7 @@ h6 {
 
 
 .button_connection:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     border: white;
     color: white;
     border: 1px solid var(--primary-fonce);
@@ -1827,7 +1827,7 @@ th {
     }
 
     .section_produit_details {
-        width: 100%;
+        width: 90%;
         /* Take available space */
         height: auto;
         padding-bottom: 15px;
@@ -3030,6 +3030,22 @@ th {
         width: 100% !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
+    }
+
+    /* Stack products in 1 column to avoid overflow on very small screens */
+    .btq_content {
+        grid-template-columns: 1fr !important;
+        padding: 0 20px;
+    }
+
+    .produit_image {
+        height: 250px !important;
+        width: 100% !important;
+        margin: 0 30px;
+    }
+
+    .section_produit_details {
+        margin-bottom: 20px;
     }
 }
 

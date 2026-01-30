@@ -37,6 +37,16 @@ class DatabaseSeeder extends Seeder
         );
 
         User::firstOrCreate(
+            ['email' => 'vendeur@gmail.com'],
+            [
+                'nom' => 'Vendeur',
+                'prenom' => 'Principal',
+                'role_id' => $adminRole->id,
+                'password' => 'vendeur1234',
+            ]
+        );
+
+        User::firstOrCreate(
             ['email' => 'client@gmail.com'],
             [
                 'nom' => 'Client',

@@ -114,8 +114,9 @@ body {
     color: white;
     font-size: 20px;
     width: 100%;
-    padding: 90px 0 20px 0;
+    padding: 90px 20px 20px 20px;
     background-color: #B45309;
+    text-align: center;
 }
 
 .info_accueil {
@@ -1780,5 +1781,212 @@ th {
     .titre_page {
         font-size: 28px;
         letter-spacing: 2px;
+    }
+
+    /* Comment ça marche Responsive (Marche Page) */
+
+    /* Override flex direction for the main rows to stack vertically */
+    #exp_sup {
+        flex-direction: column;
+        padding: 30px 15px;
+        gap: 40px;
+        width: 100%;
+        height: auto;
+        /* Override any fixed height if present */
+    }
+
+    /* Use order to force text/number content to always appear ABOVE the image on mobile */
+    #exp_sup .exp_content {
+        order: -1;
+        width: 100%;
+    }
+
+    /* Reset fixed width containers to be fluid */
+    .exp_dim {
+        width: 100%;
+    }
+
+    /* Ensure images scale correctly */
+    .exp_img {
+        width: 100%;
+        max-width: 100%;
+        /* Allow full width */
+        height: auto;
+        margin-top: 20px;
+    }
+
+    /* Adjust inner flex containers if needed */
+    .exp_content div.exp {
+        justify-content: flex-start;
+        /* Align number and title to start/center as preferred */
+    }
+
+    /* Global center alignment for text in these sections on mobile usually looks better */
+    .exp_dim p {
+        text-align: left;
+        /* Keep readable */
+        font-size: 16px;
+        text-align: center;
+    }
+}
+
+/* =========================================
+   Product Page Responsive (Mobile Filter)
+   ========================================= */
+
+/* Default Desktop Styles (Hidden Elements) */
+.mobile_filter_btn {
+    display: none;
+}
+
+.mobile_filter_header {
+    display: none;
+}
+
+.filter_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    display: none;
+}
+
+@media screen and (max-width: 880px) {
+
+    /* Filter Toggle Button */
+    .mobile_filter_btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-left: 10px;
+        /* Space from search input */
+    }
+
+    .btq_rapide {
+        display: flex;
+        align-items: center;
+        margin: 20px 5% 20px 5%;
+        /* Adjust margins */
+    }
+
+    .btq_search {
+        flex: 1;
+        /* Take remaining space */
+        width: auto;
+    }
+
+    /* Sidebar Filter - Off Canvas */
+    .section_side {
+        margin: 0;
+        display: block;
+        /* Remove flex constraint */
+    }
+
+    .sidebar_filtre {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        /* Hidden by default */
+        width: 85%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: white;
+        z-index: 10000;
+        padding: 20px;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+        transition: left 0.3s ease-in-out;
+        overflow-y: auto;
+        border-radius: 0;
+        /* Reset radius */
+    }
+
+    .sidebar_filtre.active {
+        left: 0;
+        /* Slide in */
+    }
+
+    .mobile_filter_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+    }
+
+    .mobile_filter_header i {
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    /* Product Grid - 2 Columns */
+    .btq_content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) !important;
+        /* Force 2 columns */
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    /* Adjust product card contents for small grid */
+    .section_produit_details {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .produit_image {
+        height: 120px;
+        /* Smaller images */
+        border-radius: 10px 10px 0 0;
+    }
+
+    .image_info {
+        padding: 8px;
+    }
+
+    .image_info h4 {
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .prix_produit {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .prix_fixe {
+        font-size: 14px;
+    }
+
+    .btn_section {
+        flex-direction: column;
+        gap: 5px;
+        padding: 5px;
+    }
+
+    .btn_discussion {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    /* Hide specific sidebar elements if needed or adjust */
+    /* .trie_section nav { display: flex; flex-direction: column; gap: 5px; } */
+    #btq_trie_option {
+        width: 100%;
+        margin: 5px 0;
     }
 }

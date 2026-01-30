@@ -42,10 +42,17 @@
         <form method="GET" action="<?php echo e(route('produits.liste')); ?>">
             <div class="btq_rapide">
                 <input type="search" name="search" placeholder="Rechercher Produits..." class="btq_search" value="<?php echo e(request('search')); ?>">
+                <button type="button" class="mobile_filter_btn" onclick="toggleFilterSidebar()">
+                    <i class="fa-solid fa-filter"></i>
+                </button>
             </div>
 
             <div class="section_side">
-                <div class="sidebar_filtre">
+                <div class="sidebar_filtre" id="sidebar_filtre">
+                    <div class="mobile_filter_header">
+                        <h3>Filtres</h3>
+                        <i class="fa-solid fa-xmark" onclick="toggleFilterSidebar()"></i>
+                    </div>
                     <div>
                         <h3 class="filtre">Filtre</h3>
                         <div class="trie_section">
@@ -244,6 +251,31 @@
         });
     }
 
+    function toggleFilterSidebar() {
+        const sidebar = document.getElementById('sidebar_filtre');
+        sidebar.classList.toggle('active');
+        
+        // Prevent body scrolling when filter is open
+        if (sidebar.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+            // Insert overlay if not exists
+            if (!document.getElementById('filter_overlay')) {
+                const overlay = document.createElement('div');
+                overlay.id = 'filter_overlay';
+                overlay.className = 'filter_overlay';
+                overlay.onclick = toggleFilterSidebar;
+                document.body.appendChild(overlay);
+            } else {
+                 document.getElementById('filter_overlay').style.display = 'block';
+            }
+        } else {
+            document.body.style.overflow = 'auto';
+            if (document.getElementById('filter_overlay')) {
+                document.getElementById('filter_overlay').style.display = 'none';
+            }
+        }
+    }
+    
     // Recherche client-side instantanée
     const searchInput = document.querySelector('.btq_search');
     const productItems = document.querySelectorAll('.section_produit_details');

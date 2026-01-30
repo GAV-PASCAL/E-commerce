@@ -538,8 +538,9 @@ h6 {
 }
 
 #exp_sup {
-    padding: 2rem;
+    padding: 4rem 2rem;
     justify-content: space-around;
+    margin-bottom: 50px;
 }
 
 .exp_dim {
@@ -1036,9 +1037,11 @@ th {
     transition: 0.7s ease-in-out;
 }
 
-#btq_trie_option:hover {
+#btq_trie_option:hover,
+#btq_trie_option.active {
     background-color: var(--primary-color);
     color: white;
+    border-color: var(--primary-color);
     transform: scaleY(1.1);
 }
 
@@ -1212,6 +1215,20 @@ th {
 
 .section_formulaire_two {
     flex-basis: 50%;
+}
+
+.box_affiche {
+    background-color: var(--accent-hover);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(146, 64, 14, 0.1);
+}
+
+.box_affiche:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
 
 .inscription {
@@ -1427,13 +1444,48 @@ th {
 /* Pagination styles */
 .pagination-container {
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Override Bootstrap flex behavior to center everything */
+.pagination-container nav {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+}
+
+.pagination-wrapper-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+.pagination-links {
     display: flex;
     justify-content: center;
-    text-align: center;
-    align-items: center;
-    margin-bottom: 4rem;
+    width: 100%;
 }
+
+/* Ensure info text is also centered */
+.pagination-info {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+
+
 
 .pagination {
     display: flex;
@@ -1451,52 +1503,58 @@ th {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    min-width: 40px;
-    height: 40px;
-    border-radius: 8px;
+    min-width: 42px;
+    height: 42px;
+    padding: 0 12px;
+    border-radius: 12px;
     background-color: white;
     color: var(--primary-color);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 0.95rem;
     border: 1px solid #e5e7eb;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-sm);
 }
 
 .page-item.active .page-link {
     background-color: var(--primary-color);
     color: white;
     border-color: var(--primary-color);
-    box-shadow: 0 2px 4px rgba(180, 83, 9, 0.2);
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0;
-}
-
-.page-item .page-link:hover:not(.active) {
-    background-color: var(--accent-hover);
-    border-color: var(--primary-color);
-    color: var(--primary-fonce);
-    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(180, 83, 9, 0.3);
 }
 
 .page-item.disabled .page-link {
-    color: #9ca3af;
-    pointer-events: none;
     background-color: #f9fafb;
-    border-color: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+    border-color: #f3f4f6;
+}
+
+.page-item .page-link:hover:not(.active):not(.disabled) {
+    background-color: var(--primary-soft);
+    border-color: var(--primary-color);
+    color: var(--primary-fonce);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.pagination-info {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.pagination-info span {
+    font-weight: 700;
+    color: var(--text-main);
 }
 
 /* Specific styles for previous/next arrows if they use icons or text */
 .page-item:first-child .page-link,
 .page-item:last-child .page-link {
-    font-size: 2rem;
-    align-items: center;
-    justify-content: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    display: flex;
 }
 
 /* Responsive adjustments */
@@ -2991,6 +3049,28 @@ img {
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 1s ease-out;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 1s ease-out;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .reveal-delay-1 {

@@ -21,8 +21,8 @@
 
 @section('content')
 
-<div class="exp" id="exp_sup">
-        <div class="exp_content">
+<div class="exp reveal" id="exp_sup">
+        <div class="exp_content box_affiche reveal-delay-1">
             <div class="exp_dim">
                 <div class="exp">
                     <h2 class="exp_option">1</h2>
@@ -33,7 +33,7 @@
                     Inscrivez-vous gratuitement en quelques 
                     secondes. Remplissez vos informations de base 
                     et commencez à explorer notre plateforme. 
-                    Aucune carte bancaire n\'est requise pour l\'inscription.
+                    Aucune carte bancaire n'est requise pour l'inscription.
                 </p>
             </div>
             <div>
@@ -52,18 +52,18 @@
             </div>
         </div>
 
-        <div>
+        <div class="reveal-delay-2">
             <img src=" {{asset('assets/img/connexion.png')}} " alt="" class="exp_img">
         </div>
     </div>
 
 
     <div class="exp" id="exp_sup">
-        <div>
+        <div class="reveal-left">
             <img src="{{ asset('assets/img/parcours.png')}}" alt="" class="exp_img">
         </div>
 
-         <div class="exp_content">
+         <div class="exp_content box_affiche reveal-right">
             <div class="exp_dim">
                 <div class="exp">
                     <h2 class="exp_option">2</h2>
@@ -88,7 +88,7 @@
                 </div><br>
                 <div class="exp">
                     <i class="fa-solid fa-check"></i>
-                    <p>Recherche intelligente et rapide/p>
+                    <p>Recherche intelligente et rapide</p>
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
 
 
     <div class="exp" id="exp_sup">
-        <div class="exp_content">
+        <div class="exp_content box_affiche reveal-left">
             <div class="exp_dim">
                 <div class="exp">
                     <h2 class="exp_option">3</h2>
@@ -104,7 +104,7 @@
                 </div>
 
                 <p>
-                    Communiquez directement avec les 
+                    Communiquez directement with les 
                     vendeurs via notre système de messagerie 
                     intégré. Posez vos questions, négociez les prix 
                     et finalisez les détails de votre commande.
@@ -126,17 +126,17 @@
             </div>
         </div>
 
-        <div>
+        <div class="reveal-right">
             <img src=" {{asset('assets/img/connexion.png')}} " alt="" class="exp_img">
         </div>
     </div>
 
     <div class="exp" id="exp_sup">
-        <div>
+        <div class="reveal-left">
             <img src=" {{asset('assets/img/commder.png')}} " alt="" class="exp_img">
         </div>
 
-         <div class="exp_content">
+        <div class="exp_content box_affiche reveal-right">
             <div class="exp_dim">
                 <div class="exp">
                     <h2 class="exp_option">4</h2>
@@ -169,5 +169,22 @@
 
 
     <x-footer/>
+
+    <script>
+    function reveal() {
+        let reveals = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+        for (let i = 0; i < reveals.length; i++) {
+            let windowHeight = window.innerHeight;
+            let elementTop = reveals[i].getBoundingClientRect().top;
+            let elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+
+    window.addEventListener("scroll", reveal);
+    reveal();
+    </script>
 
 @endsection('content')

@@ -59,13 +59,13 @@
                             <p>Trier par</p>
 
                             <nav id="sidebar_navigation">
-                                <button type="submit" name="sort" value="populaire" id="btq_trie_option">Plus populaire</button>
+                                <button type="submit" name="sort" value="populaire" class="<?php echo e(request('sort') == 'populaire' ? 'active' : ''); ?>" id="btq_trie_option">Plus populaire</button>
                     
-                                <button type="submit" name="sort" value="prix_asc" id="btq_trie_option">Prix croissant</button>
+                                <button type="submit" name="sort" value="prix_asc" class="<?php echo e(request('sort') == 'prix_asc' ? 'active' : ''); ?>" id="btq_trie_option">Prix croissant</button>
                         
-                                <button type="submit" name="sort" value="prix_desc" id="btq_trie_option">Prix décroissant</button>
+                                <button type="submit" name="sort" value="prix_desc" class="<?php echo e(request('sort') == 'prix_desc' ? 'active' : ''); ?>" id="btq_trie_option">Prix décroissant</button>
 
-                                <button  type="submit" name="sort" value="recent" id="btq_trie_option">Plus récents</button>
+                                <button type="submit" name="sort" value="recent" class="<?php echo e(request('sort') == 'recent' || !request('sort') ? 'active' : ''); ?>" id="btq_trie_option">Plus récents</button>
                             </nav>
                         </div>
                         <div class="trie_categorie">

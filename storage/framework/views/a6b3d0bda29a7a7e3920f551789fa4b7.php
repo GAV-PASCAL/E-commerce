@@ -9,7 +9,7 @@
             </div>
              
             <div>
-                <button class="button_connection" onClick="window.location.href = '/boutique'" >Explorer les produits</button>
+                <button class="button_connection" onClick="window.location.href = '/produits'" >Explorer les produits</button>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
             <h4>Liens Rapide</h4>
             <a href=" <?php echo e(url('/')); ?> " id="a">Accueil</a>
             <a href=" <?php echo e(url('/savoir')); ?> " id="a">Comment ça marche</a>
-            <a href=" <?php echo e(url('/boutique')); ?> " id="a">Produits</a>
+            <a href=" <?php echo e(url('/produits')); ?> " id="a">Produits</a>
             <a href=" <?php echo e(url('/conversations')); ?> " id="a">Message</a>
             <a href=" <?php echo e(url('/favoris')); ?> " id="a">Favoris</a>
         </div>
@@ -44,7 +44,7 @@
             <h4>Condiction</h4>
             <a href=" <?php echo e(url('/aide')); ?> " id="a">Centre d'aide</a>
             <a href=" <?php echo e(url('/condiction')); ?> " id="a">Condiction d'usage</a>
-            <a href=" <?php echo e(url('/confidentialite')); ?> " id="a">Politique de confidentialité</a>
+            <a href=" <?php echo e(route('politique.confidentialite')); ?> " id="a">Politique de confidentialité</a>
             <a href=" <?php echo e(url('/contact')); ?> " id="a">Nous Contacter</a>
             <a href=" <?php echo e(url('/faq')); ?> " id="a">FAQ</a>
         </div>

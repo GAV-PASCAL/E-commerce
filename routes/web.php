@@ -19,6 +19,9 @@ Route::get('/savoir', function () {
 
 Route::get('/produits', [ProduitController::class, 'liste'])->name('produits.liste');
 Route::get('/produit/{id}', [ProduitController::class, 'show'])->name('produit.show');
+Route::get('/politique-confidentialite', function () {
+    return view('politique-confidentialite');
+})->name('politique.confidentialite');
 
 
 

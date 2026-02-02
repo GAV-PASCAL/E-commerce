@@ -24,8 +24,8 @@
 
             <div class="info_accueil">
                 <div class="accueil_rapide">
-                    <button class="btn_rapide">Découvrez les produits</button>
-                    <button class="btn_rapide_change">Comment ça marche</button>
+                    <button class="btn_rapide" onclick="window.location.href='{{ route('produits.liste') }}'">Découvrez les produits</button>
+                    <button class="btn_rapide_change" onclick="window.location.href='/savoir'">Comment ça marche</button>
                 </div>
             </div>
         </div>
@@ -165,7 +165,7 @@
             </div>
         </div>
 
-        <button class="btn_process reveal reveal-delay-1">
+        <button class="btn_process reveal reveal-delay-1" onclick="window.location.href='/savoir'">
             En Savoir Plus
         </button>
     </section>

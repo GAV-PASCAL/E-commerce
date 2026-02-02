@@ -3038,10 +3038,17 @@ th {
         padding: 0 20px;
     }
 
+    .btq_section_image {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
     .produit_image {
         height: 250px !important;
         width: 100% !important;
-        margin: 0 30px;
+        object-fit: contain !important;
+        margin: 0 auto !important;
     }
 
     .section_produit_details {

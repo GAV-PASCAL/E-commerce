@@ -99,6 +99,16 @@
                         class="formulaire_input" 
                         minlength="8"
                         required>
+                <div style="margin: 20px 0; display: flex; align-items: flex-start; gap: 10px;">
+                    <input 
+                        type="checkbox" 
+                        name="politique_confidentialite" 
+                        id="politique_confidentialite" 
+                        required 
+                        style="margin-top: 5px; cursor: pointer;">
+                    <label for="politique_confidentialite" style="font-size: 0.9rem; color: #4b5563; cursor: pointer;">
+                        J'ai lu et j'accepte la <a href="<?php echo e(route('politique.confidentialite')); ?>" target="_blank" style="color: var(--primary-color); font-weight: 600;">politique de confidentialité</a> d'EasyOrder.
+                    </label>
                 </div>
 
                 <div>

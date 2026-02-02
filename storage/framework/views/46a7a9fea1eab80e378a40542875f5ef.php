@@ -57,7 +57,7 @@
     <ul class="mobile_menu_links">
         <li><a href="<?php echo e(url('/')); ?>">Accueil</a></li>
         <li><a href="<?php echo e(url('/savoir')); ?>">Comment ça marche</a></li>
-        <li><a href="<?php echo e(url('/boutique')); ?>">Produits</a></li>
+        <li><a href="<?php echo e(url('/produits')); ?>">Produits</a></li>
         
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->guest()): ?>
             <li><a href="<?php echo e(route('login')); ?>" class="mobile_btn_login">Se connecter</a></li>

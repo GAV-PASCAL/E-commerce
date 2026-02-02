@@ -58,10 +58,12 @@ class AuthController extends Controller
                 'confirmed',
                 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/' // Au moins 1 minuscule, 1 majuscule, 1 chiffre
             ],
+            'politique_confidentialite' => ['required', 'accepted'],
         ], [
             'nom.regex' => 'Le nom ne peut contenir que des lettres, espaces, tirets et apostrophes.',
             'prenom.regex' => 'Le prénom ne peut contenir que des lettres, espaces, tirets et apostrophes.',
             'password.regex' => 'Le mot de passe doit contenir au moins une minuscule, une majuscule et un chiffre.',
+            'politique_confidentialite.accepted' => 'Vous devez accepter la politique de confidentialité pour continuer.',
         ]);
 
         $roleAcheteur = Role::where('name', 'acheteur')->firstOrFail();

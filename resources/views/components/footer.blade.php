@@ -9,7 +9,7 @@
             </div>
              
             <div>
-                <button class="button_connection" onClick="window.location.href = '/boutique'" >Explorer les produits</button>
+                <button class="button_connection" onClick="window.location.href = '/produits'" >Explorer les produits</button>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
             <h4>Liens Rapide</h4>
             <a href=" {{ url('/') }} " id="a">Accueil</a>
             <a href=" {{ url('/savoir') }} " id="a">Comment ça marche</a>
-            <a href=" {{ url('/boutique') }} " id="a">Produits</a>
+            <a href=" {{ url('/produits') }} " id="a">Produits</a>
             <a href=" {{ url('/conversations') }} " id="a">Message</a>
             <a href=" {{ url('/favoris') }} " id="a">Favoris</a>
         </div>
@@ -44,7 +44,7 @@
             <h4>Condiction</h4>
             <a href=" {{ url('/aide') }} " id="a">Centre d'aide</a>
             <a href=" {{ url('/condiction') }} " id="a">Condiction d'usage</a>
-            <a href=" {{ url('/confidentialite') }} " id="a">Politique de confidentialité</a>
+            <a href=" {{ route('politique.confidentialite') }} " id="a">Politique de confidentialité</a>
             <a href=" {{ url('/contact') }} " id="a">Nous Contacter</a>
             <a href=" {{ url('/faq') }} " id="a">FAQ</a>
         </div>

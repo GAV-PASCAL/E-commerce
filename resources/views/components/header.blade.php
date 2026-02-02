@@ -57,7 +57,7 @@
     <ul class="mobile_menu_links">
         <li><a href="{{ url('/') }}">Accueil</a></li>
         <li><a href="{{ url('/savoir') }}">Comment ça marche</a></li>
-        <li><a href="{{ url('/boutique') }}">Produits</a></li>
+        <li><a href="{{ url('/produits') }}">Produits</a></li>
         
         @guest
             <li><a href="{{ route('login') }}" class="mobile_btn_login">Se connecter</a></li>

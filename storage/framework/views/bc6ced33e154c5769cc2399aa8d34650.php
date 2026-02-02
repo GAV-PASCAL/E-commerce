@@ -23,8 +23,28 @@
                 <i class="fa-solid fa-box"></i> Commandes
             </a> 
 
-            <a href="<?php echo e(route('conversations.index')); ?>" class="dash_nav_btn <?php echo e(request()->routeIs('conversations.index') ? 'active' : ''); ?>">
+            <a href="<?php echo e(route('conversations.index')); ?>" class="dash_nav_btn <?php echo e(request()->routeIs('conversations.index') ? 'active' : ''); ?>" style="position: relative;">
                 <i class="fa-solid fa-envelope"></i> Messagerie
+                <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('message-notification-indicator');
+
+$key = null;
+
+$key ??= \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::generateKey('lw-1050288742-0', null);
+
+$__html = app('livewire')->mount($__name, $__params, $key);
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
             </a>
         </div>
         <div class="scroll_indicator" onclick="scrollNavigation()">

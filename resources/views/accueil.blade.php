@@ -198,7 +198,7 @@
         <div class="btq_content" id="taille">
             @forelse($produits as $produit)
                 <div class="section_produit_details">
-                    <a href="{{ route('produit.show', $produit->id) }}" style="text-decoration: none; color: inherit;">
+                    <a href="{{ route('produit.show', $produit) }}" style="text-decoration: none; color: inherit;">
                         <div class="btq_section_image">
                             @if($produit->image)
                                 <img src="{{ asset('storage/' . $produit->image) }}" alt="{{ $produit->nom }}" class="produit_image">
@@ -235,12 +235,11 @@
                     </a>
                     <div class="btn_section">
                         @auth
-                            <button type="button" class="btn_discussion" onclick="window.location.href='{{ route('conversations.start', $produit->id) }}'">Discuter</button>
-                            <button type="button" class="btn_discussion" id="btn" onclick="window.location.href='{{ route('produit.show', $produit->id) }}'">Voir détails</button>
+                            <button type="button" class="btn_discussion" onclick="window.location.href='{{ route('conversations.start', $produit) }}'">Discuter</button>
                         @else
                             <button type="button" class="btn_discussion" onclick="window.location.href='{{ route('login') }}'">Discuter</button>
-                            <button type="button" class="btn_discussion" id="btn" onclick="window.location.href='{{ route('login') }}'">Proposition</button>
                         @endauth
+                        <button type="button" class="btn_discussion" id="btn" onclick="window.location.href='{{ route('produit.show', $produit) }}'">Voir détails</button>
                     </div>
                 </div>
             @empty

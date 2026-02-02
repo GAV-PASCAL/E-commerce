@@ -22,8 +22,9 @@
                 <i class="fa-solid fa-box"></i> Commandes
             </a> 
 
-            <a href="{{ route('conversations.index') }}" class="dash_nav_btn {{ request()->routeIs('conversations.index') ? 'active' : '' }}">
+            <a href="{{ route('conversations.index') }}" class="dash_nav_btn {{ request()->routeIs('conversations.index') ? 'active' : '' }}" style="position: relative;">
                 <i class="fa-solid fa-envelope"></i> Messagerie
+                @livewire('message-notification-indicator')
             </a>
         </div>
         <div class="scroll_indicator" onclick="scrollNavigation()">

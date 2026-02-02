@@ -104,14 +104,14 @@
                                     </td>
                                     <td>
                                         <div style="display: flex; gap: 10px;">
-                                            <a href="<?php echo e(route('client.commandes.show', $commande->id)); ?>" 
+                                            <a href="<?php echo e(route('client.commandes.show', $commande)); ?>" 
                                                class="btn btn-info" 
                                                style="background: #17a2b8; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">
                                                 <i class="fa-solid fa-eye"></i>
                                             </a>
                                             
                                             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($commande->statut === 'en_attente'): ?>
-                                                <form action="<?php echo e(route('client.commandes.valider', $commande->id)); ?>" 
+                                                <form action="<?php echo e(route('client.commandes.valider', $commande)); ?>" 
                                                       method="POST" 
                                                       style="display: inline;"
                                                       onsubmit="return confirm('Êtes-vous sûr de vouloir valider cette commande ?');">

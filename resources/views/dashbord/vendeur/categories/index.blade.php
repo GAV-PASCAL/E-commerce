@@ -63,7 +63,7 @@
                                     <td>{{ $categorie->id }}</td>
                                     <td>{{ $categorie->nom }}</td>
                                     <td>
-                                        <form action="{{ route('dashbord.vendeur.categories.destroy', $categorie->id) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');">
+                                        <form action="{{ route('dashbord.vendeur.categories.destroy', $categorie) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" 

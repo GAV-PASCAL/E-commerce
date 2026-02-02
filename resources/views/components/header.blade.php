@@ -53,6 +53,9 @@
     <div class="mobile_menu_header">
         <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="80px">
         <i class="fa-solid fa-xmark close_menu_btn" onclick="toggleMenu()"></i>
+        @auth
+            @livewire('notification-badge')
+        @endauth
     </div>
     <ul class="mobile_menu_links">
         <li><a href="{{ url('/') }}">Accueil</a></li>

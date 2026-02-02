@@ -34,7 +34,7 @@
                 <div class="commande-header-flex" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                     <h6 class="info_form">Fiche de Commande {{ $commande->numero_fiche }}</h6>
                     <div class="commande-buttons-group" style="display: flex; gap: 10px; flex-direction: row;">
-                        <a href="{{ route('commandes.pdf', $commande->id) }}" 
+                        <a href="{{ route('commandes.pdf', $commande) }}" 
                            class="btn btn-success" 
                            style="background: #B45309; color: white; padding: 10px 20px; border-radius: 5px; border: 2px solid #ffffff; text-decoration: none;">
                             📄 Télécharger PDF
@@ -136,7 +136,7 @@
                         <p style="color: #856404; margin-bottom: 15px;">
                             Cette commande est en attente de votre validation. Veuillez vérifier les détails ci-dessus et accepter la commande si tout est correct.
                         </p> -->
-                        <form action="{{ route('client.commandes.valider', $commande->id) }}" 
+                        <form action="{{ route('client.commandes.valider', $commande) }}" 
                               method="POST" 
                               onsubmit="return confirm('Êtes-vous sûr de vouloir valider cette commande ? Cette action est irréversible.');">
                             @csrf

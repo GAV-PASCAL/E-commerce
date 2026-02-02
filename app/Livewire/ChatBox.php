@@ -8,6 +8,9 @@ use App\Models\Conversation;
 use App\Models\Message;
 use App\Events\MessageSent;
 use App\Events\ConversationUpdated;
+use App\Models\User;
+use App\Notifications\NewMessageNotification;
+use App\Jobs\SendUnreadMessageEmailJob;
 
 class ChatBox extends Component
 {
@@ -61,6 +64,22 @@ class ChatBox extends Component
         broadcast(new MessageSent($message))->toOthers();
         broadcast(new ConversationUpdated($conversation))->toOthers();
 
+        // Notifier le vendeur (admin)
+        $vendeur = User::where('role_id', 1)->first();
+        if ($vendeur) {
+            $vendeur->notify(new NewMessageNotification($message));
+            
+            // Programmer l'envoi d'un email si le message n'est pas lu après 5 minutes
+            \Log::info('ChatBox: Programmation email de rappel', [
+                'message_id' => $message->id,
+                'recipient_id' => $vendeur->id,
+                'scheduled_for' => now()->addMinutes(5)->toDateTimeString(),
+            ]);
+            
+            SendUnreadMessageEmailJob::dispatch($message->id, $vendeur->id)
+                ->delay(now()->addMinutes(5));
+        }
+
         $this->newMessage = '';
         $this->loadMessages();
         
@@ -71,10 +90,17 @@ class ChatBox extends Component
         $this->dispatch('message-sent');
     }
 
-    #[On('echo-private:conversation.{conversationId},message.sent')]
+    public function getListeners()
+    {
+        return [
+            "echo-private:conversation.{$this->conversationId},message.sent" => 'messageReceived',
+        ];
+    }
+
     public function messageReceived($data)
     {
         $this->loadMessages();
+        $this->dispatch('message-received');
     }
 
     public function render()

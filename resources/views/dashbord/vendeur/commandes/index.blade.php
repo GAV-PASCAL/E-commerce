@@ -96,19 +96,19 @@
                                     </td>
                                     <td>
                                         <div style="display: flex; gap: 10px;">
-                                            <a href="{{ route('commandes.show', $commande->id) }}" 
+                                            <a href="{{ route('commandes.show', $commande) }}" 
                                                class="btn btn-info" 
                                                style="background: #17a2b8; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">
                                                <i class="fa-solid fa-eye"></i>
                                             </a>
                                             @if($commande->statut === 'en_attente')
-                                                <a href="{{ route('commandes.edit', $commande->id) }}" 
+                                                <a href="{{ route('commandes.edit', $commande) }}" 
                                                 class="btn btn-primary" 
                                                 style="background: #007bff; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                             @endif
-                                            <form action="{{ route('commandes.destroy', $commande->id) }}" 
+                                            <form action="{{ route('commandes.destroy', $commande) }}" 
                                                   method="POST" 
                                                   style="display: inline;"
                                                   onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette commande ?');">

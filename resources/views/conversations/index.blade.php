@@ -39,7 +39,7 @@
 
                 <div class="conversations-container">
                     @forelse($conversations as $conversation)
-                        <a href="{{ route('conversations.show', $conversation->id) }}" class="conversation-card">
+                        <a href="{{ route('conversations.show', $conversation) }}" class="conversation-card">
                             <div class="conversation-icon">
                                 <i class='bx bx-store'></i>
                             </div>

@@ -85,7 +85,7 @@
 
                     <div class="product-actions">
                         @auth
-                            <button class="main-cta-btn" onclick="window.location.href='{{ route('conversations.start', $produit->id) }}'">
+                            <button class="main-cta-btn" onclick="window.location.href='{{ route('conversations.start', $produit) }}'">
                                 <i class="fa-solid fa-comments"></i> Discuter avec le vendeur
                             </button>
                         @else
@@ -122,14 +122,13 @@
                 </div>
             </div>
 
-            <!-- Related Products -->
             @if($produitsRelated->count() > 0)
             <div class="related-section">
                 <h2 class="section-title">Produits similaires</h2>
                 <div class="btq_content">
                     @foreach($produitsRelated as $related)
                         <div class="section_produit_details">
-                            <a href="{{ route('produit.show', $related->id) }}" style="text-decoration: none; color: inherit;">
+                            <a href="{{ route('produit.show', $related) }}" style="text-decoration: none; color: inherit;">
                                 <div class="btq_section_image">
                                     @if($related->image)
                                         <img src="{{ asset('storage/' . $related->image) }}" alt="{{ $related->nom }}" class="produit_image">
@@ -138,23 +137,39 @@
                                     @else
                                         <img src="https://via.placeholder.com/300" alt="{{ $related->nom }}" class="produit_image">
                                     @endif
+                                    @auth
+                                        <i class="fa-regular fa-heart favorite-icon" data-produit-id="{{ $related->id }}" style="cursor: pointer;"></i>
+                                    @else
+                                        <i class="fa-regular fa-heart" style="cursor: pointer;" onclick="window.location.href='{{ route('login') }}'"></i>
+                                    @endauth 
                                 </div>
                                 <div class="image_info">
-                                    <h4>{{ $related->nom }}</h4>
-                                    <div class="prix_produit">
-                                        <h5 class="prix_fixe">{{ number_format($related->prix, 0, ',', ' ') }} FCFA</h5>
+                                    <div>
+                                        <h4>{{ $related->nom }}</h4>
                                     </div>
-                                    <div class="etoiles">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-regular fa-star"></i>
+                                    <div>
+                                        <p><small>Quantité min: <b>{{ $related->qte_min }}</b> unités</small></p>
+                                    </div>
+                                    <div class="prix_produit">
+                                        <div class="etoiles">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="prix_fixe" >{{ number_format($related->prix, 0, ',', ' ') }} FCFA</h6>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
                             <div class="btn_section">
-                                <button type="button" class="btn_discussion" onclick="window.location.href='{{ route('conversations.start', $related->id) }}'">Discuter</button>
-                                <button type="button" class="btn_discussion" id="btn" onclick="window.location.href='{{ route('produit.show', $related->id) }}'">Détails</button>
+                                @auth
+                                    <button type="button" class="btn_discussion" onclick="window.location.href='{{ route('conversations.start', $related) }}'">Discuter</button>
+                                @else
+                                    <button type="button" class="btn_discussion" onclick="window.location.href='{{ route('login') }}'">Discuter</button>
+                                @endauth
+                                <button type="button" class="btn_discussion" id="btn" onclick="window.location.href='{{ route('produit.show', $related) }}'">Voir détails</button>
                             </div>
                         </div>
                     @endforeach

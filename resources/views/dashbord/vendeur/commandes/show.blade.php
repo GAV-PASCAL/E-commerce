@@ -35,7 +35,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                     <h6 class="info_form">Fiche de Commande {{ $commande->numero_fiche }}</h6>
                     <div style="display: flex; gap: 10px;">
-                        <a href="{{ route('commandes.pdf', $commande->id) }}" 
+                        <a href="{{ route('commandes.pdf', $commande) }}" 
                            class="btn btn-success" 
                            style="background: #B45309; color: white; padding: 10px 20px; border-radius: 5px; border: 2px solid #ffffff; text-decoration: none;">
                             📄 Télécharger PDF

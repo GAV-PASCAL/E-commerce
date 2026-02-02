@@ -69,9 +69,9 @@ class ProduitController extends Controller
     }
 
     // Afficher les détails d'un produit (vue publique)
-    public function show($id)
+    public function show(Produits $produit)
     {
-        $produit = Produits::with('categorie', 'urlimg')->findOrFail($id);
+        $produit->load(['categorie', 'urlimg']);
         $produitsRelated = Produits::where('categorie_id', $produit->categorie_id)
             ->where('id', '!=', $produit->id)
             ->limit(4)
@@ -118,17 +118,14 @@ class ProduitController extends Controller
         return redirect()->route('dashbord.vendeur.produits.index')->with('success', 'Produit créé avec succès.');
     }
 
-    public function edit($id)
+    public function edit(Produits $produit)
     {
-        $produit = Produits::findOrFail($id);
         $categories = Categorie::all();
         return view('dashbord.vendeur.produits.update', compact('produit', 'categories'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Produits $produit)
     {
-        $produit = Produits::findOrFail($id);
-
         $validated = $request->validate([
             'nom' => 'required|string|max:255',
             'description' => 'required|string',
@@ -159,10 +156,8 @@ class ProduitController extends Controller
         return redirect()->route('dashbord.vendeur.produits.index')->with('success', 'Produit mis à jour avec succès.');
     }
 
-    public function destroy($id)
+    public function destroy(Produits $produit)
     {
-        $produit = Produits::findOrFail($id);
-
         // Supprimer l'image si elle existe
         if ($produit->image && \Storage::disk('public')->exists($produit->image)) {
             \Storage::disk('public')->delete($produit->image);

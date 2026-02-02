@@ -8,6 +8,8 @@ use App\Models\Produits;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\OrderCreatedNotification;
+use App\Notifications\OrderValidatedNotification;
 
 class CommandeController extends Controller
 {
@@ -118,6 +120,9 @@ class CommandeController extends Controller
         // Nettoyer la session
         session()->forget('produits_selectionnes');
 
+        // Envoyer la notification au client
+        $client->notify(new OrderCreatedNotification($commande));
+
         return redirect()->route('commandes.index')
             ->with('success', 'Fiche de commande créée avec succès ! Numéro : ' . $commande->numero_fiche);
     }
@@ -125,10 +130,9 @@ class CommandeController extends Controller
     /**
      * Afficher une commande (pour le vendeur)
      */
-    public function show($id)
+    public function show(Commande $commande)
     {
-        $commande = Commande::with(['user', 'vendeur', 'produits'])
-            ->findOrFail($id);
+        $commande->load(['user', 'vendeur', 'produits']);
 
         // Vérifier que c'est bien le vendeur de cette commande
         if ($commande->vendeur_id !== Auth::id()) {
@@ -141,9 +145,9 @@ class CommandeController extends Controller
     /**
      * Modifier une commande
      */
-    public function edit($id)
+    public function edit(Commande $commande)
     {
-        $commande = Commande::with(['user', 'produits'])->findOrFail($id);
+        $commande->load(['user', 'produits']);
 
         if ($commande->vendeur_id !== Auth::id()) {
             abort(403);
@@ -157,10 +161,8 @@ class CommandeController extends Controller
     /**
      * Mettre à jour une commande
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Commande $commande)
     {
-        $commande = Commande::findOrFail($id);
-
         if ($commande->vendeur_id !== Auth::id()) {
             abort(403);
         }
@@ -202,10 +204,8 @@ class CommandeController extends Controller
     /**
      * Supprimer une commande
      */
-    public function destroy($id)
+    public function destroy(Commande $commande)
     {
-        $commande = Commande::findOrFail($id);
-
         if ($commande->vendeur_id !== Auth::id()) {
             abort(403);
         }
@@ -219,10 +219,9 @@ class CommandeController extends Controller
     /**
      * Générer le PDF de la commande
      */
-    public function generatePDF($id)
+    public function generatePDF(Commande $commande)
     {
-        $commande = Commande::with(['user', 'vendeur', 'produits'])
-            ->findOrFail($id);
+        $commande->load(['user', 'vendeur', 'produits']);
 
         // Vérifier les permissions
         if ($commande->vendeur_id !== Auth::id() && $commande->user_id !== Auth::id()) {
@@ -252,10 +251,9 @@ class CommandeController extends Controller
     /**
      * Afficher une commande (pour le client)
      */
-    public function showClient($id)
+    public function showClient(Commande $commande)
     {
-        $commande = Commande::with(['vendeur', 'produits'])
-            ->findOrFail($id);
+        $commande->load(['vendeur', 'produits']);
 
         // Vérifier que c'est bien le client de cette commande
         if ($commande->user_id !== Auth::id()) {
@@ -268,10 +266,8 @@ class CommandeController extends Controller
     /**
      * Valider une commande (client accepte)
      */
-    public function valider($id)
+    public function valider(Commande $commande)
     {
-        $commande = Commande::findOrFail($id);
-
         if ($commande->user_id !== Auth::id()) {
             abort(403);
         }
@@ -281,6 +277,9 @@ class CommandeController extends Controller
         }
 
         $commande->update(['statut' => 'validee']);
+
+        // Envoyer la notification au vendeur
+        $commande->vendeur->notify(new OrderValidatedNotification($commande));
 
         return back()->with('success', 'Commande validée avec succès !');
     }

@@ -43,7 +43,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('dashbord.vendeur.produits.update', $produit->id) }}" class="exp" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('dashbord.vendeur.produits.update', $produit) }}" class="exp" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="section_form_one">

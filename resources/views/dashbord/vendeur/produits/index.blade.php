@@ -70,13 +70,13 @@
                                     <td>{{ $produit->qte_min }}</td>
                                     
                                     <td class="table_action">
-                                        <a href="{{ route('dashbord.vendeur.produits.edit', $produit->id) }}" 
+                                        <a href="{{ route('dashbord.vendeur.produits.edit', $produit) }}" 
                                                 class="btn btn-primary" 
                                                 style="background: #007bff; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none;">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
                                         
-                                        <form action="{{ route('dashbord.vendeur.produits.destroy', $produit->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit dans votre liste?');">
+                                        <form action="{{ route('dashbord.vendeur.produits.destroy', $produit) }}" method="POST" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit dans votre liste?');">
                                             @csrf
                                             @method('DELETE')
                                              <button type="submit" class="btn btn-danger">

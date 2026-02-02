@@ -36,10 +36,9 @@ class ConversationController extends Controller
     /**
      * Afficher une conversation
      */
-    public function show($id)
+    public function show(Conversation $conversation)
     {
-        $conversation = Conversation::with(['user', 'messages.sender', 'messages.produit'])
-            ->findOrFail($id);
+        $conversation->load(['user', 'messages.sender', 'messages.produit']);
         
         // Vérifier les permissions
         $user = auth()->user();
@@ -92,15 +91,14 @@ class ConversationController extends Controller
         broadcast(new MessageSent($message))->toOthers();
         broadcast(new ConversationUpdated($conversation))->toOthers();
 
-        return redirect()->route('conversations.show', $conversation->id);
+        return redirect()->route('conversations.show', $conversation);
     }
 
     /**
      * Marquer comme lu
      */
-    public function markAsRead($id)
+    public function markAsRead(Conversation $conversation)
     {
-        $conversation = Conversation::findOrFail($id);
         
         // Vérifier les permissions
         if (auth()->user()->role_id != 1) {
@@ -115,7 +113,7 @@ class ConversationController extends Controller
     /**
      * Démarrer une conversation (avec ou sans produit)
      */
-    public function startConversation($produitId = null)
+    public function startConversation(Produits $produit = null)
     {
         $user = auth()->user();
         
@@ -131,8 +129,8 @@ class ConversationController extends Controller
         }
         
         // Si un produit est spécifié, créer un message initial avec le produit
-        if ($produitId) {
-            $produit = Produits::find($produitId);
+        if ($produit) {
+            $produitId = $produit->id;
             
             if ($produit) {
                 // Vérifier s'il n'y a pas déjà un message pour ce produit
@@ -161,6 +159,6 @@ class ConversationController extends Controller
         }
         
         // Rediriger vers la conversation
-        return redirect()->route('conversations.show', $conversation->id);
+        return redirect()->route('conversations.show', $conversation);
     }
 }

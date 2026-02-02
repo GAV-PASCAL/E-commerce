@@ -58,7 +58,7 @@
 
                 <div class="conversations-container">
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__empty_1 = true; $__currentLoopData = $conversations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $conversation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                        <a href="<?php echo e(route('conversations.show', $conversation->id)); ?>" class="conversation-card">
+                        <a href="<?php echo e(route('conversations.show', $conversation)); ?>" class="conversation-card">
                             <div class="conversation-icon">
                                 <i class='bx bx-store'></i>
                             </div>

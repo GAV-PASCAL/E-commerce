@@ -59,7 +59,7 @@
                             $produit = $favori->produit;
                         ?>
                         <div class="section_produit_details">
-                            <a href="<?php echo e(route('produit.show', $produit->id)); ?>" style="text-decoration: none; color: inherit;">
+                            <a href="<?php echo e(route('produit.show', $produit)); ?>" style="text-decoration: none; color: inherit;">
                                 <div class="btq_section_image">
                                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($produit->image): ?>
                                         <img src="<?php echo e(asset('storage/' . $produit->image)); ?>" alt="<?php echo e($produit->nom); ?>" class="produit_image">
@@ -91,8 +91,8 @@
                                 </div>
                             </a>
                             <div class="btn_section">
-                                <button type="button" class="btn_discussion" onclick="window.location.href='<?php echo e(route('conversations.start', $produit->id)); ?>'">Discuter</button>
-                                <button type="button" class="btn_discussion" id="btn" onclick="window.location.href='<?php echo e(route('produit.show', $produit->id)); ?>'">Voir détails</button>
+                                <button type="button" class="btn_discussion" onclick="window.location.href='<?php echo e(route('conversations.start', $produit)); ?>'">Discuter</button>
+                                <button type="button" class="btn_discussion" id="btn" onclick="window.location.href='<?php echo e(route('produit.show', $produit)); ?>'">Voir détails</button>
                             </div>
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>

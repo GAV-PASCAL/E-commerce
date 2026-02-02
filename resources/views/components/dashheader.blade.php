@@ -16,7 +16,10 @@
 
                         <a href=" {{ route('dashbord.vendeur.produits.index') }} " class="nav_link {{ request()->routeIs('dashbord.vendeur.produits.index') ? 'active' : '' }}" id="option_navigation">Liste des produits</a>
 
-                        <a href=" {{ route('dashbord.vendeur.messages.index') }} " class="nav_link {{ request()->routeIs('dashbord.vendeur.messages.index') ? 'active' : '' }}" id="option_navigation"> Messagerie</a>
+                        <a href=" {{ route('dashbord.vendeur.messages.index') }} " class="nav_link {{ request()->routeIs('dashbord.vendeur.messages.index') ? 'active' : '' }}" id="option_navigation" style="position: relative;">
+                            Messagerie
+                            @livewire('message-notification-indicator')
+                        </a>
 
                         <a href=" {{ route('commandes.index') }} " class="nav_link {{ request()->routeIs('commandes.index') ? 'active' : '' }}" id="option_navigation">Fiches de commande</a>
 

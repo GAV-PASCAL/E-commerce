@@ -4,8 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Traits\HasUuid;
+
 class Conversation extends Model
 {
+    use HasUuid;
     protected $fillable = [
         'user_id',
         'last_message_at',

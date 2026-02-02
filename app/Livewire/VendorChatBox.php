@@ -8,6 +8,8 @@ use App\Models\Conversation;
 use App\Models\Message;
 use App\Events\MessageSent;
 use App\Events\ConversationUpdated;
+use App\Notifications\NewMessageNotification;
+use App\Jobs\SendUnreadMessageEmailJob;
 
 class VendorChatBox extends Component
 {
@@ -74,6 +76,15 @@ class VendorChatBox extends Component
         broadcast(new MessageSent($message))->toOthers();
         broadcast(new ConversationUpdated($conversation))->toOthers();
 
+        // Notifier le client
+        if ($conversation->user) {
+            $conversation->user->notify(new NewMessageNotification($message));
+            
+            // Programmer l'envoi d'un email si le message n'est pas lu après 5 minutes
+            SendUnreadMessageEmailJob::dispatch($message->id, $conversation->user->id)
+                ->delay(now()->addMinutes(5));
+        }
+
         $this->newMessage = '';
         $this->loadMessages();
         
@@ -83,7 +94,13 @@ class VendorChatBox extends Component
         \Log::info('Message envoyé avec succès');
     }
 
-    #[On('echo-private:conversation.{conversationId},message.sent')]
+    public function getListeners()
+    {
+        return [
+            "echo-private:conversation.{$this->conversationId},message.sent" => 'messageReceived',
+        ];
+    }
+
     public function messageReceived($data)
     {
         $this->loadMessages();
@@ -93,6 +110,8 @@ class VendorChatBox extends Component
         if ($conversation) {
             $conversation->markAsRead();
         }
+
+        $this->dispatch('message-received');
     }
 
     public function render()

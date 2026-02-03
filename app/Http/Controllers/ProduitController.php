@@ -10,16 +10,24 @@ use App\Models\Urlimg;
 class ProduitController extends Controller
 {
     // Liste des produits pour le dashboard vendeur
-    public function index()
+    public function index(Request $request)
     {
-        $produits = Produits::with('categorie', 'urlimg')->get();
+        $query = Produits::with('categorie', 'urlimg');
+
+        if ($request->filter === 'active') {
+            $query->active();
+        } elseif ($request->filter === 'inactive') {
+            $query->where('is_active', false);
+        }
+
+        $produits = $query->get();
         return view('dashbord.vendeur.produits.index', compact('produits'));
     }
 
     // Liste publique des produits
     public function liste(Request $request)
     {
-        $query = Produits::with('categorie', 'urlimg');
+        $query = Produits::with('categorie', 'urlimg')->active();
 
         // Filtrage par catégorie
         if ($request->filled('categorie_id')) {
@@ -71,8 +79,12 @@ class ProduitController extends Controller
     // Afficher les détails d'un produit (vue publique)
     public function show(Produits $produit)
     {
+        if (!$produit->is_active) {
+            abort(404);
+        }
         $produit->load(['categorie', 'urlimg']);
-        $produitsRelated = Produits::where('categorie_id', $produit->categorie_id)
+        $produitsRelated = Produits::active()
+            ->where('categorie_id', $produit->categorie_id)
             ->where('id', '!=', $produit->id)
             ->limit(4)
             ->get();
@@ -166,5 +178,14 @@ class ProduitController extends Controller
         $produit->delete();
 
         return redirect()->route('dashbord.vendeur.produits.index')->with('success', 'Produit supprimé avec succès.');
+    }
+
+    public function toggleStatus(Produits $produit)
+    {
+        $produit->is_active = !$produit->is_active;
+        $produit->save();
+
+        $status = $produit->is_active ? 'activé' : 'désactivé';
+        return redirect()->back()->with('success', "Produit $status avec succès.");
     }
 }

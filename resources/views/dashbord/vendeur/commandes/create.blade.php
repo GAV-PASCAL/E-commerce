@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="section_dash">
+        <div class="section_dash" id="patie">
             <section id="head_search">
 
                 <div class="produit_search">

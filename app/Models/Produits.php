@@ -17,7 +17,13 @@ class Produits extends Model
         'image',
         'categorie_id',
         'urlimg_id',
+        'is_active',
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
 
     public function categorie()
     {

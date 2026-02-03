@@ -29,7 +29,7 @@
             </div>
         </div>              
 
-        <div class="section_dash">
+        <div class="section_dash" id="patie">
             <section id="head_search">
 
                 <div class="produit_search">
@@ -60,7 +60,7 @@
                         <tbody>
                             @foreach($categories as $categorie)
                                 <tr>
-                                    <td>{{ $categorie->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $categorie->nom }}</td>
                                     <td>
                                         <form action="{{ route('dashbord.vendeur.categories.destroy', $categorie) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');">

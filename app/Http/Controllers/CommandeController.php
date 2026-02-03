@@ -31,7 +31,7 @@ class CommandeController extends Controller
      */
     public function create()
     {
-        $produits = Produits::with('categorie')->get();
+        $produits = Produits::with('categorie')->active()->get();
         return view('dashbord.vendeur.commandes.create', compact('produits'));
     }
 
@@ -153,7 +153,7 @@ class CommandeController extends Controller
             abort(403);
         }
 
-        $produits = Produits::with('categorie')->get();
+        $produits = Produits::with('categorie')->active()->get();
 
         return view('dashbord.vendeur.commandes.edit', compact('commande', 'produits'));
     }

@@ -9,7 +9,7 @@ use App\Http\Controllers\FavorisController;
 
 Route::get('/', function () {
     $categories = \App\Models\Categorie::all();
-    $produits = \App\Models\Produits::with('categorie', 'urlimg')->latest()->take(10)->get();
+    $produits = \App\Models\Produits::with('categorie', 'urlimg')->active()->latest()->take(10)->get();
     return view('accueil', compact('categories', 'produits'));
 });
 
@@ -77,6 +77,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/produits/{produit}/modifier', [ProduitController::class, 'edit'])->name('dashbord.vendeur.produits.edit');
     Route::put('/admin/produits/{produit}', [ProduitController::class, 'update'])->name('dashbord.vendeur.produits.update');
     Route::delete('/admin/produits/{produit}', [ProduitController::class, 'destroy'])->name('dashbord.vendeur.produits.destroy');
+    Route::post('/admin/produits/{produit}/toggle-status', [ProduitController::class, 'toggleStatus'])->name('dashbord.vendeur.produits.toggle-status');
     // Route pour la messagerie vendeur
     Route::get('/admin/messages', [ConversationController::class, 'index'])->name('dashbord.vendeur.messages.index');
 

@@ -725,7 +725,7 @@ h6 {
 }
 
 #patie {
-    margin-top: 12.5%;
+    margin-top: 5.5%;
 }
 
 #pate {
@@ -879,7 +879,7 @@ h6 {
     width: 100%;
     border-radius: 20px;
     box-shadow: 2px 2px 3px #92400E;
-    padding: 0rem 0rem 1rem 0rem;
+    padding: 0rem 0rem 0.5rem 0rem;
     position: relative;
     background-color: var(--accent-hover);
 }
@@ -893,7 +893,6 @@ h6 {
     flex-direction: column;
     gap: 15px;
     width: 80%;
-    /* margin-top: 7%; */
     z-index: 15;
 }
 
@@ -928,6 +927,10 @@ h6 {
     border-radius: 20px;
     margin-top: 12%;
     background-color: var(--accent-hover);
+}
+
+#tble_btn{
+    margin-top: 17%;
 }
 
 .table_dash_info {

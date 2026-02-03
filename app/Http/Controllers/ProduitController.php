@@ -20,6 +20,10 @@ class ProduitController extends Controller
             $query->where('is_active', false);
         }
 
+        if ($request->filled('categorie_id')) {
+            $query->where('categorie_id', $request->categorie_id);
+        }
+
         $produits = $query->paginate(15);
         return view('dashbord.vendeur.produits.index', compact('produits'));
     }

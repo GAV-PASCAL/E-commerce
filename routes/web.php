@@ -6,6 +6,8 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\FavorisController;
+use App\Http\Controllers\VendeurDashboardController;
+use App\Http\Controllers\CommandeController;
 
 Route::get('/', function () {
     $categories = \App\Models\Categorie::all();
@@ -22,9 +24,6 @@ Route::get('/produit/{produit}', [ProduitController::class, 'show'])->name('prod
 Route::get('/politique-confidentialite', function () {
     return view('politique-confidentialite');
 })->name('politique.confidentialite');
-
-
-
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])
@@ -43,8 +42,6 @@ Route::middleware('auth')->group(function () {
         return view('dashbord.client.information', ['user' => auth()->user()]);
     })->name('dashbord.client.information');
 
-
-    
     // Routes pour les conversations
     Route::get('/conversations', [ConversationController::class, 'index'])->name('conversations.index');
     Route::get('/conversations/start/{produit}', [ConversationController::class, 'startConversation'])->name('conversations.start');
@@ -53,16 +50,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/conversations/{conversation}/mark-as-read', [ConversationController::class, 'markAsRead'])->name('conversations.markAsRead');
     
     // Routes pour les favoris
-    Route::get('/favoris', [\App\Http\Controllers\FavorisController::class, 'index'])->name('favoris.index');
-    Route::post('/favoris/toggle', [\App\Http\Controllers\FavorisController::class, 'toggle'])->name('favoris.toggle');
-    Route::get('/favoris/ids', [\App\Http\Controllers\FavorisController::class, 'getFavoriteIds'])->name('favoris.ids');
+    Route::get('/favoris', [FavorisController::class, 'index'])->name('favoris.index');
+    Route::post('/favoris/toggle', [FavorisController::class, 'toggle'])->name('favoris.toggle');
+    Route::get('/favoris/ids', [FavorisController::class, 'getFavoriteIds'])->name('favoris.ids');
 
     // Routes pour les commandes client
-    Route::get('/client/commandes', [\App\Http\Controllers\CommandeController::class, 'mesCommandes'])->name('client.commandes');
-    Route::get('/client/commandes/{commande}', [\App\Http\Controllers\CommandeController::class, 'showClient'])->name('client.commandes.show');
-    Route::post('/client/commandes/{commande}/valider', [\App\Http\Controllers\CommandeController::class, 'valider'])->name('client.commandes.valider');
-    Route::get('/commandes/{commande}/pdf', [\App\Http\Controllers\CommandeController::class, 'generatePDF'])->name('commandes.pdf');
-
+    Route::get('/client/commandes', [CommandeController::class, 'mesCommandes'])->name('client.commandes');
+    Route::get('/client/commandes/{commande}', [CommandeController::class, 'showClient'])->name('client.commandes.show');
+    Route::post('/client/commandes/{commande}/valider', [CommandeController::class, 'valider'])->name('client.commandes.valider');
+    Route::get('/commandes/{commande}/pdf', [CommandeController::class, 'generatePDF'])->name('commandes.pdf');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -78,23 +74,21 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/admin/produits/{produit}', [ProduitController::class, 'update'])->name('dashbord.vendeur.produits.update');
     Route::delete('/admin/produits/{produit}', [ProduitController::class, 'destroy'])->name('dashbord.vendeur.produits.destroy');
     Route::post('/admin/produits/{produit}/toggle-status', [ProduitController::class, 'toggleStatus'])->name('dashbord.vendeur.produits.toggle-status');
+    
     // Route pour la messagerie vendeur
     Route::get('/admin/messages', [ConversationController::class, 'index'])->name('dashbord.vendeur.messages.index');
 
-    Route::get('/dashboard/vendeur', function () {
-        return view('dashbord.vendeur.information', ['user' => auth()->user()]);
-    })->name('dashbord.vendeur.information');
+    // Nouveau tableau de bord analytique
+    Route::get('/dashboard/vendeur', [VendeurDashboardController::class, 'index'])->name('dashbord.vendeur.information');
 
     // Routes pour les commandes vendeur
-    Route::get('/admin/commandes/liste', [\App\Http\Controllers\CommandeController::class, 'index'])->name('commandes.index');
-    Route::get('/admin/commandes/create', [\App\Http\Controllers\CommandeController::class, 'create'])->name('commandes.create');
-    Route::post('/admin/commandes/selection', [\App\Http\Controllers\CommandeController::class, 'storeSelection'])->name('commandes.store-selection');
-    Route::get('/admin/commandes/client-form', [\App\Http\Controllers\CommandeController::class, 'showClientForm'])->name('commandes.client-form');
-    Route::post('/admin/commandes', [\App\Http\Controllers\CommandeController::class, 'store'])->name('commandes.store');
-    Route::get('/admin/commandes/{commande}', [\App\Http\Controllers\CommandeController::class, 'show'])->name('commandes.show');
-    Route::get('/admin/commandes/{commande}/edit', [\App\Http\Controllers\CommandeController::class, 'edit'])->name('commandes.edit');
-    Route::put('/admin/commandes/{commande}', [\App\Http\Controllers\CommandeController::class, 'update'])->name('commandes.update');
-    Route::delete('/admin/commandes/{commande}', [\App\Http\Controllers\CommandeController::class, 'destroy'])->name('commandes.destroy');
+    Route::get('/admin/commandes/liste', [CommandeController::class, 'index'])->name('commandes.index');
+    Route::get('/admin/commandes/create', [CommandeController::class, 'create'])->name('commandes.create');
+    Route::post('/admin/commandes/selection', [CommandeController::class, 'storeSelection'])->name('commandes.store-selection');
+    Route::get('/admin/commandes/client-form', [CommandeController::class, 'showClientForm'])->name('commandes.client-form');
+    Route::post('/admin/commandes', [CommandeController::class, 'store'])->name('commandes.store');
+    Route::get('/admin/commandes/{commande}', [CommandeController::class, 'show'])->name('commandes.show');
+    Route::get('/admin/commandes/{commande}/edit', [CommandeController::class, 'edit'])->name('commandes.edit');
+    Route::put('/admin/commandes/{commande}', [CommandeController::class, 'update'])->name('commandes.update');
+    Route::delete('/admin/commandes/{commande}', [CommandeController::class, 'destroy'])->name('commandes.destroy');
 });
-
-

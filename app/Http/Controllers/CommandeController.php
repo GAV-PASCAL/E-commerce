@@ -16,11 +16,16 @@ class CommandeController extends Controller
     /**
      * Liste des commandes pour le vendeur
      */
-    public function index()
+    public function index(Request $request)
     {
-        $commandes = Commande::with(['user', 'produits'])
-            ->where('vendeur_id', Auth::id())
-            ->orderBy('created_at', 'desc')
+        $query = Commande::with(['user', 'produits'])
+            ->where('vendeur_id', Auth::id());
+
+        if ($request->has('statut')) {
+            $query->where('statut', $request->statut);
+        }
+
+        $commandes = $query->orderBy('created_at', 'desc')
             ->paginate(15);
 
         return view('dashbord.vendeur.commandes.index', compact('commandes'));

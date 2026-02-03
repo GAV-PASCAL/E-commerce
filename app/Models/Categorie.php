@@ -19,4 +19,9 @@ class Categorie extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function produits()
+    {
+        return $this->hasMany(Produits::class, 'categorie_id');
+    }
 }

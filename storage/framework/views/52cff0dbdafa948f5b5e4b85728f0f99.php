@@ -147,6 +147,10 @@
                     </table>
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
+            <div class="mt-4">
+                <?php echo e($commandes->links()); ?>
+
+            </div>
             </div>            
         </div>
 

@@ -9,7 +9,7 @@
                 </div>
                 <div class="side_navigation">
                     <nav id="sidebar_navigation">
-                        <a href=" <?php echo e(route('dashbord.vendeur.information')); ?> " class="nav_link <?php echo e(request()->routeIs('dashbord.vendeur.information') ? 'active' : ''); ?>"  id="option_navigation">Informations Personnelles</a>
+                        <a href=" <?php echo e(route('dashbord.vendeur.information')); ?> " class="nav_link <?php echo e(request()->routeIs('dashbord.vendeur.information') ? 'active' : ''); ?>"  id="option_navigation">Tableau de Bord</a>
 
                         <a href=" <?php echo e(route('dashbord.vendeur.categories.index')); ?>" class="nav_link <?php echo e(request()->routeIs('dashbord.vendeur.categories.index') ? 'active' : ''); ?>" id="option_navigation">Crée des catégories</a>
 

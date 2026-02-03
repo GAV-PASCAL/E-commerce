@@ -11,7 +11,9 @@
                 wire:click="selectConversation({{ $conversation['id'] }})"
             >
                 <div class="conversation-avatar">
-                    <i class='bx bx-user-circle'></i>
+                    <div class="profile-initials-circle">
+                        {{ strtoupper(mb_substr($conversation['user']['nom'] ?? 'U', 0, 1)) }}{{ strtoupper(mb_substr($conversation['user']['prenom'] ?? 'N', 0, 1)) }}
+                    </div>
                 </div>
                 
                 <div class="conversation-info">
@@ -124,9 +126,19 @@
         flex-shrink: 0;
     }
 
-    .conversation-avatar i {
-        font-size: 3rem;
-        color: #3f3f3fff;
+    .profile-initials-circle {
+        width: 48px;
+        height: 48px;
+        background-color: #B45309;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.1rem;
+        border: 2px solid white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .conversation-info {

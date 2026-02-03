@@ -2,7 +2,9 @@
     @if($conversation)
         <div class="chat-header">
             <div class="client-info">
-                <i class='bx bx-user-circle'></i>
+                <div class="profile-initials-circle">
+                    {{ strtoupper(mb_substr($conversation->user->nom ?? 'U', 0, 1)) }}{{ strtoupper(mb_substr($conversation->user->prenom ?? 'N', 0, 1)) }}
+                </div>
                 <div>
                     <h3>{{ $conversation->user->prenom }} {{ $conversation->user->nom }}</h3>
                     <p class="client-email">{{ $conversation->user->email }}</p>
@@ -104,9 +106,18 @@
     gap: 15px;
 }
 
-.client-info i {
-    font-size: 3rem;
-    opacity: 0.9;
+.profile-initials-circle {
+    width: 48px;
+    height: 48px;
+    background-color: white;
+    color: #B45309;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
 }
 
 .client-info h3 {

@@ -1,16 +1,16 @@
-@extends('layouts.app')
 
-@section('title', 'Modifier la commande')
 
-@section('header')
+<?php $__env->startSection('title', 'Modifier la commande'); ?>
+
+<?php $__env->startSection('header'); ?>
 
     <section>
         <div class="title_dash">
             <div>
-                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="100px" height="50px">
+                <img src="<?php echo e(asset('assets/img/logo.png')); ?>" alt="Logo" width="100px" height="50px">
             </div>
             <div class="conversation-header-page">
-                <a href="{{ url('./') }}" class="back-btn">
+                <a href="<?php echo e(url('./')); ?>" class="back-btn">
                     <i class='bx bx-arrow-back'></i>
                     Retour
                 </a>
@@ -18,35 +18,54 @@
         </div>
     </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
     <div id="page_structure">
         <div style="background-color: #B45309; flex-basis: 22%; border-right: 1px solid #B45309;">
             <div style="height: 100vh;">
-                <x-dashheader/>
+                <?php if (isset($component)) { $__componentOriginal7198df49fa33acdb115e04e2e99942a4 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal7198df49fa33acdb115e04e2e99942a4 = $attributes; } ?>
+<?php $component = App\View\Components\Dashheader::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('dashheader'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Dashheader::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal7198df49fa33acdb115e04e2e99942a4)): ?>
+<?php $attributes = $__attributesOriginal7198df49fa33acdb115e04e2e99942a4; ?>
+<?php unset($__attributesOriginal7198df49fa33acdb115e04e2e99942a4); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal7198df49fa33acdb115e04e2e99942a4)): ?>
+<?php $component = $__componentOriginal7198df49fa33acdb115e04e2e99942a4; ?>
+<?php unset($__componentOriginal7198df49fa33acdb115e04e2e99942a4); ?>
+<?php endif; ?>
             </div>
         </div>
 
         <div class="section_dash" id="pate">
             
             <div id="back_formulaire" style="max-width: 1500px; margin: 0 auto;">
-                <h6 class="info_form">Modifier la commande {{ $commande->numero_fiche }}</h6>
+                <h6 class="info_form">Modifier la commande <?php echo e($commande->numero_fiche); ?></h6>
 
-                @if($errors->any())
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($errors->any()): ?>
                     <div class="alert alert-danger" style="margin-bottom: 20px; border-radius: 12px;">
                         <ul class="mb-0">
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
+                            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                         </ul>
                     </div>
-                @endif
+                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
-                <form action="{{ route('commandes.update', $commande->id) }}" method="POST" id="editForm" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
-                    @csrf
-                    @method('PUT')
+                <form action="<?php echo e(route('commandes.update', $commande->id)); ?>" method="POST" id="editForm" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field('PUT'); ?>
 
                     <!-- Informations Client & Date -->
                     <div class="section_form_two" style="margin-bottom: 40px;">
@@ -63,7 +82,7 @@
                                 <div style="position: relative;">
                                     <i class="fa-solid fa-user" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #9ca3af;"></i>
                                     <input type="text" 
-                                           value="{{ $commande->user->nom }} {{ $commande->user->prenom }} ({{ $commande->user->email }})" 
+                                           value="<?php echo e($commande->user->nom); ?> <?php echo e($commande->user->prenom); ?> (<?php echo e($commande->user->email); ?>)" 
                                            class="input_ajout" 
                                            style="width: 100%; padding: 10px 10px 10px 35px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 0.95rem; background-color: #f9fafb; color: #4b5563;"
                                            readonly disabled>
@@ -78,7 +97,7 @@
                                     <input type="date" 
                                            name="date_commande" 
                                            id="date_commande"
-                                           value="{{ old('date_commande', $commande->date_commande->format('Y-m-d')) }}" 
+                                           value="<?php echo e(old('date_commande', $commande->date_commande->format('Y-m-d'))); ?>" 
                                            class="input_ajout" 
                                            style="width: 100%; padding: 10px 10px 10px 35px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem;"
                                            required>
@@ -114,51 +133,54 @@
                                 </thead>
 
                                 <tbody id="produitsTable">
-                                    @php
+                                    <?php
                                         $produitsCommande = $commande->produits->pluck('id')->toArray();
-                                    @endphp
-                                    @foreach($produits as $produit)
-                                        @php
+                                    ?>
+                                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $produits; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $produit): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php
                                             $isSelected = in_array($produit->id, $produitsCommande);
                                             $produitCommande = $isSelected ? $commande->produits->firstWhere('id', $produit->id) : null;
-                                        @endphp
-                                        <tr class="produit-row" data-nom="{{ strtolower($produit->nom) }}" style="border-bottom: 1px solid #f3f4f6; transition: background-color 0.2s;">
+                                        ?>
+                                        <tr class="produit-row" data-nom="<?php echo e(strtolower($produit->nom)); ?>" style="border-bottom: 1px solid #f3f4f6; transition: background-color 0.2s;">
                                             <td style="padding: 12px; text-align: center;">
                                                 <input type="checkbox" 
                                                        class="produit-checkbox" 
-                                                       data-id="{{ $produit->id }}" 
-                                                       value="{{ $produit->id }}"
-                                                       {{ $isSelected ? 'checked' : '' }}
+                                                       data-id="<?php echo e($produit->id); ?>" 
+                                                       value="<?php echo e($produit->id); ?>"
+                                                       <?php echo e($isSelected ? 'checked' : ''); ?>
+
                                                        style="width: 18px; height: 18px; cursor: pointer;">
                                             </td>
-                                            <td style="padding: 12px; font-weight: 500;">{{ $produit->nom }}</td>
-                                            <td style="padding: 12px; color: #6b7280;">{{ $produit->categorie->nom ?? 'N/A' }}</td>
+                                            <td style="padding: 12px; font-weight: 500;"><?php echo e($produit->nom); ?></td>
+                                            <td style="padding: 12px; color: #6b7280;"><?php echo e($produit->categorie->nom ?? 'N/A'); ?></td>
                                             <td style="padding: 12px; text-align: right;">
                                                 <input type="number" 
                                                        class="input_number prix-input" 
-                                                       data-id="{{ $produit->id }}"
-                                                       name="produits[{{ $produit->id }}][prix_unitaire]" 
+                                                       data-id="<?php echo e($produit->id); ?>"
+                                                       name="produits[<?php echo e($produit->id); ?>][prix_unitaire]" 
                                                        placeholder="Prix"
                                                        min="0"
                                                        step="0.01"
-                                                       value="{{ $isSelected ? $produitCommande->pivot->prix_unitaire : '' }}"
-                                                       {{ $isSelected ? '' : 'disabled' }}
+                                                       value="<?php echo e($isSelected ? $produitCommande->pivot->prix_unitaire : ''); ?>"
+                                                       <?php echo e($isSelected ? '' : 'disabled'); ?>
+
                                                        style="width: 120px; padding: 6px; border: 1px solid #d1d5db; border-radius: 6px; text-align: right;">
                                             </td>
                                             <td style="padding: 12px; text-align: right;">
                                                 <input type="number" 
                                                        class="input_number quantite-input" 
-                                                       data-id="{{ $produit->id }}"
-                                                       name="produits[{{ $produit->id }}][quantite]" 
+                                                       data-id="<?php echo e($produit->id); ?>"
+                                                       name="produits[<?php echo e($produit->id); ?>][quantite]" 
                                                        placeholder="Qté"
                                                        min="1"
-                                                       value="{{ $isSelected ? $produitCommande->pivot->quantite : '' }}"
-                                                       {{ $isSelected ? '' : 'disabled' }}
+                                                       value="<?php echo e($isSelected ? $produitCommande->pivot->quantite : ''); ?>"
+                                                       <?php echo e($isSelected ? '' : 'disabled'); ?>
+
                                                        style="width: 80px; padding: 6px; border: 1px solid #d1d5db; border-radius: 6px; text-align: right;">
-                                                <input type="hidden" name="produits[{{ $produit->id }}][id]" value="{{ $produit->id }}">
+                                                <input type="hidden" name="produits[<?php echo e($produit->id); ?>][id]" value="<?php echo e($produit->id); ?>">
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -166,7 +188,7 @@
 
                     <!-- Actions -->
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #f3f4f6;">
-                        <a href="{{ route('commandes.index') }}" 
+                        <a href="<?php echo e(route('commandes.index')); ?>" 
                            class="btn btn-secondary" 
                            style="background: #ffffffff; color: #B45309; font-weight: bold; padding: 10px 20px; border-radius: 8px; border: 2px solid #B45309; text-decoration: none; transition: all 0.3s; display: flex; align-items: center; gap: 8px;">
                             <i class="fa-solid fa-arrow-left"></i> Retour
@@ -270,4 +292,6 @@
         });
     </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\pasca\Documents\fast\poto\resources\views/dashbord/vendeur/commandes/edit.blade.php ENDPATH**/ ?>

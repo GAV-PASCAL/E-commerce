@@ -21,7 +21,7 @@ class CommandeController extends Controller
         $commandes = Commande::with(['user', 'produits'])
             ->where('vendeur_id', Auth::id())
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(15);
 
         return view('dashbord.vendeur.commandes.index', compact('commandes'));
     }

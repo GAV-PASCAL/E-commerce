@@ -78,7 +78,7 @@
                         <tbody>
                             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categorie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td><?php echo e($categorie->id); ?></td>
+                                    <td><?php echo e($loop->iteration); ?></td>
                                     <td><?php echo e($categorie->nom); ?></td>
                                     <td>
                                         <form action="<?php echo e(route('dashbord.vendeur.categories.destroy', $categorie)); ?>" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');">
@@ -95,6 +95,10 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                         </tbody>
                     </table>
+                </div>
+                <div class="mt-4">
+                    <?php echo e($categories->links()); ?>
+
                 </div>
 
             </div>

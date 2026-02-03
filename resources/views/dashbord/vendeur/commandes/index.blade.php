@@ -128,6 +128,9 @@
                     </table>
                 @endif
 
+            <div class="mt-4">
+                {{ $commandes->links() }}
+            </div>
             </div>            
         </div>
 

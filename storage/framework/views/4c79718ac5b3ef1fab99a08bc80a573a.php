@@ -166,6 +166,10 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="mt-4">
+                    <?php echo e($produits->links()); ?>
+
+                </div>
             </section>
 
         </div>

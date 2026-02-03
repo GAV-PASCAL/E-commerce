@@ -20,7 +20,7 @@ class ProduitController extends Controller
             $query->where('is_active', false);
         }
 
-        $produits = $query->get();
+        $produits = $query->paginate(15);
         return view('dashbord.vendeur.produits.index', compact('produits'));
     }
 

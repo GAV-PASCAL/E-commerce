@@ -180,7 +180,7 @@
             <div class="category-carousel-track" id="categoryTrack">
                 @foreach($categories as $categorie)
                     <div class="category-card">
-                        <a href="" class="categorie-link">
+                        <a href="{{ route('produits.liste', ['categorie_id' => $categorie->id]) }}" class="categorie-link">
                             <img src=" {{ asset('storage/' . $categorie->image) }} " alt="" class="dim_image" > <br>
                             <h4 class="voir">{{ $categorie->nom }}</h4>
                         </a>

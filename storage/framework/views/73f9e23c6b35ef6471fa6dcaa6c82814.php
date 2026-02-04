@@ -197,7 +197,7 @@
             <div class="category-carousel-track" id="categoryTrack">
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categorie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="category-card">
-                        <a href="" class="categorie-link">
+                        <a href="<?php echo e(route('produits.liste', ['categorie_id' => $categorie->id])); ?>" class="categorie-link">
                             <img src=" <?php echo e(asset('storage/' . $categorie->image)); ?> " alt="" class="dim_image" > <br>
                             <h4 class="voir"><?php echo e($categorie->nom); ?></h4>
                         </a>

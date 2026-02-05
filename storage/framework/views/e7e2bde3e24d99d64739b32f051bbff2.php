@@ -23,8 +23,28 @@
 
                 <div>
                     <label for="password">Mot de passe</label><br>
-                    <input id="password" type="password" name="password" class="formulaire_input"  required>
+                    <div class="password-box">
+                        <input id="password" type="password" name="password" class="formulaire_input" required>
+                        <i class="fa-solid fa-eye toggle-password" onclick="togglePassword('password')"></i>
+                    </div>
                 </div>
+
+                <script>
+                    function togglePassword(inputId) {
+                        const passwordInput = document.getElementById(inputId);
+                        const icon = passwordInput.nextElementSibling;
+                        
+                        if (passwordInput.type === 'password') {
+                            passwordInput.type = 'text';
+                            icon.classList.remove('fa-eye');
+                            icon.classList.add('fa-eye-slash');
+                        } else {
+                            passwordInput.type = 'password';
+                            icon.classList.remove('fa-eye-slash');
+                            icon.classList.add('fa-eye');
+                        }
+                    }
+                </script>
 
                 <div>
                     <label>
@@ -37,7 +57,9 @@
                 </div>
 
                 <p>
-                    Déjà un compte ? <a href="<?php echo e(route('register')); ?>">S'inscrire</a>
+                    Déjà un compte ? <a href="<?php echo e(route('register')); ?>" style="color: var(--primary-color); font-weight: 600;">S'inscrire</a>
+
+                    <a href="<?php echo e(url('./')); ?>" style="color: var(--primary-color); font-weight: 600;">Retour à l'accueil</a>
                 </p>
             </form>
         </div>

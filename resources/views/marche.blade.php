@@ -21,7 +21,8 @@
 
 @section('content')
 
-<div class="exp reveal" id="exp_sup">
+<div style="width: 100%; margin: 2px 0px;">
+    <div class="exp reveal" id="exp_sup">
         <div class="exp_content box_affiche reveal-delay-1">
             <div class="exp_dim">
                 <div class="exp">
@@ -166,6 +167,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
     <x-footer/>

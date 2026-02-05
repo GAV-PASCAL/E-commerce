@@ -1,25 +1,44 @@
-@extends('layouts.app')
 
-@section('title', 'Politique de Confidentialité Complète - EasyOrder')
 
-@section('header')
+<?php $__env->startSection('title', 'Politique de Confidentialité Complète - EasyOrder'); ?>
+
+<?php $__env->startSection('header'); ?>
     <section>
         <div class="accueil_info" style="background-color: #fff; border-bottom: 2px solid #000;">
-            <x-header />
+            <?php if (isset($component)) { $__componentOriginal2a2e454b2e62574a80c8110e5f128b60 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal2a2e454b2e62574a80c8110e5f128b60 = $attributes; } ?>
+<?php $component = App\View\Components\Header::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('header'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Header::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal2a2e454b2e62574a80c8110e5f128b60)): ?>
+<?php $attributes = $__attributesOriginal2a2e454b2e62574a80c8110e5f128b60; ?>
+<?php unset($__attributesOriginal2a2e454b2e62574a80c8110e5f128b60); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal2a2e454b2e62574a80c8110e5f128b60)): ?>
+<?php $component = $__componentOriginal2a2e454b2e62574a80c8110e5f128b60; ?>
+<?php unset($__componentOriginal2a2e454b2e62574a80c8110e5f128b60); ?>
+<?php endif; ?>
 
             <div class="exp_dim" id="info">
                 <h3 class="titre_page">Politique de Confidentialité & Conditions Générales de Données</h3>
                 <div class="breadcrumb">
-                    <a href="{{ url('/') }}">Accueil</a> 
+                    <a href="<?php echo e(url('/')); ?>">Accueil</a> 
                     <i class="fa-solid fa-chevron-right"></i> 
                     <span> CHARTE DE PROTECTION DES DONNÉES (20 ARTICLES) </span>
                 </div>
             </div>
         </div>
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="privacy-policy-view" style="padding: 100px 0; background-color: #fff; color: #000; font-family: 'Inter', system-ui, -apple-system, sans-serif;">
     <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 30px;">
         
@@ -166,9 +185,9 @@
             <div class="footer-note" style="margin-top: 100px; padding: 60px; border: 10px solid #000; text-align: center; background: #fff;">
                 <p style="font-weight: 900; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 10px;">CHARTE DE CONFORMITÉ ABSOLUE</p>
                 <p style="font-weight: 600;">EasyOrder SARL-U - Version Togo 2.0</p>
-                <p style="margin-top: 20px; opacity: 0.7;">Dernière édition : {{ date('d/m/Y') }}</p>
+                <p style="margin-top: 20px; opacity: 0.7;">Dernière édition : <?php echo e(date('d/m/Y')); ?></p>
                 <div style="margin-top: 50px;">
-                    <a href="{{ route('register') }}" style="display: inline-block; padding: 25px 50px; background: #000; color: #fff; text-decoration: none; font-weight: 900; border: 2px solid #000; font-size: 1.2rem; transition: 0.3s; letter-spacing: 2px;">J'ACCEPTE LES 20 ARTICLES - RETOUR</a>
+                    <a href="<?php echo e(route('register')); ?>" style="display: inline-block; padding: 25px 50px; background: #000; color: #fff; text-decoration: none; font-weight: 900; border: 2px solid #000; font-size: 1.2rem; transition: 0.3s; letter-spacing: 2px;">J'ACCEPTE LES 20 ARTICLES - RETOUR</a>
                 </div>
             </div>
 
@@ -211,4 +230,6 @@
         }
     }
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\pasca\Documents\fast\poto\resources\views/politique-confidentialite.blade.php ENDPATH**/ ?>

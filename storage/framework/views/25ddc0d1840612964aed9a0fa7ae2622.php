@@ -76,30 +76,55 @@
 
                 <div>
                     <label for="password">Mot de passe</label><br>
-                    <input 
-                        id="password" 
-                        type="password" 
-                        name="password" 
-                        class="formulaire_input" 
-                        minlength="8"
-                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"
-                        title="Le mot de passe doit contenir au moins 8 caractères, une minuscule, une majuscule et un chiffre"
-                        required>
-                    <small style="color: #666; font-size: 0.85em;">
-                        Minimum 8 caractères avec au moins 1 minuscule, 1 majuscule et 1 chiffre
+                    <div class="password-box">
+                        <input 
+                            id="password" 
+                            type="password" 
+                            name="password" 
+                            class="formulaire_input" 
+                            minlength="8"
+                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"
+                            title="Le mot de passe doit contenir au moins 8 caractères, une minuscule, une majuscule et un chiffre"
+                            required>
+                        <i class="fa-solid fa-eye toggle-password" onclick="togglePassword('password')"></i>
+                    </div>
+                    <small style="color: #424242ff; font-size: 0.85em;">
+                        Minimum 8 caractères, (1 minuscule, 1 majuscule et 1 chiffre)
                     </small>
                 </div>
 
                 <div>
                     <label for="password_confirmation">Confirmer le mot de passe</label><br>
-                    <input 
-                        id="password_confirmation" 
-                        type="password" 
-                        name="password_confirmation" 
-                        class="formulaire_input" 
-                        minlength="8"
-                        required>
-                <div style="margin: 20px 0; display: flex; align-items: flex-start; gap: 10px;">
+                    <div class="password-box">
+                        <input 
+                            id="password_confirmation" 
+                            type="password" 
+                            name="password_confirmation" 
+                            class="formulaire_input" 
+                            minlength="8"
+                            required>
+                        <i class="fa-solid fa-eye toggle-password" onclick="togglePassword('password_confirmation')"></i>
+                    </div>
+                </div>
+
+                <script>
+                    function togglePassword(inputId) {
+                        const passwordInput = document.getElementById(inputId);
+                        const icon = passwordInput.nextElementSibling;
+                        
+                        if (passwordInput.type === 'password') {
+                            passwordInput.type = 'text';
+                            icon.classList.remove('fa-eye');
+                            icon.classList.add('fa-eye-slash');
+                        } else {
+                            passwordInput.type = 'password';
+                            icon.classList.remove('fa-eye-slash');
+                            icon.classList.add('fa-eye');
+                        }
+                    }
+                </script>
+
+                <div style="margin: 2px 0; display: flex; align-items: flex-start; gap: 5px;">
                     <input 
                         type="checkbox" 
                         name="politique_confidentialite" 
@@ -116,7 +141,9 @@
                 </div>
 
                 <p>
-                    Déjà un compte ? <a href="<?php echo e(route('login')); ?>">Se connecter</a>
+                    Déjà un compte ? <a href="<?php echo e(route('login')); ?>" style="color: var(--primary-color); font-weight: 600;">Se connecter</a>
+
+                    <a href="<?php echo e(url('./')); ?>" style="color: var(--primary-color); font-weight: 600;">Retour à l'accueil</a>
                 </p>
                 
             </form>

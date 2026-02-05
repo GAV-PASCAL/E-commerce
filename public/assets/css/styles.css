@@ -929,7 +929,7 @@ h6 {
     background-color: var(--accent-hover);
 }
 
-#tble_btn{
+#tble_btn {
     margin-top: 17%;
 }
 
@@ -1201,15 +1201,17 @@ th {
 
 .register_div {
     width: 90%;
+    max-width: 1000px;
     height: 500px;
     display: flex;
     flex-direction: row;
-    margin: 3% 5%;
+    margin: 3% auto;
     box-shadow: 1px 2px 4px 3px rgba(0, 0, 0, 0.1);
+    background: #FFf;
 }
 
 .section_formulaire_one {
-    flex-basis: 50%;
+    flex: 1;
     background-color: #B45309;
     color: #FFF;
     text-align: center;
@@ -1217,7 +1219,7 @@ th {
 }
 
 .section_formulaire_two {
-    flex-basis: 50%;
+    flex: 1;
 }
 
 .box_affiche {
@@ -1237,23 +1239,52 @@ th {
 .inscription {
     display: flex;
     flex-direction: column;
-    margin: 8% 5%;
-    gap: 25px;
+    margin: 2% 5%;
+    gap: 15px;
 }
 
 .information {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 12px;
+}
+
+.information>div {
+    flex: 1;
 }
 
 .formulaire_input {
     width: 100%;
-    height: 30px;
+    height: 35px;
+    /* Increased slightly for better look with icon */
     border-radius: 10px;
     border: 1.5px solid #B45309;
     outline: none;
     font-size: 15px;
+    padding: 0 10px;
+}
+
+.password-box {
+    position: relative;
+    width: 100%;
+}
+
+.password-box .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #B45309;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-box .formulaire_input {
+    padding-right: 40px;
 }
 
 #btn-formulaire {
@@ -1271,6 +1302,32 @@ th {
     flex-direction: column;
     margin: 20% 5%;
     gap: 25px;
+}
+
+/* AUTH RESPONSIVE */
+@media screen and (max-width: 850px) {
+    .register_div {
+        flex-direction: column;
+        height: auto;
+        width: 90%;
+        margin: 10% auto;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+    }
+
+    .section_formulaire_one {
+        display: none !important;
+    }
+
+    .section_formulaire_two {
+        flex-basis: 100%;
+        width: 100%;
+        padding: 30px 10px;
+    }
+
+    .information {
+        flex-direction: column;
+    }
 }
 
 .copy {
@@ -1650,6 +1707,7 @@ th {
     padding: 20px 25px;
     border-bottom: 1px solid #f0f0f0;
     background-color: white;
+    width: 100%;
 }
 
 .close_menu_btn {

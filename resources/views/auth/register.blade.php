@@ -90,7 +90,7 @@
                             required>
                         <i class="fa-solid fa-eye toggle-password" onclick="togglePassword('password')"></i>
                     </div>
-                    <small style="color: #424242ff; font-size: 0.85em;">
+                    <small style="color: #424242ff; font-size: 0.6em;">
                         Minimum 8 caractères, (1 minuscule, 1 majuscule et 1 chiffre)
                     </small>
                 </div>

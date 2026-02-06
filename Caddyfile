@@ -1,16 +1,23 @@
 :8000 {
     bind 0.0.0.0
     root * /app/public
-    
+
     php_server {
         root /app/public
     }
-    
+
     encode gzip
     file_server
-    
+
     log {
         output stderr
         format console
+    }
+
+    # Proxy WebSocket Reverb
+    reverse_proxy /app/reverb/* localhost:6001 {
+        transport http {
+            versions h2c 1.1
+        }
     }
 }

@@ -1,0 +1,27 @@
+{
+    auto_https off
+    admin off
+    servers {
+        listener_wrappers {
+            http_redirect
+            tls
+        }
+    }
+}
+
+:8000 {
+    bind 0.0.0.0
+    root * /app/public
+    
+    php_server {
+        root /app/public
+    }
+    
+    encode gzip
+    file_server
+    
+    log {
+        output stderr
+        format console
+    }
+}
